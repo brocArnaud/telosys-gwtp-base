@@ -1,0 +1,4 @@
+.main-wrapper{
+	padding-top:60px;
+    border-color: #e7e7e7;
+}

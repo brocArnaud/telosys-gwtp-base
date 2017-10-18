@@ -1,0 +1,20 @@
+.main-wrapper{
+	padding-top:60px;
+    border-color: #e7e7e7;
+}
+
+.icon-header{
+	padding: 0 15px;
+}
+
+.icon-logout{
+	padding-top:6px;
+}
+
+.icon-logout a{
+	color: #777;
+}
+
+.button-create{
+	margin-top: 15px;
+}
