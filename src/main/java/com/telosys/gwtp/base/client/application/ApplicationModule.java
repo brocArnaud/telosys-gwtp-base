@@ -1,6 +1,7 @@
 package com.telosys.gwtp.base.client.application;
 
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
+import com.telosys.gwtp.base.client.application.error.ErrorModule;
 import com.telosys.gwtp.base.client.application.home.HomeModule;
 import com.telosys.gwtp.base.client.application.layout.footer.FooterModule;
 import com.telosys.gwtp.base.client.application.layout.header.HeaderModule;
@@ -17,11 +18,13 @@ public class ApplicationModule extends AbstractPresenterModule {
 
 		install(new HeaderModule());
 		install(new FooterModule());
-		
+
 		install(new PlayerListModule());
 		install(new PlayerFormModule());
 		install(new TeamListModule());
 		install(new TeamFormModule());
+
+		install(new ErrorModule());
 
 		bindPresenter(ApplicationPresenter.class, ApplicationPresenter.MyView.class, ApplicationView.class, ApplicationPresenter.MyProxy.class);
 	}

@@ -1,6 +1,5 @@
 package com.telosys.gwtp.base.client.application.layout.header;
 
-import com.google.gwt.core.client.GWT;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.HasUiHandlers;
@@ -34,19 +33,16 @@ public class HeaderPresenter extends Presenter<HeaderPresenter.MyView, HeaderPre
 
 	@Override
 	public void onTeamClick() {
-		GWT.log("Presenter on team click");
-		placeManager.revealPlace(new PlaceRequest.Builder().nameToken(NameTokens.TEAM).build());
+		placeManager.revealPlace(new PlaceRequest.Builder().nameToken(NameTokens.TEAM_LIST).build());
 	}
 
 	@Override
 	public void onPlayerClick() {
-		GWT.log("Presenter on player click");
-		placeManager.revealPlace(new PlaceRequest.Builder().nameToken(NameTokens.PLAYER).build());
+		placeManager.revealPlace(new PlaceRequest.Builder().nameToken(NameTokens.PLAYER_LIST).build());
 	}
 
 	@Override
 	public void onHomeClick() {
-		GWT.log("Presenter on home click");
 		placeManager.revealPlace(new PlaceRequest.Builder().nameToken(NameTokens.HOME).build());
 	}
 }

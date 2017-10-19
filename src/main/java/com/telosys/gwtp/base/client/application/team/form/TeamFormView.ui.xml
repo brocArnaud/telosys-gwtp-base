@@ -5,7 +5,23 @@
 	<g:HTMLPanel>
 		<b:Container>
 			<g:HTMLPanel>
-				<p>FORM TEAM</p>
+				<b:Row>
+					<b:Column size="MD_4" offset="MD_4">
+						<b:Panel>
+							<b:PanelHeader>
+								<b:Heading size="H3" text="Creating a new team" />
+							</b:PanelHeader>
+							<b:PanelBody ui:field="body" />
+							<b:PanelFooter addStyleNames="{res.style.formPanelFooter}">
+								<b:Button type="DANGER" ui:field="reset">Clean</b:Button>
+								<b:Button type="PRIMARY" ui:field="create">Create</b:Button>
+							</b:PanelFooter>
+						</b:Panel>
+					</b:Column>
+					<b:Column ui:field="notification" size="MD_4" offset="MD_4" addStyleNames="{res.style.notificationContainer}" visible="false">
+						<b:Label ui:field="labelNotification" text="Team creation succes" type="SUCCESS" />
+					</b:Column>
+				</b:Row>
 			</g:HTMLPanel>
 		</b:Container>
 	</g:HTMLPanel>

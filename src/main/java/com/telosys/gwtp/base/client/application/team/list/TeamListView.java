@@ -4,13 +4,20 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.gwtbootstrap3.client.ui.constants.ButtonType;
+import org.gwtbootstrap3.client.ui.constants.IconType;
+import org.gwtbootstrap3.client.ui.gwt.ButtonCell;
 import org.gwtbootstrap3.client.ui.gwt.CellTable;
 
+import com.google.gwt.cell.client.FieldUpdater;
+import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.cellview.client.TextColumn;
+import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.view.client.ListDataProvider;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
@@ -39,26 +46,56 @@ public class TeamListView extends ViewWithUiHandlers<TeamListUiHandlers> impleme
 	}
 
 	private void initCellTable() {
-		final TextColumn<TeamDto> col1 = new TextColumn<TeamDto>() {
+		final TextColumn<TeamDto> id = new TextColumn<TeamDto>() {
 
 			@Override
-			public String getValue(final TeamDto object) {
-				return String.valueOf(object.getId());
+			public String getValue(final TeamDto team) {
+				return String.valueOf(team.getId());
 			}
 		};
-		teamList.addColumn(col1, "Id");
-		final TextColumn<TeamDto> col2 = new TextColumn<TeamDto>() {
+		teamList.addColumn(id, "Id");
+		final TextColumn<TeamDto> name = new TextColumn<TeamDto>() {
 
 			@Override
-			public String getValue(final TeamDto object) {
-				return String.valueOf(object.getName());
+			public String getValue(final TeamDto team) {
+				return String.valueOf(team.getName());
 			}
 		};
-		teamList.addColumn(col2, "Name");
+		teamList.addColumn(name, "Name");
 
+		final Column<TeamDto, String> deletion = new Column<TeamDto, String>(new ButtonCell(ButtonType.DANGER, IconType.TRASH)) {
+			@Override
+			public String getValue(TeamDto object) {
+				return "";
+			}
+		};
+		deletion.setFieldUpdater(new FieldUpdater<TeamDto, String>() {
+			@Override
+			public void update(int index, TeamDto team, String value) {
+				getUiHandlers().onDeleteClick(team);
+			}
+		});
+		deletion.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
+		teamList.addColumn(deletion, "Delete");
+		final Column<TeamDto, String> update = new Column<TeamDto, String>(new ButtonCell(ButtonType.SUCCESS, IconType.PENCIL)) {
+			@Override
+			public String getValue(TeamDto object) {
+				return "";
+			}
+		};
+		update.setFieldUpdater(new FieldUpdater<TeamDto, String>() {
+			@Override
+			public void update(int index, TeamDto team, String value) {
+				getUiHandlers().onUpdateClick(team);
+			}
+		});
+		update.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
+		teamList.addColumn(update, "Update");
+		teamList.setColumnWidth(deletion, 30, Unit.PX);
+		teamList.setColumnWidth(update, 30, Unit.PX);
 		cellTableProvider.addDataDisplay(teamList);
 	}
-	
+
 	@UiHandler(value = "create")
 	public void onCreateClick(ClickEvent event) {
 		getUiHandlers().onCreateClick();

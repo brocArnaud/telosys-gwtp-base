@@ -1,0 +1,11 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder' xmlns:g='urn:import:com.google.gwt.user.client.ui' xmlns:b="urn:import:org.gwtbootstrap3.client.ui">
+
+	<g:HTMLPanel>
+		<b:Container>
+			<g:HTMLPanel>
+				<b:Heading size="H1" text="An error occured, please contact website administrator" />
+				<g:Label text="For reduce the response time, please provide the time of occurence"></g:Label>
+			</g:HTMLPanel>
+		</b:Container>
+	</g:HTMLPanel>
+</ui:UiBinder>

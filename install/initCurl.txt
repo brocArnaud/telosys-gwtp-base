@@ -1,0 +1,11 @@
+If fake implemntation used
+
+curl -i -X POST -H "Content-Type:application/json" http://localhost:8080/league-factory-api-0.1/api/v1/team -d "{\"id\":1,\"name\":\"c2k\"}"
+curl -i -X POST -H "Content-Type:application/json" http://localhost:8080/league-factory-api-0.1/api/v1/team -d "{\"id\":2,\"name\":\"4F\"}"
+
+curl -i -X POST -H "Content-Type:application/json" http://localhost:8080/league-factory-api-0.1/api/v1/player -d "{\"id\":1,\"name\":\"mako\", \"team\":1}"
+curl -i -X POST -H "Content-Type:application/json" http://localhost:8080/league-factory-api-0.1/api/v1/player -d "{\"id\":2,\"name\":\"kiar\", \"team\":1}"
+curl -i -X POST -H "Content-Type:application/json" http://localhost:8080/league-factory-api-0.1/api/v1/player -d "{\"id\":3,\"name\":\"momo\", \"team\":2}"
+curl -i -X POST -H "Content-Type:application/json" http://localhost:8080/league-factory-api-0.1/api/v1/player -d "{\"id\":4,\"name\":\"boba\", \"team\":2}"
+curl -i -X POST -H "Content-Type:application/json" http://localhost:8080/league-factory-api-0.1/api/v1/player -d "{\"id\":5,\"name\":\"rourouh\", \"team\":2}"
+curl -i -X POST -H "Content-Type:application/json" http://localhost:8080/league-factory-api-0.1/api/v1/player -d "{\"id\":6,\"name\":\"garoump\", \"team\":1}"

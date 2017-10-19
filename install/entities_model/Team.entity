@@ -1,0 +1,6 @@
+// Entity Team
+
+Team {
+  id : long {@Id,@AutoIncremented} ; // field example 
+  name : string ;
+}

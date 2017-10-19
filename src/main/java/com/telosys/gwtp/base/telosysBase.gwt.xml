@@ -3,9 +3,10 @@
         "http://gwtproject.org/doctype/2.8.0/gwt-module.dtd">
 <module rename-to='telosysBase'>
 	<inherits name='com.google.gwt.user.User' />
-	<inherits name="com.gwtplatform.dispatch.rest.DispatchRest"/>
+	<inherits name="com.gwtplatform.dispatch.rest.DispatchRest" />
 	<inherits name="com.gwtplatform.mvp.MvpWithEntryPoint" />
 	<inherits name="org.gwtbootstrap3.GwtBootstrap3" />
+	<inherits name="org.hibernate.validator.HibernateValidator" />
 
 	<extend-configuration-property name="gin.ginjector.modules" value="com.telosys.gwtp.base.client.gin.ClientModule" />
 
@@ -14,6 +15,10 @@
 	<source path='shared' />
 
 	<set-configuration-property name="CssResource.enableGss" value="true" />
-	
+
+	<replace-with class="com.telosys.gwtp.base.client.util.FormValidationFactory">
+		<when-type-is class="javax.validation.ValidatorFactory" />
+	</replace-with>
+
 	<set-property name="user.agent" value="safari" />
 </module>

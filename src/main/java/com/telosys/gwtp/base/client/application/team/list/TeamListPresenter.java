@@ -18,6 +18,7 @@ import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
 import com.telosys.gwtp.base.client.application.ApplicationPresenter;
 import com.telosys.gwtp.base.client.place.NameTokens;
+import com.telosys.gwtp.base.client.place.TokenParameters;
 import com.telosys.gwtp.base.shared.api.resources.TeamResource;
 import com.telosys.gwtp.base.shared.dto.TeamDto;
 
@@ -28,7 +29,7 @@ public class TeamListPresenter extends Presenter<TeamListPresenter.MyView, TeamL
 	}
 
 	@ProxyStandard
-	@NameToken(NameTokens.TEAM)
+	@NameToken(NameTokens.TEAM_LIST)
 	interface MyProxy extends ProxyPlace<TeamListPresenter> {
 	}
 
@@ -54,6 +55,21 @@ public class TeamListPresenter extends Presenter<TeamListPresenter.MyView, TeamL
 
 	@Override
 	public void prepareFromRequest(PlaceRequest request) {
+		load();
+	}
+
+	@Override
+	protected void onReveal() {
+		super.onReveal();
+		load();
+	}
+
+	@Override
+	public void onCreateClick() {
+		placeManager.revealPlace(new PlaceRequest.Builder().nameToken(NameTokens.TEAM_FORM).with(TokenParameters.ID, TokenParameters.DEFAULT_ID).build());
+	}
+
+	private void load() {
 		dispatcher.execute(teamResource.getTeam(), ManualRevealCallback.create(this, new AsyncCallback<List<TeamDto>>() {
 
 			@Override
@@ -69,7 +85,23 @@ public class TeamListPresenter extends Presenter<TeamListPresenter.MyView, TeamL
 	}
 
 	@Override
-	public void onCreateClick() {
-		placeManager.revealPlace(new PlaceRequest.Builder().nameToken(NameTokens.NEW_TEAM).build());
+	public void onDeleteClick(TeamDto team) {
+		dispatcher.execute(teamResource.delete(team.getId()), ManualRevealCallback.create(this, new AsyncCallback<Void>() {
+
+			@Override
+			public void onSuccess(Void nothing) {
+				load();
+			}
+
+			@Override
+			public void onFailure(Throwable caught) {
+				GWT.log("onFailure : " + caught);
+			}
+		}));
+	}
+
+	@Override
+	public void onUpdateClick(TeamDto team) {
+		placeManager.revealPlace(new PlaceRequest.Builder().nameToken(NameTokens.TEAM_FORM).with(TokenParameters.ID, String.valueOf(team.getId())).build());
 	}
 }

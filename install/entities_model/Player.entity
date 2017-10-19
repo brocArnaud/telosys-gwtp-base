@@ -1,0 +1,7 @@
+// Entity Player
+
+Player {
+  id : long {@Id, @AutoIncremented} ; // field example 
+  name : string ;
+  team : Team;
+}

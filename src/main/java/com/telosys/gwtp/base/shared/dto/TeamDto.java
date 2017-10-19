@@ -2,11 +2,14 @@ package com.telosys.gwtp.base.shared.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotNull;
+
 public class TeamDto implements Serializable {
 	private static final long serialVersionUID = 5735117549801608932L;
 
 	private Long id;
 
+	@NotNull
 	private String name;
 
 	public TeamDto() {

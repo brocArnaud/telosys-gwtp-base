@@ -21,6 +21,12 @@ public interface AppResources extends ClientBundle {
 
 		@ClassName("button-create")
 		String buttonCreate();
+		
+		@ClassName("form-panel-footer")
+		String formPanelFooter();
+		
+		@ClassName("notification-container")
+		String notificationContainer();
 	}
 
 	@Source("gss/normalize.gss")

@@ -18,6 +18,7 @@ import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
 import com.telosys.gwtp.base.client.application.ApplicationPresenter;
 import com.telosys.gwtp.base.client.place.NameTokens;
+import com.telosys.gwtp.base.client.place.TokenParameters;
 import com.telosys.gwtp.base.shared.api.resources.PlayerResource;
 import com.telosys.gwtp.base.shared.dto.PlayerDto;
 
@@ -29,7 +30,7 @@ public class PlayerListPresenter extends Presenter<PlayerListPresenter.MyView, P
 	}
 
 	@ProxyStandard
-	@NameToken(NameTokens.PLAYER)
+	@NameToken(NameTokens.PLAYER_LIST)
 	interface MyProxy extends ProxyPlace<PlayerListPresenter> {
 	}
 
@@ -55,7 +56,21 @@ public class PlayerListPresenter extends Presenter<PlayerListPresenter.MyView, P
 
 	@Override
 	public void prepareFromRequest(PlaceRequest request) {
+		load();
+	}
 
+	@Override
+	protected void onReveal() {
+		super.onReveal();
+		load();
+	}
+
+	@Override
+	public void onCreateClick() {
+		placeManager.revealPlace(new PlaceRequest.Builder().nameToken(NameTokens.PLAYER_FORM).with(TokenParameters.ID, TokenParameters.DEFAULT_ID).build());
+	}
+
+	private void load() {
 		dispatcher.execute(playerResource.getPlayers(), ManualRevealCallback.create(this, new AsyncCallback<List<PlayerDto>>() {
 
 			@Override
@@ -68,11 +83,26 @@ public class PlayerListPresenter extends Presenter<PlayerListPresenter.MyView, P
 				GWT.log("onFailure : " + caught);
 			}
 		}));
-
 	}
 
 	@Override
-	public void onCreateClick() {
-		placeManager.revealPlace(new PlaceRequest.Builder().nameToken(NameTokens.NEW_PLAYER).build());
+	public void onDeleteClick(PlayerDto team) {
+		dispatcher.execute(playerResource.delete(team.getId()), ManualRevealCallback.create(this, new AsyncCallback<Void>() {
+
+			@Override
+			public void onSuccess(Void nothing) {
+				load();
+			}
+
+			@Override
+			public void onFailure(Throwable caught) {
+				GWT.log("onFailure : " + caught);
+			}
+		}));
+	}
+
+	@Override
+	public void onUpdateClick(PlayerDto team) {
+		placeManager.revealPlace(new PlaceRequest.Builder().nameToken(NameTokens.PLAYER_FORM).with(TokenParameters.ID, String.valueOf(team.getId())).build());
 	}
 }
