@@ -3,7 +3,11 @@
 	<g:HTMLPanel>
 		<b:Container>
 			<g:HTMLPanel>
-				<p>FORM PLAYER</p>
+				<b:FormGroup>
+					<b:FormLabel></b:FormLabel>
+				</b:FormGroup>
+				<b:Form>
+				</b:Form>
 			</g:HTMLPanel>
 		</b:Container>
 	</g:HTMLPanel>
