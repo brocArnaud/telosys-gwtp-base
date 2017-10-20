@@ -12,7 +12,7 @@ import com.telosys.gwtp.base.client.application.layout.footer.FooterPresenter;
 import com.telosys.gwtp.base.client.application.layout.header.HeaderPresenter;
 
 public class ApplicationPresenter extends Presenter<ApplicationPresenter.MyView, ApplicationPresenter.MyProxy> {
-	interface MyView extends View {
+	public interface MyView extends View {
 	}
 
 	@ProxyStandard

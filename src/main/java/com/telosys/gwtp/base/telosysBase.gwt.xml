@@ -15,6 +15,7 @@
 	<source path='shared' />
 
 	<set-configuration-property name="CssResource.enableGss" value="true" />
+	<set-configuration-property name="verifyNewerVersion" value="false"/>
 
 	<replace-with class="com.telosys.gwtp.base.client.util.FormValidationFactory">
 		<when-type-is class="javax.validation.ValidatorFactory" />
