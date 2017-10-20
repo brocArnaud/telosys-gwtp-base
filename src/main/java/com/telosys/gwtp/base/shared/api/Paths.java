@@ -1,6 +1,9 @@
 package com.telosys.gwtp.base.shared.api;
 
 public class Paths {
+	
+	private Paths(){
+	}
 
 	public static final String BASE_URL = "http://localhost:8080/league-factory-api-0.1";
 

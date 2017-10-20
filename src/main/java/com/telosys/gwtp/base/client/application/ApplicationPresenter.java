@@ -21,8 +21,8 @@ public class ApplicationPresenter extends Presenter<ApplicationPresenter.MyView,
 
 	public static final NestedSlot SLOT_MAIN = new NestedSlot();
 
-	public static final PermanentSlot<HeaderPresenter> SLOT_HEADER = new PermanentSlot<HeaderPresenter>();
-	public static final PermanentSlot<FooterPresenter> SLOT_FOOTER = new PermanentSlot<FooterPresenter>();
+	public static final PermanentSlot<HeaderPresenter> SLOT_HEADER = new PermanentSlot<>();
+	public static final PermanentSlot<FooterPresenter> SLOT_FOOTER = new PermanentSlot<>();
 
 	@Inject
 	private HeaderPresenter headerPresenter;

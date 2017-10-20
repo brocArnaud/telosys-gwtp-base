@@ -4,11 +4,11 @@
 	<ui:with field="res" type="com.telosys.gwtp.base.client.resources.AppResources" />
 
 	<g:HTMLPanel ui:field="container">
-		<b:Navbar position="FIXED_BOTTOM">
+		<b:Navbar position="FIXED_BOTTOM" addStyleNames="{res.style.footerBar}">
 			<b:Container>
 				<b:NavbarNav>
-					<b:AnchorListItem>Player</b:AnchorListItem>
-					<b:AnchorListItem>Team</b:AnchorListItem>
+					<b:AnchorListItem ui:field="player">Player</b:AnchorListItem>
+					<b:AnchorListItem ui:field="team">Team</b:AnchorListItem>
 				</b:NavbarNav>
 				<b:NavbarText pull="RIGHT">
 					<b.html:Span>

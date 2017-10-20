@@ -64,7 +64,7 @@ public class TeamFormView extends ViewWithUiHandlers<TeamFormUiHandlers> impleme
 
 		Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
 		Set<ConstraintViolation<TeamDto>> violations = validator.validate(team, Default.class);
-		if (violations.size() > 0) {
+		if (!violations.isEmpty()) {
 			DRIVER.setConstraintViolations(new ArrayList<ConstraintViolation<?>>(violations));
 		} else {
 			getUiHandlers().save(team);

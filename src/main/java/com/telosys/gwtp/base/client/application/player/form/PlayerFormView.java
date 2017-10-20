@@ -69,7 +69,7 @@ public class PlayerFormView extends ViewWithUiHandlers<PlayerFormUiHandlers> imp
 
 		Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
 		Set<ConstraintViolation<PlayerDto>> violations = validator.validate(player, Default.class);
-		if (violations.size() > 0) {
+		if (!violations.isEmpty()) {
 			DRIVER.setConstraintViolations(new ArrayList<ConstraintViolation<?>>(violations));
 		} else {
 			getUiHandlers().save(player);

@@ -32,7 +32,7 @@ public class PlayerEditor extends Composite implements Editor<PlayerDto> {
 
 	@Inject
 	public PlayerEditor() {
-		team = new ValueListBox<String>(new AbstractRenderer<String>() {
+		team = new ValueListBox<>(new AbstractRenderer<String>() {
 			@Override
 			public String render(String object) {
 				return object == null ? "" : object;
@@ -42,7 +42,7 @@ public class PlayerEditor extends Composite implements Editor<PlayerDto> {
 	}
 
 	public void setTeams(List<ListItemDto> teams) {
-		final List<String> values = new ArrayList<String>();
+		final List<String> values = new ArrayList<>();
 		for (ListItemDto item : teams) {
 			values.add(item.getLabel());
 		}

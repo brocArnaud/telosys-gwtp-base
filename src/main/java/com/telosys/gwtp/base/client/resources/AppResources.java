@@ -21,12 +21,31 @@ public interface AppResources extends ClientBundle {
 
 		@ClassName("button-create")
 		String buttonCreate();
-		
+
 		@ClassName("form-panel-footer")
 		String formPanelFooter();
-		
+
 		@ClassName("notification-container")
 		String notificationContainer();
+
+		@ClassName("spinner")
+		String spinner();
+
+		@ClassName("bounce1")
+		String bounce1();
+
+		@ClassName("bounce2")
+		String bounce2();
+
+		@ClassName("bounce3")
+		String bounce3();
+		
+		@ClassName("clickable")
+		String clickable();
+		
+		@ClassName("footer-bar")
+		String footerBar();
+
 	}
 
 	@Source("gss/normalize.gss")
@@ -37,4 +56,7 @@ public interface AppResources extends ClientBundle {
 
 	@Source("image/logo.png")
 	ImageResource logo();
+
+	@Source("image/error.png")
+	ImageResource error();
 }

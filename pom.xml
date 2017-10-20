@@ -112,14 +112,50 @@
 		<!-- GWTP -->
 		<dependency>
 			<groupId>com.gwtplatform</groupId>
-			<artifactId>gwtp-all</artifactId>
-			<version>1.6</version>
+			<artifactId>gwtp-clients-common</artifactId>
+			<version>${gwtp.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>com.gwtplatform.extensions</groupId>
-			<artifactId>dispatch-rest-delegates</artifactId>
-			<version>1.6</version>
+			<groupId>com.gwtplatform</groupId>
+			<artifactId>gwtp-dispatch-common-client</artifactId>
+			<version>${gwtp.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>com.gwtplatform</groupId>
+			<artifactId>gwtp-dispatch-common-shared</artifactId>
+			<version>${gwtp.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.gwtplatform</groupId>
+			<artifactId>gwtp-dispatch-rest</artifactId>
+			<version>${gwtp.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.gwtplatform</groupId>
+			<artifactId>gwtp-dispatch-rest-shared</artifactId>
+			<version>${gwtp.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.gwtplatform</groupId>
+			<artifactId>gwtp-mvp-client</artifactId>
+			<version>${gwtp.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.gwtplatform</groupId>
+			<artifactId>gwtp-mvp-shared</artifactId>
+			<version>${gwtp.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.gwtplatform</groupId>
+			<artifactId>gwtp-processors</artifactId>
+			<version>${gwtp.version}</version>
+		</dependency>
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.gwtplatform.extensions</groupId> -->
+		<!-- <artifactId>dispatch-rest-delegates</artifactId> -->
+		<!-- <version>${gwtp.version}</version> -->
+		<!-- </dependency> -->
 
 		<!-- gwt boostrap3 -->
 		<dependency>

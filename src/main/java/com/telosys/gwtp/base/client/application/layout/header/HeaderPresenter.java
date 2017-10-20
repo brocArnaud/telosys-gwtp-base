@@ -2,18 +2,20 @@ package com.telosys.gwtp.base.client.application.layout.header;
 
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
+import com.gwtplatform.dispatch.rest.client.RestDispatch;
 import com.gwtplatform.mvp.client.HasUiHandlers;
-import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.presenter.slots.NestedSlot;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.Proxy;
-import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
+import com.telosys.gwtp.base.client.event.LoadingEvent;
 import com.telosys.gwtp.base.client.place.NameTokens;
+import com.telosys.gwtp.base.client.util.BasePresenter;
 
-public class HeaderPresenter extends Presenter<HeaderPresenter.MyView, HeaderPresenter.MyProxy> implements HeaderUiHandlers {
+public class HeaderPresenter extends BasePresenter<HeaderPresenter.MyView, HeaderPresenter.MyProxy> implements HeaderUiHandlers, LoadingEvent.LoadingHandler {
 	interface MyView extends View, HasUiHandlers<HeaderUiHandlers> {
+		void showSpinner(boolean visible);
 	}
 
 	@ProxyStandard
@@ -23,26 +25,34 @@ public class HeaderPresenter extends Presenter<HeaderPresenter.MyView, HeaderPre
 	public static final NestedSlot SLOT_CONTENT = new NestedSlot();
 
 	@Inject
-	private PlaceManager placeManager;
-
-	@Inject
-	HeaderPresenter(EventBus eventBus, MyView view, MyProxy proxy) {
-		super(eventBus, view, proxy, SLOT_CONTENT);
+	HeaderPresenter(EventBus eventBus, MyView view, MyProxy proxy, PlaceManager placeManager, RestDispatch dispatcher) {
+		super(eventBus, view, proxy, SLOT_CONTENT, placeManager, dispatcher);
 		getView().setUiHandlers(this);
 	}
 
 	@Override
+	protected void onBind() {
+		super.onBind();
+		addRegisteredHandler(LoadingEvent.TYPE, this);
+	}
+
+	@Override
 	public void onTeamClick() {
-		placeManager.revealPlace(new PlaceRequest.Builder().nameToken(NameTokens.TEAM_LIST).build());
+		revealPlace(NameTokens.TEAM_LIST);
 	}
 
 	@Override
 	public void onPlayerClick() {
-		placeManager.revealPlace(new PlaceRequest.Builder().nameToken(NameTokens.PLAYER_LIST).build());
+		revealPlace(NameTokens.PLAYER_LIST);
 	}
 
 	@Override
 	public void onHomeClick() {
-		placeManager.revealPlace(new PlaceRequest.Builder().nameToken(NameTokens.HOME).build());
+		revealPlace(NameTokens.HOME);
+	}
+
+	@Override
+	public void onLoadingEvent(LoadingEvent event) {
+		getView().showSpinner(event.isShow());
 	}
 }

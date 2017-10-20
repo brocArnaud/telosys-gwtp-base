@@ -18,6 +18,9 @@ public class HeaderView extends ViewWithUiHandlers<HeaderUiHandlers> implements 
 
 	@UiField
 	HTMLPanel container;
+	
+	@UiField
+	HTMLPanel spinner;
 
 	@Inject
 	HeaderView(Binder uiBinder) {
@@ -35,8 +38,14 @@ public class HeaderView extends ViewWithUiHandlers<HeaderUiHandlers> implements 
 		getUiHandlers().onTeamClick();
 	}
 
-	@UiHandler(value = "home")
+	@UiHandler(value = "logo")
+//	@UiHandler(value = "home")
 	public void onHomeClick(ClickEvent event) {
 		getUiHandlers().onHomeClick();
+	}
+
+	@Override
+	public void showSpinner(boolean visible) {
+		spinner.setVisible(visible);
 	}
 }

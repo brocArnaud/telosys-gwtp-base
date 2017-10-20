@@ -30,7 +30,7 @@ public class PlayerListView extends ViewWithUiHandlers<PlayerListUiHandlers> imp
 	@UiField
 	CellTable<PlayerDto> playerList;
 
-	private ListDataProvider<PlayerDto> cellTableProvider = new ListDataProvider<PlayerDto>();
+	private ListDataProvider<PlayerDto> cellTableProvider = new ListDataProvider<>();
 
 	@Inject
 	PlayerListView(Binder uiBinder) {

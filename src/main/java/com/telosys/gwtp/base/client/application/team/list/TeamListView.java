@@ -30,7 +30,7 @@ public class TeamListView extends ViewWithUiHandlers<TeamListUiHandlers> impleme
 	@UiField
 	CellTable<TeamDto> teamList;
 
-	private ListDataProvider<TeamDto> cellTableProvider = new ListDataProvider<TeamDto>();
+	private ListDataProvider<TeamDto> cellTableProvider = new ListDataProvider<>();
 
 	@Inject
 	TeamListView(Binder uiBinder) {
