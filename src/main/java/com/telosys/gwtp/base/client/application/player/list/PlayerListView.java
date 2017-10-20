@@ -9,7 +9,6 @@ import org.gwtbootstrap3.client.ui.constants.IconType;
 import org.gwtbootstrap3.client.ui.gwt.ButtonCell;
 import org.gwtbootstrap3.client.ui.gwt.CellTable;
 
-import com.google.gwt.cell.client.FieldUpdater;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -76,12 +75,7 @@ public class PlayerListView extends ViewWithUiHandlers<PlayerListUiHandlers> imp
 				return "";
 			}
 		};
-		deletion.setFieldUpdater(new FieldUpdater<PlayerDto, String>() {
-			@Override
-			public void update(int index, PlayerDto player, String value) {
-				getUiHandlers().onDeleteClick(player);
-			}
-		});
+		deletion.setFieldUpdater((index, player, value) -> getUiHandlers().onDeleteClick(player));
 		deletion.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 		playerList.addColumn(deletion, "Delete");
 		final Column<PlayerDto, String> update = new Column<PlayerDto, String>(new ButtonCell(ButtonType.SUCCESS, IconType.PENCIL)) {
@@ -90,12 +84,7 @@ public class PlayerListView extends ViewWithUiHandlers<PlayerListUiHandlers> imp
 				return "";
 			}
 		};
-		update.setFieldUpdater(new FieldUpdater<PlayerDto, String>() {
-			@Override
-			public void update(int index, PlayerDto player, String value) {
-				getUiHandlers().onUpdateClick(player);
-			}
-		});
+		update.setFieldUpdater((index, player, value) -> getUiHandlers().onUpdateClick(player));
 		update.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 		playerList.addColumn(update, "Update");
 		playerList.setColumnWidth(deletion, 30, Unit.PX);

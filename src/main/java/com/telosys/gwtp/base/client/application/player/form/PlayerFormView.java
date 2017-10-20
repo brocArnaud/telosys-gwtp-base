@@ -10,25 +10,18 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.groups.Default;
 
-import org.gwtbootstrap3.client.ui.Button;
-import org.gwtbootstrap3.client.ui.Column;
-import org.gwtbootstrap3.client.ui.Label;
-import org.gwtbootstrap3.client.ui.PanelBody;
-
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.editor.client.Editor.Ignore;
 import com.google.gwt.editor.client.SimpleBeanEditorDriver;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
-import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Widget;
-import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 import com.telosys.gwtp.base.client.application.player.form.editor.PlayerEditor;
+import com.telosys.gwtp.base.client.util.view.BaseFormView;
 import com.telosys.gwtp.base.shared.dto.ListItemDto;
 import com.telosys.gwtp.base.shared.dto.PlayerDto;
 
-public class PlayerFormView extends ViewWithUiHandlers<PlayerFormUiHandlers> implements PlayerFormPresenter.MyView {
+public class PlayerFormView extends BaseFormView<PlayerFormUiHandlers> implements PlayerFormPresenter.MyView {
 	interface Binder extends UiBinder<Widget, PlayerFormView> {
 	}
 
@@ -36,22 +29,6 @@ public class PlayerFormView extends ViewWithUiHandlers<PlayerFormUiHandlers> imp
 	}
 
 	private static final PlayerDriver DRIVER = GWT.create(PlayerDriver.class);
-
-	@Ignore
-	@UiField
-	protected PanelBody body;
-
-	@Ignore
-	@UiField
-	Column notification;
-
-	@Ignore
-	@UiField
-	Button create;
-
-	@Ignore
-	@UiField
-	Label labelNotification;
 
 	PlayerEditor editor;
 

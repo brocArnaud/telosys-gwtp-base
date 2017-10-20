@@ -1,4 +1,4 @@
-package com.telosys.gwtp.base.client.util;
+package com.telosys.gwtp.base.client.util.presenter;
 
 import java.util.logging.Logger;
 

@@ -12,12 +12,11 @@ import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.proxy.ManualRevealCallback;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
-import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
 import com.telosys.gwtp.base.client.application.ApplicationPresenter;
 import com.telosys.gwtp.base.client.event.LoadingEvent;
 import com.telosys.gwtp.base.client.place.NameTokens;
 import com.telosys.gwtp.base.client.place.TokenParameters;
-import com.telosys.gwtp.base.client.util.BasePresenter;
+import com.telosys.gwtp.base.client.util.presenter.BasePresenter;
 import com.telosys.gwtp.base.shared.api.resources.TeamResource;
 import com.telosys.gwtp.base.shared.dto.TeamDto;
 
@@ -39,16 +38,6 @@ public class TeamListPresenter extends BasePresenter<TeamListPresenter.MyView, T
 	TeamListPresenter(EventBus eventBus, MyView view, MyProxy proxy, PlaceManager placeManager, RestDispatch dispatcher) {
 		super(eventBus, view, proxy, ApplicationPresenter.SLOT_MAIN, placeManager, dispatcher);
 		getView().setUiHandlers(this);
-	}
-
-	@Override
-	public boolean useManualReveal() {
-		return true;
-	}
-
-	@Override
-	public void prepareFromRequest(PlaceRequest request) {
-		load();
 	}
 
 	@Override

@@ -11,7 +11,7 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.Proxy;
 import com.telosys.gwtp.base.client.event.LoadingEvent;
 import com.telosys.gwtp.base.client.place.NameTokens;
-import com.telosys.gwtp.base.client.util.BasePresenter;
+import com.telosys.gwtp.base.client.util.presenter.BasePresenter;
 
 public class HeaderPresenter extends BasePresenter<HeaderPresenter.MyView, HeaderPresenter.MyProxy> implements HeaderUiHandlers, LoadingEvent.LoadingHandler {
 	interface MyView extends View, HasUiHandlers<HeaderUiHandlers> {

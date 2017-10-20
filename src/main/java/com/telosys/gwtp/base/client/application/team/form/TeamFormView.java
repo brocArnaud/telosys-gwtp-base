@@ -9,24 +9,17 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.groups.Default;
 
-import org.gwtbootstrap3.client.ui.Button;
-import org.gwtbootstrap3.client.ui.Column;
-import org.gwtbootstrap3.client.ui.Label;
-import org.gwtbootstrap3.client.ui.PanelBody;
-
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.editor.client.Editor.Ignore;
 import com.google.gwt.editor.client.SimpleBeanEditorDriver;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
-import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Widget;
-import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 import com.telosys.gwtp.base.client.application.team.form.editor.TeamEditor;
+import com.telosys.gwtp.base.client.util.view.BaseFormView;
 import com.telosys.gwtp.base.shared.dto.TeamDto;
 
-public class TeamFormView extends ViewWithUiHandlers<TeamFormUiHandlers> implements TeamFormPresenter.MyView {
+public class TeamFormView extends BaseFormView<TeamFormUiHandlers> implements TeamFormPresenter.MyView {
 	interface Binder extends UiBinder<Widget, TeamFormView> {
 	}
 
@@ -34,22 +27,6 @@ public class TeamFormView extends ViewWithUiHandlers<TeamFormUiHandlers> impleme
 	}
 
 	private static final TeamDriver DRIVER = GWT.create(TeamDriver.class);
-
-	@Ignore
-	@UiField
-	protected PanelBody body;
-
-	@Ignore
-	@UiField
-	Column notification;
-
-	@Ignore
-	@UiField
-	Button create;
-
-	@Ignore
-	@UiField
-	Label labelNotification;
 
 	@Inject
 	TeamFormView(Binder uiBinder, TeamEditor editor) {

@@ -9,7 +9,6 @@ import org.gwtbootstrap3.client.ui.constants.IconType;
 import org.gwtbootstrap3.client.ui.gwt.ButtonCell;
 import org.gwtbootstrap3.client.ui.gwt.CellTable;
 
-import com.google.gwt.cell.client.FieldUpdater;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -69,12 +68,7 @@ public class TeamListView extends ViewWithUiHandlers<TeamListUiHandlers> impleme
 				return "";
 			}
 		};
-		deletion.setFieldUpdater(new FieldUpdater<TeamDto, String>() {
-			@Override
-			public void update(int index, TeamDto team, String value) {
-				getUiHandlers().onDeleteClick(team);
-			}
-		});
+		deletion.setFieldUpdater((index, team, value) -> getUiHandlers().onDeleteClick(team));
 		deletion.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 		teamList.addColumn(deletion, "Delete");
 		final Column<TeamDto, String> update = new Column<TeamDto, String>(new ButtonCell(ButtonType.SUCCESS, IconType.PENCIL)) {
@@ -83,12 +77,7 @@ public class TeamListView extends ViewWithUiHandlers<TeamListUiHandlers> impleme
 				return "";
 			}
 		};
-		update.setFieldUpdater(new FieldUpdater<TeamDto, String>() {
-			@Override
-			public void update(int index, TeamDto team, String value) {
-				getUiHandlers().onUpdateClick(team);
-			}
-		});
+		update.setFieldUpdater((index, team, value) -> getUiHandlers().onUpdateClick(team));
 		update.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 		teamList.addColumn(update, "Update");
 		teamList.setColumnWidth(deletion, 30, Unit.PX);
