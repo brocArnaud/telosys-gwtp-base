@@ -2,6 +2,7 @@
 <!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.8.0//EN"
         "http://gwtproject.org/doctype/2.8.0/gwt-module.dtd">
 <module rename-to='telosysBase'>
+	<inherits name="com.gwtplatform.dispatch.rest.delegates.ResourceDelegate" />
 	<inherits name='com.google.gwt.user.User' />
 	<inherits name="com.gwtplatform.dispatch.rest.DispatchRest" />
 	<inherits name="com.gwtplatform.mvp.MvpWithEntryPoint" />
@@ -15,7 +16,7 @@
 	<source path='shared' />
 
 	<set-configuration-property name="CssResource.enableGss" value="true" />
-	<set-configuration-property name="verifyNewerVersion" value="false"/>
+	<set-configuration-property name="verifyNewerVersion" value="false" />
 
 	<replace-with class="com.telosys.gwtp.base.client.util.FormValidationFactory">
 		<when-type-is class="javax.validation.ValidatorFactory" />

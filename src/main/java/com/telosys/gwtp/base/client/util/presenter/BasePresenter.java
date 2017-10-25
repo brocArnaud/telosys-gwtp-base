@@ -14,6 +14,7 @@ import com.gwtplatform.mvp.client.proxy.RevealContentHandler;
 import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
 import com.telosys.gwtp.base.client.event.LoadingEvent;
 import com.telosys.gwtp.base.client.place.NameTokens;
+import com.telosys.gwtp.base.client.place.TokenParameters;
 
 public abstract class BasePresenter<V extends View, P extends Proxy<?>> extends Presenter<V, P> {
 
@@ -57,6 +58,17 @@ public abstract class BasePresenter<V extends View, P extends Proxy<?>> extends 
 		public void onFailure(Throwable caught) {
 			manageError(caught);
 		}
+	}
+
+	public String getCurrentPlaceRequestId() {
+		return getCurrentPlaceRequestParam(TokenParameters.ID, TokenParameters.DEFAULT_ID);
+	}
+
+	public String getCurrentPlaceRequestParam(String parameter, String defaultValue) {
+		System.out.println("placeManager : " + placeManager);
+		System.out.println("placeManager.getCurrentPlaceRequest() : " + placeManager.getCurrentPlaceRequest());
+		System.out.println("placeManaplaceManager.getCurrentPlaceRequest().getParameter(parameter, defaultValue)ger : " + placeManager.getCurrentPlaceRequest().getParameter(parameter, defaultValue));
+		return placeManager.getCurrentPlaceRequest().getParameter(parameter, defaultValue);
 	}
 
 }

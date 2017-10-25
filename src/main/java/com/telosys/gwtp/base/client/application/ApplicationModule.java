@@ -1,14 +1,14 @@
 package com.telosys.gwtp.base.client.application;
 
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
-import com.telosys.gwtp.base.client.application.error.ErrorModule;
-import com.telosys.gwtp.base.client.application.home.HomeModule;
+import com.telosys.gwtp.base.client.application.content.error.ErrorModule;
+import com.telosys.gwtp.base.client.application.content.home.HomeModule;
+import com.telosys.gwtp.base.client.application.content.player.form.PlayerFormModule;
+import com.telosys.gwtp.base.client.application.content.player.list.PlayerListModule;
+import com.telosys.gwtp.base.client.application.content.team.form.TeamFormModule;
+import com.telosys.gwtp.base.client.application.content.team.list.TeamListModule;
 import com.telosys.gwtp.base.client.application.layout.footer.FooterModule;
 import com.telosys.gwtp.base.client.application.layout.header.HeaderModule;
-import com.telosys.gwtp.base.client.application.player.form.PlayerFormModule;
-import com.telosys.gwtp.base.client.application.player.list.PlayerListModule;
-import com.telosys.gwtp.base.client.application.team.form.TeamFormModule;
-import com.telosys.gwtp.base.client.application.team.list.TeamListModule;
 
 public class ApplicationModule extends AbstractPresenterModule {
 

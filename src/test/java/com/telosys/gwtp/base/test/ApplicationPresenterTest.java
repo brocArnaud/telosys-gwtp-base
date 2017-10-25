@@ -7,16 +7,23 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.telosys.gwtp.base.client.application.ApplicationPresenter;
-import com.telosys.gwtp.base.client.application.layout.footer.FooterPresenter;
-import com.telosys.gwtp.base.client.application.layout.header.HeaderPresenter;
+import com.telosys.gwtp.base.test.util.PresenterTestModule;
 
 @RunWith(JukitoRunner.class)
 public class ApplicationPresenterTest {
+
+	public static class Module extends PresenterTestModule {
+		@Override
+		protected void configurePresenterTest() {
+		}
+	}
 
 	@Inject
 	ApplicationPresenter applicationPresenter;
 
 	@Test
-	public void layoutSlotOk(HeaderPresenter headerPresenter, FooterPresenter footerPresenter, ApplicationPresenter.MyView myView) {
+	public void onBindTest() {
+		applicationPresenter.onBind();
 	}
+
 }

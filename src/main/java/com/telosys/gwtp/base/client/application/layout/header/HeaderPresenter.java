@@ -14,7 +14,7 @@ import com.telosys.gwtp.base.client.place.NameTokens;
 import com.telosys.gwtp.base.client.util.presenter.BasePresenter;
 
 public class HeaderPresenter extends BasePresenter<HeaderPresenter.MyView, HeaderPresenter.MyProxy> implements HeaderUiHandlers, LoadingEvent.LoadingHandler {
-	interface MyView extends View, HasUiHandlers<HeaderUiHandlers> {
+	public interface MyView extends View, HasUiHandlers<HeaderUiHandlers> {
 		void showSpinner(boolean visible);
 	}
 
