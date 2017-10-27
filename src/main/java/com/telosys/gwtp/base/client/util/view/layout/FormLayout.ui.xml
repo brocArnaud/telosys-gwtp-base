@@ -9,17 +9,17 @@
 					<b:Column size="MD_4" offset="MD_4">
 						<b:Panel>
 							<b:PanelHeader>
-								<b:Heading size="H3" text="Creating a new player" />
+								<b:Heading ui:field="formTitle" size="H3" text="Creating a new player" />
 							</b:PanelHeader>
 							<b:PanelBody ui:field="body" />
 							<b:PanelFooter addStyleNames="{res.style.formPanelFooter}">
-								<b:Button type="DANGER" ui:field="reset">Clean</b:Button>
-								<b:Button type="PRIMARY" ui:field="create">Create</b:Button>
+								<b:Button type="DANGER" ui:field="reset"/>
+								<b:Button type="PRIMARY" ui:field="create"/>
 							</b:PanelFooter>
 						</b:Panel>
 					</b:Column>
 					<b:Column ui:field="notification" size="MD_4" offset="MD_4" addStyleNames="{res.style.notificationContainer}" visible="false">
-						<b:Label ui:field="labelNotification" text="Player creation succes" type="SUCCESS" />
+						<b:Label ui:field="labelNotification" type="SUCCESS" />
 					</b:Column>
 				</b:Row>
 			</g:HTMLPanel>

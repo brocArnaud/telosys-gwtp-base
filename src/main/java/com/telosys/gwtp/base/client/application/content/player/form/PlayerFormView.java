@@ -30,7 +30,7 @@ public class PlayerFormView extends BaseFormView<PlayerFormUiHandlers> implement
 
 	private static final PlayerDriver DRIVER = GWT.create(PlayerDriver.class);
 
-	PlayerEditor editor;
+	private PlayerEditor editor;
 
 	@Inject
 	PlayerFormView(Binder uiBinder, PlayerEditor editor) {
@@ -43,7 +43,6 @@ public class PlayerFormView extends BaseFormView<PlayerFormUiHandlers> implement
 	@UiHandler("create")
 	public void onLoginClick(ClickEvent event) {
 		PlayerDto player = DRIVER.flush();
-
 		Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
 		Set<ConstraintViolation<PlayerDto>> violations = validator.validate(player, Default.class);
 		if (!violations.isEmpty()) {
@@ -78,5 +77,4 @@ public class PlayerFormView extends BaseFormView<PlayerFormUiHandlers> implement
 	public void loadTeams(List<ListItemDto> teams) {
 		editor.setTeams(teams);
 	}
-
 }

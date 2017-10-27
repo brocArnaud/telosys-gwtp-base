@@ -6,7 +6,6 @@ import com.telosys.gwtp.base.shared.dto.PlayerDto;
 interface PlayerFormUiHandlers extends UiHandlers {
 
 	void save(PlayerDto player);
-	
-	void reset();
 
+	void reset();
 }

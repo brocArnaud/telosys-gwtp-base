@@ -7,11 +7,11 @@ import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewImpl;
 
 public class ErrorView extends ViewImpl implements ErrorPresenter.MyView {
-    interface Binder extends UiBinder<Widget, ErrorView> {
-    }
+	interface Binder extends UiBinder<Widget, ErrorView> {
+	}
 
-    @Inject
-    ErrorView(Binder uiBinder) {
-        initWidget(uiBinder.createAndBindUi(this));
-    }
+	@Inject
+	ErrorView(Binder uiBinder) {
+		initWidget(uiBinder.createAndBindUi(this));
+	}
 }

@@ -44,5 +44,4 @@ public class PlayerEditor extends Composite implements Editor<PlayerDto> {
 	public void setTeams(List<ListItemDto> teams) {
 		team.setAcceptableValues(teams.stream().map(ListItemDto::getLabel).collect(Collectors.toList()));
 	}
-
 }

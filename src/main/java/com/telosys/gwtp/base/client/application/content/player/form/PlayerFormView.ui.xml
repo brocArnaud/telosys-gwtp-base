@@ -1,7 +1,6 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder' xmlns:g='urn:import:com.google.gwt.user.client.ui' xmlns:b="urn:import:org.gwtbootstrap3.client.ui">
 
 	<ui:with field="res" type="com.telosys.gwtp.base.client.resources.AppResources" />
-
 	<g:HTMLPanel>
 		<b:Container>
 			<g:HTMLPanel>
@@ -13,8 +12,8 @@
 							</b:PanelHeader>
 							<b:PanelBody ui:field="body" />
 							<b:PanelFooter addStyleNames="{res.style.formPanelFooter}">
-								<b:Button type="DANGER" ui:field="reset">Clean</b:Button>
-								<b:Button type="PRIMARY" ui:field="create">Create</b:Button>
+								<b:Button type="DANGER" ui:field="reset"/>
+								<b:Button type="PRIMARY" ui:field="create"/>
 							</b:PanelFooter>
 						</b:Panel>
 					</b:Column>

@@ -23,9 +23,8 @@ import com.telosys.gwtp.base.shared.dto.ListItemDto;
 import com.telosys.gwtp.base.shared.dto.PlayerDto;
 
 public class PlayerFormPresenter extends BasePresenter<PlayerFormPresenter.MyView, PlayerFormPresenter.MyProxy> implements PlayerFormUiHandlers {
-
+	
 	interface MyView extends View, HasUiHandlers<PlayerFormUiHandlers> {
-
 		void showNotification(boolean visible);
 
 		void load(PlayerDto team);
@@ -41,13 +40,9 @@ public class PlayerFormPresenter extends BasePresenter<PlayerFormPresenter.MyVie
 	}
 
 	@Inject
-	ResourceDelegate<PlayerResource> playerService;
-	@Inject
 	ResourceDelegate<TeamResource> teamService;
-
 	@Inject
-	TeamResource teamResource;
-
+	ResourceDelegate<PlayerResource> playerService;
 	private boolean updateMode = false;
 
 	@Inject

@@ -12,7 +12,6 @@ import com.google.inject.Inject;
 import com.telosys.gwtp.base.shared.dto.TeamDto;
 
 public class TeamEditor extends Composite implements Editor<TeamDto> {
-
 	public interface Binder extends UiBinder<Form, TeamEditor> {
 	}
 
@@ -25,5 +24,4 @@ public class TeamEditor extends Composite implements Editor<TeamDto> {
 	public TeamEditor() {
 		initWidget(BINDER.createAndBindUi(this));
 	}
-
 }

@@ -21,9 +21,7 @@ import com.telosys.gwtp.base.shared.api.resources.PlayerResource;
 import com.telosys.gwtp.base.shared.dto.PlayerDto;
 
 public class PlayerListPresenter extends BasePresenter<PlayerListPresenter.MyView, PlayerListPresenter.MyProxy> implements PlayerListUiHandlers {
-
 	public interface MyView extends View, HasUiHandlers<PlayerListUiHandlers> {
-
 		void display(List<PlayerDto> players);
 	}
 
