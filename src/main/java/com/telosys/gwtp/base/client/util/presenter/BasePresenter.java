@@ -65,9 +65,6 @@ public abstract class BasePresenter<V extends View, P extends Proxy<?>> extends 
 	}
 
 	public String getCurrentPlaceRequestParam(String parameter, String defaultValue) {
-		System.out.println("placeManager : " + placeManager);
-		System.out.println("placeManager.getCurrentPlaceRequest() : " + placeManager.getCurrentPlaceRequest());
-		System.out.println("placeManaplaceManager.getCurrentPlaceRequest().getParameter(parameter, defaultValue)ger : " + placeManager.getCurrentPlaceRequest().getParameter(parameter, defaultValue));
 		return placeManager.getCurrentPlaceRequest().getParameter(parameter, defaultValue);
 	}
 

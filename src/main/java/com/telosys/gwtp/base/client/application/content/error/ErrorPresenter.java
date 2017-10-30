@@ -13,12 +13,12 @@ import com.telosys.gwtp.base.client.place.NameTokens;
 import com.telosys.gwtp.base.client.util.presenter.BasePresenter;
 
 public class ErrorPresenter extends BasePresenter<ErrorPresenter.MyView, ErrorPresenter.MyProxy> {
-	interface MyView extends View {
+	public interface MyView extends View {
 	}
 
 	@ProxyStandard
 	@NameToken(NameTokens.ERROR)
-	interface MyProxy extends ProxyPlace<ErrorPresenter> {
+	public interface MyProxy extends ProxyPlace<ErrorPresenter> {
 	}
 
 	@Inject

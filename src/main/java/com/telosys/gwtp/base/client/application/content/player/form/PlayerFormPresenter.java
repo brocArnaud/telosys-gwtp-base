@@ -6,7 +6,6 @@ import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.dispatch.rest.client.RestDispatch;
 import com.gwtplatform.dispatch.rest.delegates.client.ResourceDelegate;
-import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
@@ -22,9 +21,12 @@ import com.telosys.gwtp.base.shared.api.resources.TeamResource;
 import com.telosys.gwtp.base.shared.dto.ListItemDto;
 import com.telosys.gwtp.base.shared.dto.PlayerDto;
 
-public class PlayerFormPresenter extends BasePresenter<PlayerFormPresenter.MyView, PlayerFormPresenter.MyProxy> implements PlayerFormUiHandlers {
-	
-	interface MyView extends View, HasUiHandlers<PlayerFormUiHandlers> {
+public class PlayerFormPresenter extends BasePresenter<PlayerFormPresenter.MyView, PlayerFormPresenter.MyProxy> {
+
+	public interface MyView extends View {
+
+		void setPresenter(PlayerFormPresenter ppresenter);
+
 		void showNotification(boolean visible);
 
 		void load(PlayerDto team);
@@ -36,7 +38,7 @@ public class PlayerFormPresenter extends BasePresenter<PlayerFormPresenter.MyVie
 
 	@ProxyStandard
 	@NameToken(NameTokens.PLAYER_FORM)
-	interface MyProxy extends ProxyPlace<PlayerFormPresenter> {
+	public interface MyProxy extends ProxyPlace<PlayerFormPresenter> {
 	}
 
 	@Inject
@@ -48,7 +50,7 @@ public class PlayerFormPresenter extends BasePresenter<PlayerFormPresenter.MyVie
 	@Inject
 	PlayerFormPresenter(EventBus eventBus, MyView view, MyProxy proxy, PlaceManager placeManager, RestDispatch dispatcher) {
 		super(eventBus, view, proxy, ApplicationPresenter.SLOT_MAIN, placeManager, dispatcher);
-		getView().setUiHandlers(this);
+		getView().setPresenter(this);
 	}
 
 	@Override
@@ -90,7 +92,6 @@ public class PlayerFormPresenter extends BasePresenter<PlayerFormPresenter.MyVie
 		}
 	}
 
-	@Override
 	public void save(PlayerDto player) {
 		final String[] teamValue = player.getTeam().split("\\|");
 		player.setTeam(teamValue[0].trim());
@@ -118,7 +119,6 @@ public class PlayerFormPresenter extends BasePresenter<PlayerFormPresenter.MyVie
 		revealPlace(NameTokens.PLAYER_LIST);
 	}
 
-	@Override
 	public void reset() {
 		load();
 	}

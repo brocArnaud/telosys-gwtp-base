@@ -19,12 +19,14 @@ import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.view.client.ListDataProvider;
-import com.gwtplatform.mvp.client.ViewWithUiHandlers;
+import com.gwtplatform.mvp.client.ViewImpl;
 import com.telosys.gwtp.base.shared.dto.PlayerDto;
 
-public class PlayerListView extends ViewWithUiHandlers<PlayerListUiHandlers> implements PlayerListPresenter.MyView {
+public class PlayerListView extends ViewImpl implements PlayerListPresenter.MyView {
 	interface Binder extends UiBinder<Widget, PlayerListView> {
 	}
+
+	private PlayerListPresenter presenter;
 
 	@UiField
 	CellTable<PlayerDto> playerList;
@@ -75,17 +77,17 @@ public class PlayerListView extends ViewWithUiHandlers<PlayerListUiHandlers> imp
 				return "";
 			}
 		};
-		deletion.setFieldUpdater((index, player, value) -> getUiHandlers().onDeleteClick(player));
+		deletion.setFieldUpdater((index, player, value) -> presenter.onDeleteClick(player));
 		deletion.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 		playerList.addColumn(deletion, "Delete");
-		
+
 		final Column<PlayerDto, String> update = new Column<PlayerDto, String>(new ButtonCell(ButtonType.SUCCESS, IconType.PENCIL)) {
 			@Override
 			public String getValue(PlayerDto object) {
 				return "";
 			}
 		};
-		update.setFieldUpdater((index, player, value) -> getUiHandlers().onUpdateClick(player));
+		update.setFieldUpdater((index, player, value) -> presenter.onUpdateClick(player));
 		update.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 		playerList.addColumn(update, "Update");
 		playerList.setColumnWidth(deletion, 30, Unit.PX);
@@ -95,6 +97,11 @@ public class PlayerListView extends ViewWithUiHandlers<PlayerListUiHandlers> imp
 
 	@UiHandler(value = "create")
 	public void onCreateClick(ClickEvent event) {
-		getUiHandlers().onCreateClick();
+		presenter.onCreateClick();
+	}
+
+	@Override
+	public void setPresenter(PlayerListPresenter presenter) {
+		this.presenter = presenter;
 	}
 }

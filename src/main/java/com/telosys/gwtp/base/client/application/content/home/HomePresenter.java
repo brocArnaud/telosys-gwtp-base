@@ -13,12 +13,12 @@ import com.telosys.gwtp.base.client.place.NameTokens;
 import com.telosys.gwtp.base.client.util.presenter.BasePresenter;
 
 public class HomePresenter extends BasePresenter<HomePresenter.MyView, HomePresenter.MyProxy> {
-	interface MyView extends View {
+	public interface MyView extends View {
 	}
 
 	@ProxyStandard
 	@NameToken(NameTokens.HOME)
-	interface MyProxy extends ProxyPlace<HomePresenter> {
+	public interface MyProxy extends ProxyPlace<HomePresenter> {
 	}
 
 	@Inject

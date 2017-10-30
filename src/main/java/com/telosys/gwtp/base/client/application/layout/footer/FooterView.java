@@ -8,12 +8,14 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Widget;
-import com.gwtplatform.mvp.client.ViewWithUiHandlers;
+import com.gwtplatform.mvp.client.ViewImpl;
 
-public class FooterView extends ViewWithUiHandlers<FooterUiHandlers> implements FooterPresenter.MyView {
+public class FooterView extends ViewImpl implements FooterPresenter.MyView {
 
 	interface Binder extends UiBinder<Widget, FooterView> {
 	}
+	
+	private FooterPresenter presenter;
 
 	@UiField
 	HTMLPanel container;
@@ -26,11 +28,16 @@ public class FooterView extends ViewWithUiHandlers<FooterUiHandlers> implements 
 	
 	@UiHandler(value = "player")
 	public void onPlayerClick(ClickEvent event) {
-		getUiHandlers().onPlayerClick();
+		presenter.onPlayerClick();
 	}
 	
 	@UiHandler(value = "team")
 	public void onTeamClick(ClickEvent event) {
-		getUiHandlers().onTeamClick();
+		presenter.onTeamClick();
+	}
+
+	@Override
+	public void setPresenter(FooterPresenter presenter) {
+		this.presenter =presenter;
 	}
 }

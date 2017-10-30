@@ -6,10 +6,9 @@ import org.gwtbootstrap3.client.ui.Label;
 import org.gwtbootstrap3.client.ui.PanelBody;
 
 import com.google.gwt.uibinder.client.UiField;
-import com.gwtplatform.mvp.client.UiHandlers;
-import com.gwtplatform.mvp.client.ViewWithUiHandlers;
+import com.gwtplatform.mvp.client.ViewImpl;
 
-public class BaseFormView<C extends UiHandlers> extends ViewWithUiHandlers<C> {
+public class BaseFormView extends ViewImpl {
 
 	@UiField
 	public PanelBody body;

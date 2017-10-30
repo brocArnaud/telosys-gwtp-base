@@ -21,7 +21,7 @@ import com.telosys.gwtp.base.client.util.view.BaseFormView;
 import com.telosys.gwtp.base.shared.dto.ListItemDto;
 import com.telosys.gwtp.base.shared.dto.PlayerDto;
 
-public class PlayerFormView extends BaseFormView<PlayerFormUiHandlers> implements PlayerFormPresenter.MyView {
+public class PlayerFormView extends BaseFormView implements PlayerFormPresenter.MyView {
 	interface Binder extends UiBinder<Widget, PlayerFormView> {
 	}
 
@@ -29,6 +29,8 @@ public class PlayerFormView extends BaseFormView<PlayerFormUiHandlers> implement
 	}
 
 	private static final PlayerDriver DRIVER = GWT.create(PlayerDriver.class);
+
+	private PlayerFormPresenter presenter;
 
 	private PlayerEditor editor;
 
@@ -48,13 +50,13 @@ public class PlayerFormView extends BaseFormView<PlayerFormUiHandlers> implement
 		if (!violations.isEmpty()) {
 			DRIVER.setConstraintViolations(new ArrayList<ConstraintViolation<?>>(violations));
 		} else {
-			getUiHandlers().save(player);
+			presenter.save(player);
 		}
 	}
 
 	@UiHandler("reset")
 	public void onResetClick(ClickEvent event) {
-		getUiHandlers().reset();
+		presenter.reset();
 	}
 
 	@Override
@@ -76,5 +78,10 @@ public class PlayerFormView extends BaseFormView<PlayerFormUiHandlers> implement
 	@Override
 	public void loadTeams(List<ListItemDto> teams) {
 		editor.setTeams(teams);
+	}
+
+	@Override
+	public void setPresenter(PlayerFormPresenter presenter) {
+		this.presenter = presenter;
 	}
 }

@@ -6,7 +6,6 @@ import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.dispatch.rest.client.RestDispatch;
 import com.gwtplatform.dispatch.rest.delegates.client.ResourceDelegate;
-import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
@@ -20,15 +19,17 @@ import com.telosys.gwtp.base.client.util.presenter.BasePresenter;
 import com.telosys.gwtp.base.shared.api.resources.TeamResource;
 import com.telosys.gwtp.base.shared.dto.TeamDto;
 
-public class TeamListPresenter extends BasePresenter<TeamListPresenter.MyView, TeamListPresenter.MyProxy> implements TeamListUiHandlers {
+public class TeamListPresenter extends BasePresenter<TeamListPresenter.MyView, TeamListPresenter.MyProxy> {
 
-	public interface MyView extends View, HasUiHandlers<TeamListUiHandlers> {
+	public interface MyView extends View {
+		void setPresenter(TeamListPresenter presenter);
+
 		void display(List<TeamDto> team);
 	}
 
 	@ProxyStandard
 	@NameToken(NameTokens.TEAM_LIST)
-	interface MyProxy extends ProxyPlace<TeamListPresenter> {
+	public interface MyProxy extends ProxyPlace<TeamListPresenter> {
 	}
 
 	@Inject
@@ -37,7 +38,7 @@ public class TeamListPresenter extends BasePresenter<TeamListPresenter.MyView, T
 	@Inject
 	TeamListPresenter(EventBus eventBus, MyView view, MyProxy proxy, PlaceManager placeManager, RestDispatch dispatcher) {
 		super(eventBus, view, proxy, ApplicationPresenter.SLOT_MAIN, placeManager, dispatcher);
-		getView().setUiHandlers(this);
+		getView().setPresenter(this);
 	}
 
 	@Override
@@ -46,7 +47,6 @@ public class TeamListPresenter extends BasePresenter<TeamListPresenter.MyView, T
 		load();
 	}
 
-	@Override
 	public void onCreateClick() {
 		revealPlace(NameTokens.TEAM_FORM, TokenParameters.ID, TokenParameters.DEFAULT_ID);
 	}
@@ -62,7 +62,6 @@ public class TeamListPresenter extends BasePresenter<TeamListPresenter.MyView, T
 		}).getAll();
 	}
 
-	@Override
 	public void onDeleteClick(TeamDto team) {
 		LoadingEvent.fire(this, true);
 		teamService.withCallback(new CallBack<Void>() {
@@ -73,7 +72,6 @@ public class TeamListPresenter extends BasePresenter<TeamListPresenter.MyView, T
 		}).delete(team.getId());
 	}
 
-	@Override
 	public void onUpdateClick(TeamDto team) {
 		revealPlace(NameTokens.TEAM_FORM, TokenParameters.ID, String.valueOf(team.getId()));
 	}

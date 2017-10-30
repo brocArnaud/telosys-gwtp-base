@@ -19,7 +19,7 @@ import com.telosys.gwtp.base.client.application.content.team.form.editor.TeamEdi
 import com.telosys.gwtp.base.client.util.view.BaseFormView;
 import com.telosys.gwtp.base.shared.dto.TeamDto;
 
-public class TeamFormView extends BaseFormView<TeamFormUiHandlers> implements TeamFormPresenter.MyView {
+public class TeamFormView extends BaseFormView implements TeamFormPresenter.MyView {
 	interface Binder extends UiBinder<Widget, TeamFormView> {
 	}
 
@@ -27,6 +27,8 @@ public class TeamFormView extends BaseFormView<TeamFormUiHandlers> implements Te
 	}
 
 	private static final TeamDriver DRIVER = GWT.create(TeamDriver.class);
+
+	private TeamFormPresenter presenter;
 
 	@Inject
 	TeamFormView(Binder uiBinder, TeamEditor editor) {
@@ -38,19 +40,18 @@ public class TeamFormView extends BaseFormView<TeamFormUiHandlers> implements Te
 	@UiHandler("create")
 	public void onLoginClick(ClickEvent event) {
 		TeamDto team = DRIVER.flush();
-
 		Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
 		Set<ConstraintViolation<TeamDto>> violations = validator.validate(team, Default.class);
 		if (!violations.isEmpty()) {
 			DRIVER.setConstraintViolations(new ArrayList<ConstraintViolation<?>>(violations));
 		} else {
-			getUiHandlers().save(team);
+			presenter.save(team);
 		}
 	}
 
 	@UiHandler("reset")
 	public void onResetClick(ClickEvent event) {
-		getUiHandlers().reset();
+		presenter.reset();
 	}
 
 	@Override
@@ -67,6 +68,11 @@ public class TeamFormView extends BaseFormView<TeamFormUiHandlers> implements Te
 	public void setUpdateMode(boolean updateMode) {
 		create.setText(updateMode ? "Save" : "Create");
 		labelNotification.setText(updateMode ? "Team saved succesfully" : "Team created succesfully");
+	}
+
+	@Override
+	public void setPresenter(TeamFormPresenter presenter) {
+		this.presenter = presenter;
 	}
 
 }

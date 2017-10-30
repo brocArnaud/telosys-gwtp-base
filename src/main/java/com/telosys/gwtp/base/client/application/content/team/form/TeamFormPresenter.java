@@ -11,6 +11,7 @@ import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.telosys.gwtp.base.client.application.ApplicationPresenter;
+import com.telosys.gwtp.base.client.application.content.player.list.PlayerListPresenter;
 import com.telosys.gwtp.base.client.event.LoadingEvent;
 import com.telosys.gwtp.base.client.place.NameTokens;
 import com.telosys.gwtp.base.client.place.TokenParameters;
@@ -18,9 +19,11 @@ import com.telosys.gwtp.base.client.util.presenter.BasePresenter;
 import com.telosys.gwtp.base.shared.api.resources.TeamResource;
 import com.telosys.gwtp.base.shared.dto.TeamDto;
 
-public class TeamFormPresenter extends BasePresenter<TeamFormPresenter.MyView, TeamFormPresenter.MyProxy> implements TeamFormUiHandlers {
+public class TeamFormPresenter extends BasePresenter<TeamFormPresenter.MyView, TeamFormPresenter.MyProxy> {
 
-	public interface MyView extends View, HasUiHandlers<TeamFormUiHandlers> {
+	public interface MyView extends View {
+		void setPresenter(TeamFormPresenter presenter);
+
 		void showNotification(boolean visible);
 
 		void load(TeamDto team);
@@ -30,7 +33,7 @@ public class TeamFormPresenter extends BasePresenter<TeamFormPresenter.MyView, T
 
 	@ProxyStandard
 	@NameToken(NameTokens.TEAM_FORM)
-	interface MyProxy extends ProxyPlace<TeamFormPresenter> {
+	public interface MyProxy extends ProxyPlace<TeamFormPresenter> {
 	}
 
 	@Inject
@@ -41,7 +44,7 @@ public class TeamFormPresenter extends BasePresenter<TeamFormPresenter.MyView, T
 	@Inject
 	TeamFormPresenter(EventBus eventBus, MyView view, MyProxy proxy, PlaceManager placeManager, RestDispatch dispatcher) {
 		super(eventBus, view, proxy, ApplicationPresenter.SLOT_MAIN, placeManager, dispatcher);
-		getView().setUiHandlers(this);
+		getView().setPresenter(this);
 	}
 
 	@Override
@@ -71,7 +74,6 @@ public class TeamFormPresenter extends BasePresenter<TeamFormPresenter.MyView, T
 
 	}
 
-	@Override
 	public void save(TeamDto team) {
 		LoadingEvent.fire(this, true);
 		if (updateMode) {
@@ -83,13 +85,15 @@ public class TeamFormPresenter extends BasePresenter<TeamFormPresenter.MyView, T
 			}).update(team, team.getId());
 		} else {
 			teamService.withCallback(new CallBack<Void>() {
+
 				@Override
 				public void onSuccess(Void nothing) {
 					success();
 				}
+
 			}).create(team);
 		}
-	}	
+	}
 
 	private void success() {
 		getView().showNotification(true);
@@ -97,7 +101,6 @@ public class TeamFormPresenter extends BasePresenter<TeamFormPresenter.MyView, T
 		revealPlace(NameTokens.TEAM_LIST);
 	}
 
-	@Override
 	public void reset() {
 		load();
 	}

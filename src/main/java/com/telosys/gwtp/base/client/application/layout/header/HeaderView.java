@@ -8,17 +8,19 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Widget;
-import com.gwtplatform.mvp.client.ViewWithUiHandlers;
+import com.gwtplatform.mvp.client.ViewImpl;
 import com.telosys.gwtp.base.client.application.layout.header.HeaderPresenter.MyView;
 
-public class HeaderView extends ViewWithUiHandlers<HeaderUiHandlers> implements MyView {
+public class HeaderView extends ViewImpl implements MyView {
 
 	interface Binder extends UiBinder<Widget, HeaderView> {
 	}
 
+	private HeaderPresenter presenter;
+
 	@UiField
 	HTMLPanel container;
-	
+
 	@UiField
 	HTMLPanel spinner;
 
@@ -30,22 +32,27 @@ public class HeaderView extends ViewWithUiHandlers<HeaderUiHandlers> implements 
 
 	@UiHandler(value = "player")
 	public void onPlayerClick(ClickEvent event) {
-		getUiHandlers().onPlayerClick();
+		presenter.onPlayerClick();
 	}
-	
+
 	@UiHandler(value = "team")
 	public void onTeamClick(ClickEvent event) {
-		getUiHandlers().onTeamClick();
+		presenter.onTeamClick();
 	}
 
 	@UiHandler(value = "logo")
-//	@UiHandler(value = "home")
+	// @UiHandler(value = "home")
 	public void onHomeClick(ClickEvent event) {
-		getUiHandlers().onHomeClick();
+		presenter.onHomeClick();
 	}
 
 	@Override
 	public void showSpinner(boolean visible) {
 		spinner.setVisible(visible);
+	}
+
+	@Override
+	public void setPresenter(HeaderPresenter presenter) {
+		this.presenter = presenter;
 	}
 }

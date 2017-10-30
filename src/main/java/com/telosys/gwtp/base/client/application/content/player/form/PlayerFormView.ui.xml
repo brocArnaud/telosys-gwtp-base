@@ -12,8 +12,8 @@
 							</b:PanelHeader>
 							<b:PanelBody ui:field="body" />
 							<b:PanelFooter addStyleNames="{res.style.formPanelFooter}">
-								<b:Button type="DANGER" ui:field="reset"/>
-								<b:Button type="PRIMARY" ui:field="create"/>
+								<b:Button type="DANGER" ui:field="reset" text="Reset"/>
+								<b:Button type="PRIMARY" ui:field="create" text="Create"/>
 							</b:PanelFooter>
 						</b:Panel>
 					</b:Column>

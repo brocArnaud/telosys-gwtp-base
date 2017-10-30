@@ -6,7 +6,6 @@ import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.dispatch.rest.client.RestDispatch;
 import com.gwtplatform.dispatch.rest.delegates.client.ResourceDelegate;
-import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
@@ -20,14 +19,17 @@ import com.telosys.gwtp.base.client.util.presenter.BasePresenter;
 import com.telosys.gwtp.base.shared.api.resources.PlayerResource;
 import com.telosys.gwtp.base.shared.dto.PlayerDto;
 
-public class PlayerListPresenter extends BasePresenter<PlayerListPresenter.MyView, PlayerListPresenter.MyProxy> implements PlayerListUiHandlers {
-	public interface MyView extends View, HasUiHandlers<PlayerListUiHandlers> {
+public class PlayerListPresenter extends BasePresenter<PlayerListPresenter.MyView, PlayerListPresenter.MyProxy> {
+
+	public interface MyView extends View {
+		void setPresenter(PlayerListPresenter presenter);
+
 		void display(List<PlayerDto> players);
 	}
 
 	@ProxyStandard
 	@NameToken(NameTokens.PLAYER_LIST)
-	interface MyProxy extends ProxyPlace<PlayerListPresenter> {
+	public interface MyProxy extends ProxyPlace<PlayerListPresenter> {
 	}
 
 	@Inject
@@ -36,7 +38,7 @@ public class PlayerListPresenter extends BasePresenter<PlayerListPresenter.MyVie
 	@Inject
 	PlayerListPresenter(EventBus eventBus, MyView view, MyProxy proxy, PlaceManager placeManager, RestDispatch dispatcher) {
 		super(eventBus, view, proxy, ApplicationPresenter.SLOT_MAIN, placeManager, dispatcher);
-		getView().setUiHandlers(this);
+		getView().setPresenter(this);
 	}
 
 	@Override
@@ -45,7 +47,6 @@ public class PlayerListPresenter extends BasePresenter<PlayerListPresenter.MyVie
 		load();
 	}
 
-	@Override
 	public void onCreateClick() {
 		revealPlace(NameTokens.PLAYER_FORM, TokenParameters.ID, TokenParameters.DEFAULT_ID);
 	}
@@ -61,7 +62,6 @@ public class PlayerListPresenter extends BasePresenter<PlayerListPresenter.MyVie
 		}).getAll();
 	}
 
-	@Override
 	public void onDeleteClick(PlayerDto player) {
 		LoadingEvent.fire(this, true);
 		playerService.withCallback(new CallBack<Void>() {
@@ -72,7 +72,6 @@ public class PlayerListPresenter extends BasePresenter<PlayerListPresenter.MyVie
 		}).delete(player.getId());
 	}
 
-	@Override
 	public void onUpdateClick(PlayerDto player) {
 		revealPlace(NameTokens.PLAYER_FORM, TokenParameters.ID, String.valueOf(player.getId()));
 	}
