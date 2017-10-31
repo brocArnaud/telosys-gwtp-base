@@ -13,5 +13,8 @@ buildNumber.properties
 
 
 #Ignore generated stuff
-src/main/webapp/gwt-unitCache/
+src/main/webapp/META-INF
+src/main/webapp/WEB-INF/classes
+src/main/webapp/WEB-INF/lib
+src/main/webapp/gwt-unitCache
 src/main/webapp/telosysBase

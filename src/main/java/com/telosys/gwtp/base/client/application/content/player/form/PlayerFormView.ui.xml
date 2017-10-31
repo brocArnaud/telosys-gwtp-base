@@ -10,10 +10,25 @@
 							<b:PanelHeader>
 								<b:Heading size="H3" text="Creating a new player" />
 							</b:PanelHeader>
-							<b:PanelBody ui:field="body" />
+							<b:PanelBody ui:field="body">
+								<b:Form>
+									<b:FieldSet>
+										<b:FormGroup>
+											<b:FormLabel for="name" text="Name" />
+											<b:InlineHelpBlock iconType="EXCLAMATION_TRIANGLE" />
+											<b:TextBox b:id="name" ui:field="name" />
+										</b:FormGroup>
+										<b:FormGroup>
+											<b:FormLabel for="team" text="Team" />
+											<b:InlineHelpBlock iconType="EXCLAMATION_TRIANGLE" />
+											<b:ValueListBox b:id="team" ui:field="team" />
+										</b:FormGroup>
+									</b:FieldSet>
+								</b:Form>
+							</b:PanelBody>
 							<b:PanelFooter addStyleNames="{res.style.formPanelFooter}">
-								<b:Button type="DANGER" ui:field="reset" text="Reset"/>
-								<b:Button type="PRIMARY" ui:field="create" text="Create"/>
+								<b:Button type="DANGER" ui:field="reset" text="Reset" />
+								<b:Button type="PRIMARY" ui:field="create" text="Create" />
 							</b:PanelFooter>
 						</b:Panel>
 					</b:Column>

@@ -1,13 +1,9 @@
 package com.telosys.gwtp.base.shared.dto;
 
-import java.io.Serializable;
-
 import javax.validation.constraints.NotNull;
 
-public class TeamDto implements Serializable {
+public class TeamDto extends IdDto {
 	private static final long serialVersionUID = 5735117549801608932L;
-
-	private Long id;
 
 	@NotNull
 	private String name;
@@ -16,16 +12,8 @@ public class TeamDto implements Serializable {
 	}
 
 	public TeamDto(Long id, String name) {
-		this.id = id;
+		setId(id);
 		this.name = name;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getName() {
@@ -38,7 +26,6 @@ public class TeamDto implements Serializable {
 
 	@Override
 	public String toString() {
-		return "IdLabelDto [id=" + id + ", name=" + name + "]";
+		return "IdLabelDto [id=" + getId() + ", name=" + name + "]";
 	}
-
 }

@@ -4,11 +4,9 @@ import java.io.Serializable;
 
 import javax.validation.constraints.NotNull;
 
-public class PlayerDto implements Serializable {
+public class PlayerDto extends IdDto {
 
 	private static final long serialVersionUID = 7828224611035419587L;
-
-	private Long id;
 
 	@NotNull
 	private String name;
@@ -20,17 +18,9 @@ public class PlayerDto implements Serializable {
 	}
 
 	public PlayerDto(Long id, String name, String team) {
-		this.id = id;
+		setId(id);
 		this.name = name;
 		this.team = team;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getName() {
@@ -51,6 +41,6 @@ public class PlayerDto implements Serializable {
 
 	@Override
 	public String toString() {
-		return "PlayerDto [id=" + id + ", name=" + name + ", team=" + team + "]";
+		return "PlayerDto [id=" + getId() + ", name=" + name + ", team=" + team + "]";
 	}
 }

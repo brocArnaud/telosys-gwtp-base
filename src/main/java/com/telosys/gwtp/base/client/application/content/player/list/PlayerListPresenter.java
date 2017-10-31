@@ -6,7 +6,6 @@ import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.dispatch.rest.client.RestDispatch;
 import com.gwtplatform.dispatch.rest.delegates.client.ResourceDelegate;
-import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
@@ -16,15 +15,13 @@ import com.telosys.gwtp.base.client.event.LoadingEvent;
 import com.telosys.gwtp.base.client.place.NameTokens;
 import com.telosys.gwtp.base.client.place.TokenParameters;
 import com.telosys.gwtp.base.client.util.presenter.BasePresenter;
+import com.telosys.gwtp.base.client.util.view.ListView;
 import com.telosys.gwtp.base.shared.api.resources.PlayerResource;
 import com.telosys.gwtp.base.shared.dto.PlayerDto;
 
 public class PlayerListPresenter extends BasePresenter<PlayerListPresenter.MyView, PlayerListPresenter.MyProxy> {
 
-	public interface MyView extends View {
-		void setPresenter(PlayerListPresenter presenter);
-
-		void display(List<PlayerDto> players);
+	public interface MyView extends ListView<PlayerDto, PlayerListPresenter> {
 	}
 
 	@ProxyStandard

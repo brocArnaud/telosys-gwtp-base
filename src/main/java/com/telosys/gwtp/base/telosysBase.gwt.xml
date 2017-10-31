@@ -7,7 +7,7 @@
 	<inherits name="com.gwtplatform.dispatch.rest.DispatchRest" />
 	<inherits name="com.gwtplatform.mvp.MvpWithEntryPoint" />
 	<inherits name="org.gwtbootstrap3.GwtBootstrap3" />
-	<inherits name="org.hibernate.validator.HibernateValidator" />
+	<inherits name="de.knightsoftnet.validators.GwtBeanValidators" />
 
 	<extend-configuration-property name="gin.ginjector.modules" value="com.telosys.gwtp.base.client.gin.ClientModule" />
 
@@ -18,8 +18,14 @@
 	<set-configuration-property name="CssResource.enableGss" value="true" />
 	<set-configuration-property name="verifyNewerVersion" value="false" />
 
+	<!-- our own validation factory implementation with @GwtValidation entries for each bean we want to validate -->
 	<replace-with class="com.telosys.gwtp.base.client.util.FormValidationFactory">
 		<when-type-is class="javax.validation.ValidatorFactory" />
+	</replace-with>
+
+	<!-- our own reflection factory implementation with @GwtValidation entries for each bean we need getter access by reflection -->
+	<replace-with class="com.telosys.gwtp.base.client.util.ReflectGetterFactory">
+		<when-type-is class="de.knightsoftnet.validators.client.GwtReflectGetterFactoryInterface" />
 	</replace-with>
 
 	<set-property name="user.agent" value="safari" />

@@ -23,9 +23,8 @@
 		<target.jdk>1.8</target.jdk>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-
-		<validation.version>1.0.0.GA</validation.version>
-		<hibernate-validator.version>4.1.0.Final</hibernate-validator.version>
+		<validation-api.version>1.1.0.Final</validation-api.version>
+		<hibernate-validator.version>5.4.1.Final</hibernate-validator.version>
 
 		<sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
 		<sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
@@ -124,6 +123,12 @@
 						<fileset>
 							<directory>src/main/webapp/gwt-unitCache</directory>
 						</fileset>
+						<fileset>
+							<directory>src/main/webapp/WEB-INF/classes</directory>
+						</fileset>
+						<fileset>
+							<directory>src/main/webapp/WEB-INF/lib</directory>
+						</fileset>
 					</filesets>
 				</configuration>
 			</plugin>
@@ -159,11 +164,70 @@
 	</build>
 
 	<dependencies>
+<!-- 		<dependency> -->
+<!-- 			<groupId>de.knightsoft-net</groupId> -->
+<!-- 			<artifactId>mt-bean-validators</artifactId> -->
+<!-- 			<version>0.44.4</version> -->
+<!-- 			<exclusions> -->
+<!-- 				<exclusion> -->
+<!-- 					<groupId>org.slf4j</groupId> -->
+<!-- 					<artifactId>slf4j-log4j12</artifactId> -->
+<!-- 				</exclusion> -->
+<!-- 			</exclusions> -->
+<!-- 		</dependency> -->
+		<dependency>
+			<groupId>de.knightsoft-net</groupId>
+			<artifactId>gwt-bean-validators</artifactId>
+			<version>0.44.4</version>
+			<scope>provided</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>de.knightsoft-net</groupId> -->
+<!-- 			<artifactId>gwt-mt-widgets</artifactId> -->
+<!-- 			<version>0.44.4</version> -->
+<!-- 			<exclusions> -->
+<!-- 				<exclusion> -->
+<!-- 					<groupId>org.slf4j</groupId> -->
+<!-- 					<artifactId>slf4j-log4j12</artifactId> -->
+<!-- 				</exclusion> -->
+<!-- 				<exclusion> -->
+<!-- 					<groupId>com.google.gwt</groupId> -->
+<!-- 					<artifactId>gwt-servlet</artifactId> -->
+<!-- 				</exclusion> -->
+<!-- 			</exclusions> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>de.knightsoft-net</groupId> -->
+<!-- 			<artifactId>gwt-mt-widgets-spring-gwtp</artifactId> -->
+<!-- 			<version>0.44.4</version> -->
+<!-- 			<exclusions> -->
+<!-- 				<exclusion> -->
+<!-- 					<groupId>org.slf4j</groupId> -->
+<!-- 					<artifactId>slf4j-log4j12</artifactId> -->
+<!-- 				</exclusion> -->
+<!-- 				<exclusion> -->
+<!-- 					<groupId>com.google.gwt</groupId> -->
+<!-- 					<artifactId>gwt-servlet</artifactId> -->
+<!-- 				</exclusion> -->
+<!-- 			</exclusions> -->
+<!-- 		</dependency> -->
 		<!-- GWT -->
 		<dependency>
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-user</artifactId>
 			<version>${gwt.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.validation</groupId>
+					<artifactId>validation-api</artifactId>
+				</exclusion>
+			</exclusions>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -250,28 +314,32 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<!-- Validation -->
+		<!-- Validatin api -->
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>${validation-api.version}</version><!--$NO-MVN-MAN-VER$ -->
+		</dependency>
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>${validation-api.version}</version>
+			<classifier>sources</classifier>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- hibernate validation -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-validator-annotation-processor</artifactId>
-			<version>${hibernate-validator.version}</version>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${hibernate-validator.version}</version><!--$NO-MVN-MAN-VER$ -->
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
-			<version>${hibernate-validator.version}</version>
+			<version>${hibernate-validator.version}</version><!--$NO-MVN-MAN-VER$ -->
 			<classifier>sources</classifier>
-		</dependency>
-		<dependency>
-			<groupId>javax.validation</groupId>
-			<artifactId>validation-api</artifactId>
-			<version>${validation.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.validation</groupId>
-			<artifactId>validation-api</artifactId>
-			<version>${validation.version}</version>
-			<classifier>sources</classifier>
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- LOGGING -->
