@@ -1,6 +1,8 @@
-package com.telosys.gwtp.base.shared.dto;
+package com.telosys.gwtp.base.shared.dto.team;
 
 import javax.validation.constraints.NotNull;
+
+import com.telosys.gwtp.base.shared.dto.common.IdDto;
 
 public class TeamDto extends IdDto {
 	private static final long serialVersionUID = 5735117549801608932L;

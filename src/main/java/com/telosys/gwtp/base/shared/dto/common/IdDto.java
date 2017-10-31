@@ -1,4 +1,4 @@
-package com.telosys.gwtp.base.shared.dto;
+package com.telosys.gwtp.base.shared.dto.common;
 
 import java.io.Serializable;
 

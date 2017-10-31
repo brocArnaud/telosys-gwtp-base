@@ -14,10 +14,10 @@ import com.telosys.gwtp.base.client.application.ApplicationPresenter;
 import com.telosys.gwtp.base.client.event.LoadingEvent;
 import com.telosys.gwtp.base.client.place.NameTokens;
 import com.telosys.gwtp.base.client.place.TokenParameters;
-import com.telosys.gwtp.base.client.util.presenter.BasePresenter;
-import com.telosys.gwtp.base.client.util.view.ListView;
+import com.telosys.gwtp.base.client.util.common.BasePresenter;
+import com.telosys.gwtp.base.client.util.common.list.view.ListView;
 import com.telosys.gwtp.base.shared.api.resources.PlayerResource;
-import com.telosys.gwtp.base.shared.dto.PlayerDto;
+import com.telosys.gwtp.base.shared.dto.player.PlayerDto;
 
 public class PlayerListPresenter extends BasePresenter<PlayerListPresenter.MyView, PlayerListPresenter.MyProxy> {
 

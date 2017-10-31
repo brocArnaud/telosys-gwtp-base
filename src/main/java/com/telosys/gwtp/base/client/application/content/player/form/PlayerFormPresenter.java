@@ -13,12 +13,12 @@ import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.telosys.gwtp.base.client.application.ApplicationPresenter;
 import com.telosys.gwtp.base.client.event.LoadingEvent;
 import com.telosys.gwtp.base.client.place.NameTokens;
-import com.telosys.gwtp.base.client.util.presenter.AbstractFormPresenter;
-import com.telosys.gwtp.base.client.util.view.FormView;
+import com.telosys.gwtp.base.client.util.common.form.presenter.AbstractFormPresenter;
+import com.telosys.gwtp.base.client.util.common.form.view.FormView;
 import com.telosys.gwtp.base.shared.api.resources.PlayerResource;
 import com.telosys.gwtp.base.shared.api.resources.TeamResource;
-import com.telosys.gwtp.base.shared.dto.ListItemDto;
-import com.telosys.gwtp.base.shared.dto.PlayerDto;
+import com.telosys.gwtp.base.shared.dto.common.ListItemDto;
+import com.telosys.gwtp.base.shared.dto.player.PlayerDto;
 
 public class PlayerFormPresenter extends AbstractFormPresenter<PlayerFormPresenter.MyProxy, PlayerFormPresenter.MyView, PlayerDto, Long, PlayerResource> {
 

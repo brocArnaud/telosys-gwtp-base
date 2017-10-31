@@ -7,8 +7,8 @@ import org.gwtbootstrap3.client.ui.TextBox;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Widget;
-import com.telosys.gwtp.base.client.util.view.AbstractFormView;
-import com.telosys.gwtp.base.shared.dto.TeamDto;
+import com.telosys.gwtp.base.client.util.common.form.view.AbstractFormView;
+import com.telosys.gwtp.base.shared.dto.team.TeamDto;
 
 import de.knightsoftnet.validators.client.editor.BeanValidationEditorDriver;
 

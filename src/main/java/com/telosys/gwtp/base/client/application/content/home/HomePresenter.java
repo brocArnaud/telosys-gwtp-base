@@ -10,7 +10,7 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.telosys.gwtp.base.client.application.ApplicationPresenter;
 import com.telosys.gwtp.base.client.place.NameTokens;
-import com.telosys.gwtp.base.client.util.presenter.BasePresenter;
+import com.telosys.gwtp.base.client.util.common.BasePresenter;
 
 public class HomePresenter extends BasePresenter<HomePresenter.MyView, HomePresenter.MyProxy> {
 	public interface MyView extends View {

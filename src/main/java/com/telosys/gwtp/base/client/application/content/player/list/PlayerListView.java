@@ -20,7 +20,7 @@ import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.view.client.ListDataProvider;
 import com.gwtplatform.mvp.client.ViewImpl;
-import com.telosys.gwtp.base.shared.dto.PlayerDto;
+import com.telosys.gwtp.base.shared.dto.player.PlayerDto;
 
 public class PlayerListView extends ViewImpl implements PlayerListPresenter.MyView {
 	interface Binder extends UiBinder<Widget, PlayerListView> {

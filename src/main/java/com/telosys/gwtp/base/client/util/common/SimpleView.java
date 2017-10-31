@@ -1,4 +1,4 @@
-package com.telosys.gwtp.base.client.util.view;
+package com.telosys.gwtp.base.client.util.common;
 
 import com.gwtplatform.mvp.client.View;
 

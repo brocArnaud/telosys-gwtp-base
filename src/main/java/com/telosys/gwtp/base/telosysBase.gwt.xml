@@ -19,12 +19,12 @@
 	<set-configuration-property name="verifyNewerVersion" value="false" />
 
 	<!-- our own validation factory implementation with @GwtValidation entries for each bean we want to validate -->
-	<replace-with class="com.telosys.gwtp.base.client.util.FormValidationFactory">
+	<replace-with class="com.telosys.gwtp.base.client.util.validation.FormValidationFactory">
 		<when-type-is class="javax.validation.ValidatorFactory" />
 	</replace-with>
 
 	<!-- our own reflection factory implementation with @GwtValidation entries for each bean we need getter access by reflection -->
-	<replace-with class="com.telosys.gwtp.base.client.util.ReflectGetterFactory">
+	<replace-with class="com.telosys.gwtp.base.client.util.validation.ReflectGetterFactory">
 		<when-type-is class="de.knightsoftnet.validators.client.GwtReflectGetterFactoryInterface" />
 	</replace-with>
 

@@ -11,8 +11,8 @@ import javax.ws.rs.core.MediaType;
 import com.gwtplatform.dispatch.rest.shared.RestAction;
 import com.telosys.gwtp.base.shared.api.Paths;
 import com.telosys.gwtp.base.shared.api.resources.util.GenericResource;
-import com.telosys.gwtp.base.shared.dto.ListItemDto;
-import com.telosys.gwtp.base.shared.dto.TeamDto;
+import com.telosys.gwtp.base.shared.dto.common.ListItemDto;
+import com.telosys.gwtp.base.shared.dto.team.TeamDto;
 
 @Path(Paths.TEAM)
 @Produces(MediaType.APPLICATION_JSON)

@@ -9,10 +9,10 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.telosys.gwtp.base.client.application.ApplicationPresenter;
 import com.telosys.gwtp.base.client.place.NameTokens;
-import com.telosys.gwtp.base.client.util.presenter.AbstractFormPresenter;
-import com.telosys.gwtp.base.client.util.view.FormView;
+import com.telosys.gwtp.base.client.util.common.form.presenter.AbstractFormPresenter;
+import com.telosys.gwtp.base.client.util.common.form.view.FormView;
 import com.telosys.gwtp.base.shared.api.resources.TeamResource;
-import com.telosys.gwtp.base.shared.dto.TeamDto;
+import com.telosys.gwtp.base.shared.dto.team.TeamDto;
 
 public class TeamFormPresenter extends AbstractFormPresenter<TeamFormPresenter.MyProxy, TeamFormPresenter.MyView, TeamDto, Long, TeamResource> {
 

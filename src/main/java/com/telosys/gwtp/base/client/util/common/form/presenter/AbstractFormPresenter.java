@@ -1,6 +1,5 @@
-package com.telosys.gwtp.base.client.util.presenter;
+package com.telosys.gwtp.base.client.util.common.form.presenter;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
@@ -11,7 +10,8 @@ import com.gwtplatform.mvp.client.proxy.Proxy;
 import com.gwtplatform.mvp.client.proxy.RevealContentHandler;
 import com.telosys.gwtp.base.client.event.LoadingEvent;
 import com.telosys.gwtp.base.client.place.TokenParameters;
-import com.telosys.gwtp.base.client.util.view.FormView;
+import com.telosys.gwtp.base.client.util.common.BasePresenter;
+import com.telosys.gwtp.base.client.util.common.form.view.FormView;
 import com.telosys.gwtp.base.shared.api.resources.util.GenericResource;
 
 public abstract class AbstractFormPresenter<P extends Proxy<?>, V extends FormView<? extends AbstractFormPresenter<P, V, F, I, R>, F>, F, I, R extends GenericResource<F, I>>

@@ -23,7 +23,7 @@ import com.telosys.gwtp.base.client.application.content.player.list.PlayerListPr
 import com.telosys.gwtp.base.client.place.NameTokens;
 import com.telosys.gwtp.base.client.place.TokenParameters;
 import com.telosys.gwtp.base.shared.api.resources.PlayerResource;
-import com.telosys.gwtp.base.shared.dto.PlayerDto;
+import com.telosys.gwtp.base.shared.dto.player.PlayerDto;
 import com.telosys.gwtp.base.test.util.BasePresenter;
 
 @RunWith(JukitoRunner.class)

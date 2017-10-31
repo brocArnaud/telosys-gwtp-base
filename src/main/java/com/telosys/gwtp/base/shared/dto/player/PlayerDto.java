@@ -1,9 +1,11 @@
-package com.telosys.gwtp.base.shared.dto;
-
-import java.io.Serializable;
+package com.telosys.gwtp.base.shared.dto.player;
 
 import javax.validation.constraints.NotNull;
 
+import com.telosys.gwtp.base.shared.dto.common.IdDto;
+import com.telosys.gwtp.base.shared.dto.player.validation.ValidPlayer;
+
+@ValidPlayer
 public class PlayerDto extends IdDto {
 
 	private static final long serialVersionUID = 7828224611035419587L;

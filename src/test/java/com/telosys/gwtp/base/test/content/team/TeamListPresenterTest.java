@@ -23,7 +23,7 @@ import com.telosys.gwtp.base.client.application.content.team.list.TeamListPresen
 import com.telosys.gwtp.base.client.place.NameTokens;
 import com.telosys.gwtp.base.client.place.TokenParameters;
 import com.telosys.gwtp.base.shared.api.resources.TeamResource;
-import com.telosys.gwtp.base.shared.dto.TeamDto;
+import com.telosys.gwtp.base.shared.dto.team.TeamDto;
 import com.telosys.gwtp.base.test.util.BasePresenter;
 
 @RunWith(JukitoRunner.class)
