@@ -66,7 +66,7 @@ public class PlayerFormPresenter extends AbstractFormPresenter<PlayerFormPresent
 	}
 
 	@Override
-	public String getListRootToken() {
+	public String getListRouteToken() {
 		return NameTokens.PLAYER_LIST;
 	}
 }

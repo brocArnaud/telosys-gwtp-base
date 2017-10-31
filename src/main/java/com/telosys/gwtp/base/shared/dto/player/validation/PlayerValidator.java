@@ -9,6 +9,7 @@ public class PlayerValidator implements ConstraintValidator<ValidPlayer, PlayerD
 
 	@Override
 	public void initialize(ValidPlayer constraintAnnotation) {
+		// nothing to do on this init
 	}
 
 	@Override

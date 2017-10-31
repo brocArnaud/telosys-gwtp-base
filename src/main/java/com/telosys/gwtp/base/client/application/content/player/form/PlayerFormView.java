@@ -1,12 +1,9 @@
 package com.telosys.gwtp.base.client.application.content.player.form;
 
-import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.inject.Inject;
-import javax.validation.ConstraintViolation;
 
 import org.gwtbootstrap3.client.ui.TextBox;
 import org.gwtbootstrap3.client.ui.ValueListBox;
@@ -15,7 +12,6 @@ import com.google.gwt.text.shared.AbstractRenderer;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Widget;
-import com.google.gwt.validation.client.impl.ConstraintViolationImpl;
 import com.telosys.gwtp.base.client.util.common.form.view.AbstractFormView;
 import com.telosys.gwtp.base.shared.dto.common.ListItemDto;
 import com.telosys.gwtp.base.shared.dto.player.PlayerDto;

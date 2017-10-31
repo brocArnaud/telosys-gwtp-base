@@ -1,27 +1,22 @@
 package com.telosys.gwtp.base.client.application.content.team.list;
 
-import java.util.List;
-
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.dispatch.rest.client.RestDispatch;
-import com.gwtplatform.dispatch.rest.delegates.client.ResourceDelegate;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.telosys.gwtp.base.client.application.ApplicationPresenter;
-import com.telosys.gwtp.base.client.event.LoadingEvent;
 import com.telosys.gwtp.base.client.place.NameTokens;
-import com.telosys.gwtp.base.client.place.TokenParameters;
-import com.telosys.gwtp.base.client.util.common.BasePresenter;
+import com.telosys.gwtp.base.client.util.common.list.presenter.AbstractListPresenter;
 import com.telosys.gwtp.base.client.util.common.list.view.ListView;
 import com.telosys.gwtp.base.shared.api.resources.TeamResource;
 import com.telosys.gwtp.base.shared.dto.team.TeamDto;
 
-public class TeamListPresenter extends BasePresenter<TeamListPresenter.MyView, TeamListPresenter.MyProxy> {
+public class TeamListPresenter extends AbstractListPresenter<TeamListPresenter.MyProxy, TeamListPresenter.MyView, TeamDto, Long, TeamResource> {
 
-	public interface MyView extends ListView<TeamDto, TeamListPresenter> {
+	public interface MyView extends ListView<TeamListPresenter, TeamDto> {
 	}
 
 	@ProxyStandard
@@ -30,46 +25,13 @@ public class TeamListPresenter extends BasePresenter<TeamListPresenter.MyView, T
 	}
 
 	@Inject
-	ResourceDelegate<TeamResource> teamService;
-
-	@Inject
 	TeamListPresenter(EventBus eventBus, MyView view, MyProxy proxy, PlaceManager placeManager, RestDispatch dispatcher) {
 		super(eventBus, view, proxy, ApplicationPresenter.SLOT_MAIN, placeManager, dispatcher);
 		getView().setPresenter(this);
 	}
 
 	@Override
-	public void onReveal() {
-		super.onReveal();
-		load();
-	}
-
-	public void onCreateClick() {
-		revealPlace(NameTokens.TEAM_FORM, TokenParameters.ID, TokenParameters.DEFAULT_ID);
-	}
-
-	private void load() {
-		LoadingEvent.fire(this, true);
-		teamService.withCallback(new CallBack<List<TeamDto>>() {
-			@Override
-			public void onSuccess(List<TeamDto> teams) {
-				getView().display(teams);
-				LoadingEvent.fire(TeamListPresenter.this, false);
-			}
-		}).getAll();
-	}
-
-	public void onDeleteClick(TeamDto team) {
-		LoadingEvent.fire(this, true);
-		teamService.withCallback(new CallBack<Void>() {
-			@Override
-			public void onSuccess(Void nothing) {
-				load();
-			}
-		}).delete(team.getId());
-	}
-
-	public void onUpdateClick(TeamDto team) {
-		revealPlace(NameTokens.TEAM_FORM, TokenParameters.ID, String.valueOf(team.getId()));
+	public String getFormRouteToken() {
+		return NameTokens.TEAM_FORM;
 	}
 }

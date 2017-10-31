@@ -33,7 +33,7 @@ public abstract class AbstractFormPresenter<P extends Proxy<?>, V extends FormVi
 	/**
 	 * Return the root tokens for the page after successfully creation/update.
 	 */
-	public abstract String getListRootToken();
+	public abstract String getListRouteToken();
 
 	/** Give a new empty F object. */
 	public abstract F newInstance();
@@ -97,7 +97,7 @@ public abstract class AbstractFormPresenter<P extends Proxy<?>, V extends FormVi
 	private void success() {
 		getView().showNotification(true);
 		LoadingEvent.fire(AbstractFormPresenter.this, false);
-		revealPlace(getListRootToken());
+		revealPlace(getListRouteToken());
 	}
 
 	@Override

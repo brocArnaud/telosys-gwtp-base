@@ -1,52 +1,33 @@
 package com.telosys.gwtp.base.client.application.content.player.list;
 
-import java.util.List;
-
 import javax.inject.Inject;
 
 import org.gwtbootstrap3.client.ui.constants.ButtonType;
 import org.gwtbootstrap3.client.ui.constants.IconType;
 import org.gwtbootstrap3.client.ui.gwt.ButtonCell;
-import org.gwtbootstrap3.client.ui.gwt.CellTable;
 
 import com.google.gwt.dom.client.Style.Unit;
-import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
-import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.Widget;
-import com.google.gwt.view.client.ListDataProvider;
-import com.gwtplatform.mvp.client.ViewImpl;
+import com.telosys.gwtp.base.client.util.common.list.view.AbstractListView;
 import com.telosys.gwtp.base.shared.dto.player.PlayerDto;
 
-public class PlayerListView extends ViewImpl implements PlayerListPresenter.MyView {
+public class PlayerListView extends AbstractListView<PlayerListPresenter, PlayerDto, Long> implements PlayerListPresenter.MyView {
 	interface Binder extends UiBinder<Widget, PlayerListView> {
 	}
 
-	private PlayerListPresenter presenter;
-
-	@UiField
-	CellTable<PlayerDto> playerList;
-
-	private ListDataProvider<PlayerDto> cellTableProvider = new ListDataProvider<>();
-
 	@Inject
 	PlayerListView(Binder uiBinder) {
+		super();
 		initWidget(uiBinder.createAndBindUi(this));
 		initCellTable();
 	}
 
 	@Override
-	public void display(List<PlayerDto> players) {
-		cellTableProvider.getList().clear();
-		cellTableProvider.getList().addAll(players);
-		cellTableProvider.flush();
-	}
-
-	private void initCellTable() {
+	public void initCellTable() {
 		final TextColumn<PlayerDto> col1 = new TextColumn<PlayerDto>() {
 
 			@Override
@@ -54,7 +35,7 @@ public class PlayerListView extends ViewImpl implements PlayerListPresenter.MyVi
 				return String.valueOf(object.getId());
 			}
 		};
-		playerList.addColumn(col1, "Id");
+		table.addColumn(col1, "Id");
 		final TextColumn<PlayerDto> col2 = new TextColumn<PlayerDto>() {
 
 			@Override
@@ -62,7 +43,7 @@ public class PlayerListView extends ViewImpl implements PlayerListPresenter.MyVi
 				return String.valueOf(object.getName());
 			}
 		};
-		playerList.addColumn(col2, "Name");
+		table.addColumn(col2, "Name");
 		final TextColumn<PlayerDto> col3 = new TextColumn<PlayerDto>() {
 
 			@Override
@@ -70,16 +51,16 @@ public class PlayerListView extends ViewImpl implements PlayerListPresenter.MyVi
 				return String.valueOf(object.getTeam());
 			}
 		};
-		playerList.addColumn(col3, "Team Id");
+		table.addColumn(col3, "Team Id");
 		final Column<PlayerDto, String> deletion = new Column<PlayerDto, String>(new ButtonCell(ButtonType.DANGER, IconType.TRASH)) {
 			@Override
 			public String getValue(PlayerDto object) {
 				return "";
 			}
 		};
-		deletion.setFieldUpdater((index, player, value) -> presenter.onDeleteClick(player));
+		deletion.setFieldUpdater((index, player, value) -> presenter.onDeleteClick(player.getId()));
 		deletion.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
-		playerList.addColumn(deletion, "Delete");
+		table.addColumn(deletion, "Delete");
 
 		final Column<PlayerDto, String> update = new Column<PlayerDto, String>(new ButtonCell(ButtonType.SUCCESS, IconType.PENCIL)) {
 			@Override
@@ -87,21 +68,11 @@ public class PlayerListView extends ViewImpl implements PlayerListPresenter.MyVi
 				return "";
 			}
 		};
-		update.setFieldUpdater((index, player, value) -> presenter.onUpdateClick(player));
+		update.setFieldUpdater((index, player, value) -> presenter.onUpdateClick(player.getId()));
 		update.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
-		playerList.addColumn(update, "Update");
-		playerList.setColumnWidth(deletion, 30, Unit.PX);
-		playerList.setColumnWidth(update, 30, Unit.PX);
-		cellTableProvider.addDataDisplay(playerList);
-	}
-
-	@UiHandler(value = "create")
-	public void onCreateClick(ClickEvent event) {
-		presenter.onCreateClick();
-	}
-
-	@Override
-	public void setPresenter(PlayerListPresenter presenter) {
-		this.presenter = presenter;
+		table.addColumn(update, "Update");
+		table.setColumnWidth(deletion, 30, Unit.PX);
+		table.setColumnWidth(update, 30, Unit.PX);
+		provider.addDataDisplay(table);
 	}
 }

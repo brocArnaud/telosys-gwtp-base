@@ -57,7 +57,7 @@ public class PlayerListPresenterTest extends BasePresenter {
 	public void onDeleteClick() {
 		final PlayerDto player = new PlayerDto(1L, "name1", "1");
 		givenDelegate(playerService).useResource(PlayerResource.class).and().succeed().withResult((Void) null).when().delete(player.getId());
-		playerListPresenter.onDeleteClick(player);
+		playerListPresenter.onDeleteClick(player.getId());
 	}
 
 	@Test
@@ -77,7 +77,7 @@ public class PlayerListPresenterTest extends BasePresenter {
 		given(player.getId()).willReturn(1L);
 		PlaceRequest place = buildPlaceRequest(NameTokens.PLAYER_FORM, TokenParameters.ID, String.valueOf(player.getId()));
 		// When
-		playerListPresenter.onUpdateClick(player);
+		playerListPresenter.onUpdateClick(player.getId());
 		// Then
 		verify(placeManager).revealPlace(eq(place));
 	}

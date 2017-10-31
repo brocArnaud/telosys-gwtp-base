@@ -13,7 +13,7 @@
 						<b:Button ui:field="create" text="Create" type="PRIMARY" addStyleNames="{res.style.buttonCreate}" />
 					</b:Column>
 				</b:Row>
-				<b.gwt:CellTable ui:field="teamList" bordered="true" condensed="true" striped="true" hover="true" />
+				<b.gwt:CellTable ui:field="table" bordered="true" condensed="true" striped="true" hover="true" />
 			</g:HTMLPanel>
 		</b:Container>
 	</g:HTMLPanel>

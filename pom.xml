@@ -87,7 +87,7 @@
 							<directory>src/main/webapp/telosysBase</directory>
 						</fileset>
 						<fileset>
-							<directory>src/main/webapp/gwt-unitCache</directory>
+							<directory>src/main/gwt-unitCache</directory>
 						</fileset>
 						<fileset>
 							<directory>src/main/webapp/WEB-INF/classes</directory>

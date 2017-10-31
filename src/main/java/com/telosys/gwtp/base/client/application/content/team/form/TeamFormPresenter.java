@@ -36,7 +36,7 @@ public class TeamFormPresenter extends AbstractFormPresenter<TeamFormPresenter.M
 	}
 
 	@Override
-	public String getListRootToken() {
+	public String getListRouteToken() {
 		return NameTokens.TEAM_LIST;
 	}
 }

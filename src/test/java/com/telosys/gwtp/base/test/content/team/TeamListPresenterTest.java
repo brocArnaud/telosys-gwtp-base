@@ -37,7 +37,7 @@ public class TeamListPresenterTest extends BasePresenter {
 
 	@Inject
 	MyView myView;
-	
+
 	@Test
 	public void onReveal() {
 		// Given
@@ -51,14 +51,14 @@ public class TeamListPresenterTest extends BasePresenter {
 		teamListPresenter.onReveal();
 		// when
 		verify(myView).display(teams);
-		
+
 	}
 
 	@Test
 	public void onDeleteClick() {
 		final TeamDto team = new TeamDto(1L, "name1");
 		givenDelegate(teamService).useResource(TeamResource.class).and().succeed().withResult((Void) null).when().delete(2L);
-		teamListPresenter.onDeleteClick(team);
+		teamListPresenter.onDeleteClick(team.getId());
 	}
 
 	@Test
@@ -78,7 +78,7 @@ public class TeamListPresenterTest extends BasePresenter {
 		given(team.getId()).willReturn(1L);
 		PlaceRequest place = buildPlaceRequest(NameTokens.TEAM_FORM, TokenParameters.ID, String.valueOf(team.getId()));
 		// When
-		teamListPresenter.onUpdateClick(team);
+		teamListPresenter.onUpdateClick(team.getId());
 		// Then
 		verify(placeManager).revealPlace(eq(place));
 	}
