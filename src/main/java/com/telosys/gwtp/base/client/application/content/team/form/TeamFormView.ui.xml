@@ -7,7 +7,7 @@
 			<g:HTMLPanel>
 				<b:Row>
 					<b:Column size="MD_4" offset="MD_4">
-						<b:Panel>
+						<b:Panel addStyleNames="{res.style.formPanel}">
 							<b:PanelHeader>
 								<b:Heading size="H3" text="Creating a new team" />
 							</b:PanelHeader>

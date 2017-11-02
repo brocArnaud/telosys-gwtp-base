@@ -45,6 +45,12 @@ public interface AppResources extends ClientBundle {
 		
 		@ClassName("footer-bar")
 		String footerBar();
+		
+		@ClassName("column-small")
+		String columnSmall();
+		
+		@ClassName("form-panel")
+		String formPanel();
 
 	}
 

@@ -2,6 +2,8 @@ package com.telosys.gwtp.base.client.application.layout.header;
 
 import javax.inject.Inject;
 
+import org.gwtbootstrap3.client.ui.NavbarCollapse;
+
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -24,6 +26,9 @@ public class HeaderView extends ViewImpl implements MyView {
 	@UiField
 	HTMLPanel spinner;
 
+	@UiField
+	NavbarCollapse collapse;
+
 	@Inject
 	HeaderView(Binder uiBinder) {
 		initWidget(uiBinder.createAndBindUi(this));
@@ -32,17 +37,20 @@ public class HeaderView extends ViewImpl implements MyView {
 
 	@UiHandler(value = "player")
 	public void onPlayerClick(ClickEvent event) {
+		collapse.hide();
 		presenter.onPlayerClick();
 	}
 
 	@UiHandler(value = "team")
 	public void onTeamClick(ClickEvent event) {
+		collapse.hide();
 		presenter.onTeamClick();
 	}
 
 	@UiHandler(value = "logo")
 	// @UiHandler(value = "home")
 	public void onHomeClick(ClickEvent event) {
+		collapse.hide();
 		presenter.onHomeClick();
 	}
 
