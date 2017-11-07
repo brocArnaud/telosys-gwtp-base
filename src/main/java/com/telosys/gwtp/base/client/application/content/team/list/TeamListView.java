@@ -15,7 +15,7 @@ import com.google.gwt.user.client.ui.Widget;
 import com.telosys.gwtp.base.client.util.common.list.view.AbstractListView;
 import com.telosys.gwtp.base.shared.dto.team.TeamDto;
 
-public class TeamListView extends AbstractListView<TeamListPresenter, TeamDto, Long> implements TeamListPresenter.MyView {
+public class TeamListView extends AbstractListView<TeamListPresenter, TeamDto> implements TeamListPresenter.MyView {
 	interface Binder extends UiBinder<Widget, TeamListView> {
 	}
 
@@ -51,7 +51,7 @@ public class TeamListView extends AbstractListView<TeamListPresenter, TeamDto, L
 				return "";
 			}
 		};
-		deletion.setFieldUpdater((index, team, value) -> presenter.onDeleteClick(team.getId()));
+		deletion.setFieldUpdater((index, team, value) -> presenter.onDeleteClick(team));
 		deletion.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 		table.addColumn(deletion, "Delete");
 		final Column<TeamDto, String> update = new Column<TeamDto, String>(new ButtonCell(ButtonType.SUCCESS, IconType.PENCIL)) {
@@ -60,7 +60,7 @@ public class TeamListView extends AbstractListView<TeamListPresenter, TeamDto, L
 				return "";
 			}
 		};
-		update.setFieldUpdater((index, team, value) -> presenter.onUpdateClick(team.getId()));
+		update.setFieldUpdater((index, team, value) -> presenter.onUpdateClick(team));
 		update.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 		table.addColumn(update, "Update");
 		table.setColumnWidth(deletion, 30, Unit.PX);

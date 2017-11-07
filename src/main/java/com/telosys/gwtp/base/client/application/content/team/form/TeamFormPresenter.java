@@ -8,13 +8,15 @@ import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.telosys.gwtp.base.client.application.ApplicationPresenter;
+import com.telosys.gwtp.base.client.event.LoadingEvent;
 import com.telosys.gwtp.base.client.place.NameTokens;
+import com.telosys.gwtp.base.client.place.TokenParameters;
 import com.telosys.gwtp.base.client.util.common.form.presenter.AbstractFormPresenter;
 import com.telosys.gwtp.base.client.util.common.form.view.FormView;
 import com.telosys.gwtp.base.shared.api.resources.TeamResource;
 import com.telosys.gwtp.base.shared.dto.team.TeamDto;
 
-public class TeamFormPresenter extends AbstractFormPresenter<TeamFormPresenter.MyProxy, TeamFormPresenter.MyView, TeamDto, Long, TeamResource> {
+public class TeamFormPresenter extends AbstractFormPresenter<TeamFormPresenter.MyProxy, TeamFormPresenter.MyView, TeamDto, TeamResource> {
 
 	public interface MyView extends FormView<TeamFormPresenter, TeamDto> {
 	}
@@ -38,5 +40,44 @@ public class TeamFormPresenter extends AbstractFormPresenter<TeamFormPresenter.M
 	@Override
 	public String getListRouteToken() {
 		return NameTokens.TEAM_LIST;
+	}
+
+	@Override
+	public void saveAction(TeamDto data) {
+		LoadingEvent.fire(this, true);
+		if (updateMode) {
+			service.withCallback(new CallBack<Void>() {
+				@Override
+				public void onSuccess(Void nothing) {
+					success();
+				}
+			}).update(data, data.getId());
+		} else {
+			service.withCallback(new CallBack<Void>() {
+				@Override
+				public void onSuccess(Void nothing) {
+					success();
+				}
+			}).create(data);
+		}
+	}
+
+	@Override
+	public void loadAction() {
+		final String id = getCurrentPlaceRequestId();
+		updateMode = !id.equals(TokenParameters.DEFAULT_ID);
+		if (updateMode) {
+			LoadingEvent.fire(this, true);
+			service.withCallback(new CallBack<TeamDto>() {
+				@Override
+				public void onSuccess(TeamDto data) {
+					getView().load(data);
+					getView().setUpdateMode(updateMode);
+					LoadingEvent.fire(TeamFormPresenter.this, false);
+				}
+			}).get(Long.valueOf(id));
+		} else {
+			getView().load(newInstance());
+		}
 	}
 }

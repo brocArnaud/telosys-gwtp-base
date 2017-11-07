@@ -57,7 +57,7 @@ public class PlayerListPresenterTest extends BasePresenter {
 	public void onDeleteClick() {
 		final PlayerDto player = new PlayerDto(1L, "name1", "1");
 		givenDelegate(playerService).useResource(PlayerResource.class).and().succeed().withResult((Void) null).when().delete(player.getId());
-		playerListPresenter.onDeleteClick(player.getId());
+		playerListPresenter.onDeleteClick(player);
 	}
 
 	@Test

@@ -1,21 +1,20 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one or more contributor license
- * agreements. See the NOTICE file distributed with this work for additional information regarding
- * copyright ownership. The ASF licenses this file to You under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance with the License. You may obtain a
- * copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- */
-
 package com.telosys.gwtp.base.client.util.validation;
 
 import com.google.gwt.core.shared.GWT;
+import com.telosys.gwtp.base.shared.dto.AuthorDto;
+import com.telosys.gwtp.base.shared.dto.BadgeDto;
+import com.telosys.gwtp.base.shared.dto.BookDto;
+import com.telosys.gwtp.base.shared.dto.BookOrderDto;
+import com.telosys.gwtp.base.shared.dto.BookOrderItemDto;
+import com.telosys.gwtp.base.shared.dto.CountryDto;
+import com.telosys.gwtp.base.shared.dto.CustomerDto;
+import com.telosys.gwtp.base.shared.dto.EmployeeDto;
+import com.telosys.gwtp.base.shared.dto.EmployeeGroupDto;
+import com.telosys.gwtp.base.shared.dto.PublisherDto;
+import com.telosys.gwtp.base.shared.dto.ReviewDto;
+import com.telosys.gwtp.base.shared.dto.ShopDto;
+import com.telosys.gwtp.base.shared.dto.SynopsisDto;
+import com.telosys.gwtp.base.shared.dto.WorkgroupDto;
 import com.telosys.gwtp.base.shared.dto.player.PlayerDto;
 import com.telosys.gwtp.base.shared.dto.team.TeamDto;
 
@@ -25,7 +24,10 @@ import de.knightsoftnet.validators.client.GwtValidation;
 
 public class ReflectGetterFactory extends AbstractGwtReflectGetterFactory {
 
-	@GwtValidation(value = { PlayerDto.class, TeamDto.class })
+	@GwtValidation(value = { TeamDto.class, PlayerDto.class, AuthorDto.class, BadgeDto.class, //
+			BookDto.class, BookOrderDto.class, BookOrderItemDto.class, CountryDto.class, CustomerDto.class, //
+			EmployeeDto.class, EmployeeGroupDto.class, PublisherDto.class, ReviewDto.class, //
+			ShopDto.class, SynopsisDto.class, WorkgroupDto.class })
 	public interface GwtGetReflector extends GwtReflectGetterInterface {
 	}
 

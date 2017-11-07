@@ -18,7 +18,7 @@ import com.telosys.gwtp.base.shared.dto.player.PlayerDto;
 
 import de.knightsoftnet.validators.client.editor.BeanValidationEditorDriver;
 
-public class PlayerFormView extends AbstractFormView<PlayerFormPresenter, PlayerDto, Long> implements PlayerFormPresenter.MyView {
+public class PlayerFormView extends AbstractFormView<PlayerFormPresenter, PlayerDto> implements PlayerFormPresenter.MyView {
 	interface Binder extends UiBinder<Widget, PlayerFormView> {
 	}
 

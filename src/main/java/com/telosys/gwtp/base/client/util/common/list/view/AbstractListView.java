@@ -10,9 +10,8 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.view.client.ListDataProvider;
 import com.gwtplatform.mvp.client.ViewImpl;
 import com.telosys.gwtp.base.client.util.common.list.presenter.ListPresenter;
-import com.telosys.gwtp.base.shared.dto.common.IdDto;
 
-public abstract class AbstractListView<P extends ListPresenter<I>, F extends IdDto, I> extends ViewImpl implements ListView<P, F> {
+public abstract class AbstractListView<P extends ListPresenter<F>, F> extends ViewImpl implements ListView<P, F> {
 
 	protected P presenter;
 

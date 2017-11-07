@@ -35,24 +35,95 @@ public class HeaderView extends ViewImpl implements MyView {
 		bindSlot(HeaderPresenter.SLOT_CONTENT, container);
 	}
 
-	@UiHandler(value = "player")
-	public void onPlayerClick(ClickEvent event) {
-		collapse.hide();
-		presenter.onPlayerClick();
-	}
-
-	@UiHandler(value = "team")
-	public void onTeamClick(ClickEvent event) {
-		collapse.hide();
-		presenter.onTeamClick();
-	}
-
 	@UiHandler(value = "logo")
-	// @UiHandler(value = "home")
 	public void onHomeClick(ClickEvent event) {
 		collapse.hide();
 		presenter.onHomeClick();
 	}
+
+	@UiHandler(value = "author")
+	public void onAuthorClick(ClickEvent event) {
+		collapse.hide();
+		presenter.onAuthorClick();
+	}
+
+	@UiHandler(value = "badge")
+	public void onBadgeClick(ClickEvent event) {
+		collapse.hide();
+		presenter.onBadgeClick();
+	}
+
+	@UiHandler(value = "book")
+	public void onBookClick(ClickEvent event) {
+		collapse.hide();
+		presenter.onBookClick();
+	}
+
+	@UiHandler(value = "bookOrder")
+	public void onBookOrderClick(ClickEvent event) {
+		collapse.hide();
+		presenter.onBookOrderClick();
+	}
+
+	@UiHandler(value = "bookOrderItem")
+	public void onBookOrderItemClick(ClickEvent event) {
+		collapse.hide();
+		presenter.onBookOrderItemClick();
+	}
+
+	@UiHandler(value = "country")
+	public void onCountryClick(ClickEvent event) {
+		collapse.hide();
+		presenter.onCountryClick();
+	}
+
+	@UiHandler(value = "customer")
+	public void onCustomerClick(ClickEvent event) {
+		collapse.hide();
+		presenter.onCustomerClick();
+	}
+
+	@UiHandler(value = "employee")
+	public void onEmployeeClick(ClickEvent event) {
+		collapse.hide();
+		presenter.onEmployeeClick();
+	}
+
+	@UiHandler(value = "employeeGroup")
+	public void onEmployeeGroupClick(ClickEvent event) {
+		collapse.hide();
+		presenter.onEmployeeGroupClick();
+	}
+
+	@UiHandler(value = "publisher")
+	public void onPublisherClick(ClickEvent event) {
+		collapse.hide();
+		presenter.onPublisherClick();
+	}
+
+	@UiHandler(value = "review")
+	public void onReviewClick(ClickEvent event) {
+		collapse.hide();
+		presenter.onReviewClick();
+	}
+
+	@UiHandler(value = "shop")
+	public void onShopClick(ClickEvent event) {
+		collapse.hide();
+		presenter.onShopClick();
+	}
+
+	@UiHandler(value = "synopsis")
+	public void onSynopsisClick(ClickEvent event) {
+		collapse.hide();
+		presenter.onSynopsisClick();
+	}
+
+//	@UiHandler(value = "workgroup")
+//	public void onWorkgroupClick(ClickEvent event) {
+//		collapse.hide();
+//		presenter.onWorkgroupClick();
+//	}
 
 	@Override
 	public void showSpinner(boolean visible) {

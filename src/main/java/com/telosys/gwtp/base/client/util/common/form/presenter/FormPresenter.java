@@ -1,8 +1,8 @@
 package com.telosys.gwtp.base.client.util.common.form.presenter;
 
-public interface FormPresenter<F, I> {
+public interface FormPresenter<F> {
 
-	public void save(F player, I id);
+	public void save(F data);
 
 	public void reset();
 

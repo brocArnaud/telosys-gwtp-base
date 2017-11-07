@@ -1,7 +1,5 @@
 package com.telosys.gwtp.base.client.util.common.list.presenter;
 
-import java.util.List;
-
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
@@ -10,17 +8,14 @@ import com.gwtplatform.dispatch.rest.delegates.client.ResourceDelegate;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.Proxy;
 import com.gwtplatform.mvp.client.proxy.RevealContentHandler;
-import com.telosys.gwtp.base.client.event.LoadingEvent;
-import com.telosys.gwtp.base.client.place.TokenParameters;
 import com.telosys.gwtp.base.client.util.common.BasePresenter;
 import com.telosys.gwtp.base.client.util.common.list.view.ListView;
-import com.telosys.gwtp.base.shared.api.resources.util.GenericResource;
 
-public abstract class AbstractListPresenter<P extends Proxy<?>, V extends ListView<? extends AbstractListPresenter<P, V, F, I, R>, F>, F, I, R extends GenericResource<F, I>>
-		extends BasePresenter<V, P> implements ListPresenter<I> {
+public abstract class AbstractListPresenter<P extends Proxy<?>, V extends ListView<? extends AbstractListPresenter<P, V, F, R>, F>, F, R> extends BasePresenter<V, P>
+		implements ListPresenter<F> {
 
 	@Inject
-	ResourceDelegate<R> service;
+	protected ResourceDelegate<R> service;
 
 	public AbstractListPresenter(final EventBus eventBus, final V view, final P proxy, final GwtEvent.Type<RevealContentHandler<?>> pslot, PlaceManager placeManager,
 			RestDispatch dispatcher) {
@@ -42,34 +37,42 @@ public abstract class AbstractListPresenter<P extends Proxy<?>, V extends ListVi
 		load();
 	}
 
-	public void onCreateClick() {
-		revealPlace(getFormRouteToken(), TokenParameters.ID, TokenParameters.DEFAULT_ID);
-	}
+	
+	public abstract void onDeleteClick(F data);
+	
+	public abstract void load();
+	
+	public abstract void onCreateClick();
 
-	private void load() {
-		LoadingEvent.fire(this, true);
-		service.withCallback(new CallBack<List<F>>() {
-			@Override
-			public void onSuccess(List<F> datas) {
-				getView().display(datas);
-				LoadingEvent.fire(AbstractListPresenter.this, false);
-			}
-		}).getAll();
-	}
+	public abstract void onUpdateClick(F data);
+//	public void onCreateClick() {
+//		revealPlace(getFormRouteToken(), TokenParameters.ID, TokenParameters.DEFAULT_ID);
+//	}
 
-	@Override
-	public void onDeleteClick(I dataId) {
-		LoadingEvent.fire(this, true);
-		service.withCallback(new CallBack<Void>() {
-			@Override
-			public void onSuccess(Void nothing) {
-				load();
-			}
-		}).delete(dataId);
-	}
-
-	@Override
-	public void onUpdateClick(I dataId) {
-		revealPlace(getFormRouteToken(), TokenParameters.ID, String.valueOf(dataId));
-	}
+//	public void load() {
+//		LoadingEvent.fire(this, true);
+//		service.withCallback(new CallBack<List<F>>() {
+//			@Override
+//			public void onSuccess(List<F> datas) {
+//				getView().display(datas);
+//				LoadingEvent.fire(AbstractListPresenter.this, false);
+//			}
+//		}).getAll();
+//	}
+//
+//	@Override
+//	public void onDeleteClick(F data) {
+//		LoadingEvent.fire(this, true);
+//		service.withCallback(new CallBack<Void>() {
+//			@Override
+//			public void onSuccess(Void nothing) {
+//				load();
+//			}
+//		}).delete(data.getId());
+//	}
+//
+//	@Override
+//	public void onUpdateClick(F data) {
+//		revealPlace(getFormRouteToken(), TokenParameters.ID, String.valueOf(data.getId()));
+//	}
 }

@@ -15,7 +15,7 @@ import com.google.gwt.user.client.ui.Widget;
 import com.telosys.gwtp.base.client.util.common.list.view.AbstractListView;
 import com.telosys.gwtp.base.shared.dto.player.PlayerDto;
 
-public class PlayerListView extends AbstractListView<PlayerListPresenter, PlayerDto, Long> implements PlayerListPresenter.MyView {
+public class PlayerListView extends AbstractListView<PlayerListPresenter, PlayerDto> implements PlayerListPresenter.MyView {
 	interface Binder extends UiBinder<Widget, PlayerListView> {
 	}
 
@@ -58,7 +58,7 @@ public class PlayerListView extends AbstractListView<PlayerListPresenter, Player
 				return "";
 			}
 		};
-		deletion.setFieldUpdater((index, player, value) -> presenter.onDeleteClick(player.getId()));
+		deletion.setFieldUpdater((index, player, value) -> presenter.onDeleteClick(player));
 		deletion.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 		table.addColumn(deletion, "Delete");
 
@@ -68,7 +68,7 @@ public class PlayerListView extends AbstractListView<PlayerListPresenter, Player
 				return "";
 			}
 		};
-		update.setFieldUpdater((index, player, value) -> presenter.onUpdateClick(player.getId()));
+		update.setFieldUpdater((index, player, value) -> presenter.onUpdateClick(player));
 		update.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 		table.addColumn(update, "Update");
 		table.setColumnWidth(deletion, 30, Unit.PX);

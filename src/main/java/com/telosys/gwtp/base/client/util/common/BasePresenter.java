@@ -53,6 +53,18 @@ public abstract class BasePresenter<V extends View, P extends Proxy<?>> extends 
 		placeManager.revealPlace(new PlaceRequest.Builder().nameToken(token).with(param, value).build());
 	}
 
+	protected void revealPlace(String token, String param, Integer value) {
+		placeManager.revealPlace(new PlaceRequest.Builder().nameToken(token).with(param, String.valueOf(value)).build());
+	}
+
+	protected void revealPlace(String token, String param1, String value1, String param2, String value2) {
+		placeManager.revealPlace(new PlaceRequest.Builder().nameToken(token).with(param1, value1).with(param2, value2).build());
+	}
+
+	protected void revealPlace(String token, String param1, Integer value1, String param2, Integer value2) {
+		placeManager.revealPlace(new PlaceRequest.Builder().nameToken(token).with(param1, String.valueOf(value1)).with(param2, String.valueOf(value2)).build());
+	}
+
 	protected abstract class CallBack<T> implements AsyncCallback<T> {
 		@Override
 		public void onFailure(Throwable caught) {
@@ -62,6 +74,10 @@ public abstract class BasePresenter<V extends View, P extends Proxy<?>> extends 
 
 	public String getCurrentPlaceRequestId() {
 		return getCurrentPlaceRequestParam(TokenParameters.ID, TokenParameters.DEFAULT_ID);
+	}
+
+	public String getCurrentPlaceRequestId(String param) {
+		return getCurrentPlaceRequestParam(param, TokenParameters.DEFAULT_ID);
 	}
 
 	public String getCurrentPlaceRequestParam(String parameter, String defaultValue) {

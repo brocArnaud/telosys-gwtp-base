@@ -46,6 +46,8 @@ public class ClientModule extends AbstractPresenterModule {
 		dispatchBuilder.addGlobalHeaderParam(HttpHeaders.ACCESS_CONTROL_ALLOW_METHODS).withValue(Paths.ALLOWED_METHOD);
 		// Set global header parameter : ACCESS_CONTROL_ALLOW_HEADERS
 		dispatchBuilder.addGlobalHeaderParam(HttpHeaders.ACCESS_CONTROL_ALLOW_HEADERS).withValue(Paths.ALLOWED_HEADERS);
+		// set the default date format according with rest api
+		dispatchBuilder.defaultDateFormat("yyyy-MM-dd");
 		// ==> Install the restDispatcherModule
 		install(dispatchBuilder.build());
 

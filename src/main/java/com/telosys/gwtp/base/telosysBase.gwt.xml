@@ -7,6 +7,7 @@
 	<inherits name="com.gwtplatform.dispatch.rest.DispatchRest" />
 	<inherits name="com.gwtplatform.mvp.MvpWithEntryPoint" />
 	<inherits name="org.gwtbootstrap3.GwtBootstrap3" />
+	<inherits name="org.gwtbootstrap3.extras.datepicker.DatePicker"/>
 	<inherits name="de.knightsoftnet.validators.GwtBeanValidators" />
 
 	<extend-configuration-property name="gin.ginjector.modules" value="com.telosys.gwtp.base.client.gin.ClientModule" />

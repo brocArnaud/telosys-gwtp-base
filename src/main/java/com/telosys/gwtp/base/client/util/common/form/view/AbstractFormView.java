@@ -19,15 +19,14 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.gwtplatform.mvp.client.ViewImpl;
 import com.telosys.gwtp.base.client.util.common.form.presenter.FormPresenter;
-import com.telosys.gwtp.base.shared.dto.common.IdDto;
 
 import de.knightsoftnet.validators.client.editor.BeanValidationEditorDriver;
 
-public abstract class AbstractFormView<P extends FormPresenter<F, I>, F extends IdDto, I> extends ViewImpl implements FormView<P, F>, Editor<F> {
+public abstract class AbstractFormView<P extends FormPresenter<F>, F> extends ViewImpl implements FormView<P, F>, Editor<F> {
 
 	protected P presenter;
 
-	protected final BeanValidationEditorDriver<F, AbstractFormView<P, F, I>> driver;
+	protected final BeanValidationEditorDriver<F, AbstractFormView<P, F>> driver;
 
 	@Ignore
 	@UiField
@@ -46,12 +45,11 @@ public abstract class AbstractFormView<P extends FormPresenter<F, I>, F extends 
 	public Label labelNotification;
 
 	@SuppressWarnings("unchecked")
-	public AbstractFormView(final BeanValidationEditorDriver<F, ? extends AbstractFormView<P, F, I>> pdriver) {
+	public AbstractFormView(final BeanValidationEditorDriver<F, ? extends AbstractFormView<P, F>> pdriver) {
 		super();
-		this.driver = (BeanValidationEditorDriver<F, AbstractFormView<P, F, I>>) pdriver;
+		this.driver = (BeanValidationEditorDriver<F, AbstractFormView<P, F>>) pdriver;
 	}
 
-	@SuppressWarnings("unchecked")
 	@UiHandler("create")
 	public void onCreateClick(ClickEvent event) {
 		F data = driver.flush();
@@ -60,7 +58,7 @@ public abstract class AbstractFormView<P extends FormPresenter<F, I>, F extends 
 		if (!violations.isEmpty()) {
 			driver.setConstraintViolations(new ArrayList<ConstraintViolation<?>>(violations));
 		} else {
-			presenter.save(data, (I) data.getId());
+			presenter.save(data);
 		}
 	}
 

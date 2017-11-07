@@ -12,7 +12,7 @@ import com.telosys.gwtp.base.shared.dto.team.TeamDto;
 
 import de.knightsoftnet.validators.client.editor.BeanValidationEditorDriver;
 
-public class TeamFormView extends AbstractFormView<TeamFormPresenter, TeamDto, Long> implements TeamFormPresenter.MyView {
+public class TeamFormView extends AbstractFormView<TeamFormPresenter, TeamDto> implements TeamFormPresenter.MyView {
 	interface Binder extends UiBinder<Widget, TeamFormView> {
 	}
 

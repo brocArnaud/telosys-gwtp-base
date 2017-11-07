@@ -8,27 +8,43 @@
 				<b:Row>
 					<b:Column size="MD_10">
 						<b:NavbarHeader>
-							<!-- Company logo image -->
 							<b:Image ui:field="logo" type="ROUNDED" resource="{res.logo}" addStyleNames="{res.style.clickable}" />
-							<!-- Simple home icon -->
-							<!-- <b:NavbarBrand ui:field="home" icon="HOME" title="Home" iconSize="TIMES3" addStyleNames="{res.style.iconHeader}" /> -->
 							<b:NavbarCollapseButton dataTarget="#navbar-collapse" />
 						</b:NavbarHeader>
 
 						<b:NavbarCollapse b:id="navbar-collapse" ui:field="collapse">
 							<b:NavbarNav>
-								<b:AnchorListItem ui:field="player" dataToggle="COLLAPSE" >Player</b:AnchorListItem>
-								<b:AnchorListItem ui:field="team">Team</b:AnchorListItem>
+								<b:AnchorListItem ui:field="author">Author</b:AnchorListItem>
+								<b:AnchorListItem ui:field="badge">Badge</b:AnchorListItem>
+								<b:ListDropDown>
+									<b:AnchorButton ui:field="book" dataToggle="DROPDOWN">Book</b:AnchorButton>
+									<b:DropDownMenu>
+										<b:AnchorListItem ui:field="bookOrder">Book Order</b:AnchorListItem>
+										<b:AnchorListItem ui:field="bookOrderItem">Book Order Item</b:AnchorListItem>
+									</b:DropDownMenu>
+								</b:ListDropDown>
+								<b:AnchorListItem ui:field="country">Country</b:AnchorListItem>
+								<b:AnchorListItem ui:field="customer">Customer</b:AnchorListItem>
+								<b:ListDropDown>
+									<b:AnchorButton ui:field="employee" dataToggle="DROPDOWN">Employee</b:AnchorButton>
+									<b:DropDownMenu>
+										<b:AnchorListItem ui:field="employeeGroup">Employee group</b:AnchorListItem>
+									</b:DropDownMenu>
+								</b:ListDropDown>
+								<b:AnchorListItem ui:field="publisher">Publisher</b:AnchorListItem>
+								<b:AnchorListItem ui:field="review">Review</b:AnchorListItem>
+								<b:AnchorListItem ui:field="shop">Shop</b:AnchorListItem>
+								<b:AnchorListItem ui:field="synopsis">Synopsis</b:AnchorListItem>
 							</b:NavbarNav>
 						</b:NavbarCollapse>
 					</b:Column>
 					<b:Column size="MD_1">
 						<b:NavbarNav>
-							<g:HTMLPanel ui:field="spinner" visible="true">
+							<g:HTMLPanel ui:field="spinner" visible="false">
 								<div class="{res.style.spinner}">
-									<div class="{res.style.bounce1}"/>
-									<div class="{res.style.bounce2}"/>
-									<div class="{res.style.bounce3}"/>
+									<div class="{res.style.bounce1}" />
+									<div class="{res.style.bounce2}" />
+									<div class="{res.style.bounce3}" />
 								</div>
 							</g:HTMLPanel>
 						</b:NavbarNav>

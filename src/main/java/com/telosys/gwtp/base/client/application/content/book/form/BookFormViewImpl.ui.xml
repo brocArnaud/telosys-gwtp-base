@@ -1,0 +1,82 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder' xmlns:g='urn:import:com.google.gwt.user.client.ui' xmlns:b="urn:import:org.gwtbootstrap3.client.ui">
+
+	<ui:with field="res" type="com.telosys.gwtp.base.client.resources.AppResources" />
+	<g:HTMLPanel>
+		<b:Container>
+			<g:HTMLPanel>
+				<b:Row>
+					<b:Column size="MD_4" offset="MD_4">
+						<b:Panel addStyleNames="{res.style.formPanel}">
+							<b:PanelHeader>
+								<b:Heading size="H3" text="Creating a new player" />
+							</b:PanelHeader>
+							<b:PanelBody ui:field="body">
+								<b:Form>
+									<b:FieldSet>
+										<b:FormGroup>
+											<b:FormLabel for="id" text="Id" />
+											<b:InlineHelpBlock iconType="EXCLAMATION_TRIANGLE" />
+											<b:IntegerBox b:id="id" ui:field="id" />
+										</b:FormGroup>
+										<b:FormGroup>
+											<b:FormLabel for="publisherId" text="Publisher id" />
+											<b:InlineHelpBlock iconType="EXCLAMATION_TRIANGLE" />
+											<b:IntegerBox b:id="publisherId" ui:field="publisherId" />
+										</b:FormGroup>
+										<b:FormGroup>
+											<b:FormLabel for="authorId" text="Author id" />
+											<b:InlineHelpBlock iconType="EXCLAMATION_TRIANGLE" />
+											<b:IntegerBox b:id="authorId" ui:field="authorId" />
+										</b:FormGroup>
+										<b:FormGroup>
+											<b:FormLabel for="isbn" text="ISBN" />
+											<b:InlineHelpBlock iconType="EXCLAMATION_TRIANGLE" />
+											<b:TextBox b:id="isbn" ui:field="isbn" />
+										</b:FormGroup>
+										<b:FormGroup>
+											<b:FormLabel for="title" text="Title" />
+											<b:InlineHelpBlock iconType="EXCLAMATION_TRIANGLE" />
+											<b:TextBox b:id="title" ui:field="title" />
+										</b:FormGroup>
+										<b:FormGroup>
+											<b:FormLabel for="price" text="Price" />
+											<b:InlineHelpBlock iconType="EXCLAMATION_TRIANGLE" />
+											<b:DoubleBox b:id="price" ui:field="price" />
+										</b:FormGroup>
+										<b:FormGroup>
+											<b:FormLabel for="quantity" text="Quantity" />
+											<b:InlineHelpBlock iconType="EXCLAMATION_TRIANGLE" />
+											<b:IntegerBox b:id="quantity" ui:field="quantity" />
+										</b:FormGroup>
+										<b:FormGroup>
+											<b:FormLabel for="discount" text="Discount" />
+											<b:InlineHelpBlock iconType="EXCLAMATION_TRIANGLE" />
+											<b:IntegerBox b:id="discount" ui:field="discount" />
+										</b:FormGroup>
+										<b:FormGroup>
+											<b:FormLabel for="availability" text="Availability" />
+											<b:InlineHelpBlock iconType="EXCLAMATION_TRIANGLE" />
+											<b:IntegerBox b:id="availability" ui:field="availability" />
+										</b:FormGroup>
+										<b:FormGroup>
+											<b:FormLabel for="bestSeller" text="BestSeller" />
+											<b:InlineHelpBlock iconType="EXCLAMATION_TRIANGLE" />
+											<b:IntegerBox b:id="bestSeller" ui:field="bestSeller" />
+										</b:FormGroup>
+									</b:FieldSet>
+								</b:Form>
+							</b:PanelBody>
+							<b:PanelFooter addStyleNames="{res.style.formPanelFooter}">
+								<b:Button type="DANGER" ui:field="reset" text="Reset" />
+								<b:Button type="PRIMARY" ui:field="create" text="Create" />
+							</b:PanelFooter>
+						</b:Panel>
+					</b:Column>
+					<b:Column ui:field="notification" size="MD_4" offset="MD_4" addStyleNames="{res.style.notificationContainer}" visible="false">
+						<b:Label ui:field="labelNotification" text="Player creation succes" type="SUCCESS" />
+					</b:Column>
+				</b:Row>
+			</g:HTMLPanel>
+		</b:Container>
+	</g:HTMLPanel>
+</ui:UiBinder>

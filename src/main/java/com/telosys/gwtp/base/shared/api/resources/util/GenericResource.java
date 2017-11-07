@@ -11,17 +11,17 @@ import javax.ws.rs.PathParam;
 
 import com.telosys.gwtp.base.shared.api.Paths;
 
-public interface GenericResource<T, I> {
+public interface GenericResource<F, I> {
 
 	@GET
-	List<T> getAll();
+	List<F> getAll();
 
 	@POST
-	void create(T team);
+	void create(F data);
 
 	@PUT
 	@Path(Paths.ID)
-	void update(T team, @PathParam(Paths.ID_PARAM) I id);
+	void update(F data, @PathParam(Paths.ID_PARAM) I id);
 
 	@DELETE
 	@Path(Paths.ID)
@@ -29,5 +29,5 @@ public interface GenericResource<T, I> {
 
 	@GET
 	@Path(Paths.ID)
-	T get(@PathParam(Paths.ID_PARAM) I id);
+	F get(@PathParam(Paths.ID_PARAM) I id);
 }

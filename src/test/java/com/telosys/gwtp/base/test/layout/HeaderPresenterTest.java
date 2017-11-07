@@ -24,25 +24,25 @@ public class HeaderPresenterTest {
 	@Inject
 	MyView view;
 
-	@Test
-	public void onPlayerListClick(PlaceManager placeManager) {
-		// Given
-		PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(NameTokens.PLAYER_LIST).build();
-		// When
-		headerPresenter.onPlayerClick();
-		// Then
-		verify(placeManager).revealPlace(eq(placeRequest));
-	}
-
-	@Test
-	public void onTeamListClick(PlaceManager placeManager) {
-		// Given
-		PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(NameTokens.TEAM_LIST).build();
-		// When
-		headerPresenter.onTeamClick();
-		// Then
-		verify(placeManager).revealPlace(eq(placeRequest));
-	}
+//	@Test
+//	public void onPlayerListClick(PlaceManager placeManager) {
+//		// Given
+//		PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(NameTokens.PLAYER_LIST).build();
+//		// When
+//		headerPresenter.onPlayerClick();
+//		// Then
+//		verify(placeManager).revealPlace(eq(placeRequest));
+//	}
+//
+//	@Test
+//	public void onTeamListClick(PlaceManager placeManager) {
+//		// Given
+//		PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(NameTokens.TEAM_LIST).build();
+//		// When
+//		headerPresenter.onTeamClick();
+//		// Then
+//		verify(placeManager).revealPlace(eq(placeRequest));
+//	}
 
 	@Test
 	public void onHomeListClick(PlaceManager placeManager) {

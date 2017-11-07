@@ -58,7 +58,7 @@ public class TeamListPresenterTest extends BasePresenter {
 	public void onDeleteClick() {
 		final TeamDto team = new TeamDto(1L, "name1");
 		givenDelegate(teamService).useResource(TeamResource.class).and().succeed().withResult((Void) null).when().delete(2L);
-		teamListPresenter.onDeleteClick(team.getId());
+		teamListPresenter.onDeleteClick(team);
 	}
 
 	@Test
