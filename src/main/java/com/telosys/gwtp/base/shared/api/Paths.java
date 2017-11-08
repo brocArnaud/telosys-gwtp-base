@@ -12,6 +12,8 @@ public class Paths {
 	public static final String ALLOWED_HEADERS = "Content-Type,Access-Control-Allow-Origin, Access-Control-Allow-Headers, Authorization, X-Requested-With,x-gwt-module-base";
 	public static final String ALLOWED_METHOD = "GET,POST,PUT,DELETE,OPTIONS";
 	public static final String ALLOWED_ORIGIN = "*";
+	
+	public static final String SIMPLE_DATE_PATTERN = "yyyy-MM-dd";
 
 	// Commons path params
 	public static final String ID = "/{id}";
@@ -65,11 +67,5 @@ public class Paths {
 	// Workgroup resource
 	public static final String WORKGROUP = "/workgroup";
 	public static final String WORKGROUP_LIST_ITEM = "/workgroups-list-items";
-
-	
-	//TODO CLEAN THIS
-	public static final String TEAM_LIST_ITEM = "/teams-list-items";
-	public static final String PLAYER = "/player";
-	public static final String TEAM = "/team";
 
 }

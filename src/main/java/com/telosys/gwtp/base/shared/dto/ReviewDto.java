@@ -7,9 +7,10 @@
 package com.telosys.gwtp.base.shared.dto;
 
 import java.io.Serializable;
-import javax.validation.constraints.*;
-
 import java.util.Date;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  * Java bean for entity "REVIEW" <br>

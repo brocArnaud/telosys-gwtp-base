@@ -2,7 +2,6 @@ package com.telosys.gwtp.base.client.application.content.country.form;
 
 import javax.inject.Inject;
 
-import org.gwtbootstrap3.client.ui.IntegerBox;
 import org.gwtbootstrap3.client.ui.TextBox;
 
 import com.google.gwt.uibinder.client.UiBinder;

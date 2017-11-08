@@ -8,10 +8,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.gwtplatform.dispatch.rest.shared.RestAction;
 import com.telosys.gwtp.base.shared.api.Paths;
 import com.telosys.gwtp.base.shared.api.resources.util.GenericResource;
-import com.telosys.gwtp.base.shared.dto.BookDto;
+import com.telosys.gwtp.base.shared.dto.book.BookDto;
 import com.telosys.gwtp.base.shared.dto.common.ListItemDto;
 
 @Path(Paths.BOOK)

@@ -8,7 +8,7 @@
 					<b:Column size="MD_4" offset="MD_4">
 						<b:Panel addStyleNames="{res.style.formPanel}">
 							<b:PanelHeader>
-								<b:Heading size="H3" text="Creating a new player" />
+								<b:Heading size="H3" text="Creating a new shop" />
 							</b:PanelHeader>
 							<b:PanelBody ui:field="body">
 								<b:Form>
@@ -46,7 +46,7 @@
 										<b:FormGroup>
 											<b:FormLabel for="countryCode" text="Country Code" />
 											<b:InlineHelpBlock iconType="EXCLAMATION_TRIANGLE" />
-											<b:TextBox b:id="countryCode" ui:field="countryCode" />
+											<b:ValueListBox b:id="countryCode" ui:field="countryCode" allowBlank="false" />
 										</b:FormGroup>
 										<b:FormGroup>
 											<b:FormLabel for="phone" text="Phone" />
@@ -61,7 +61,7 @@
 										<b:FormGroup>
 											<b:FormLabel for="executive" text="Executive" />
 											<b:InlineHelpBlock iconType="EXCLAMATION_TRIANGLE" />
-											<b:TextBox b:id="executive" ui:field="executive" />
+											<b:ValueListBox b:id="executive" ui:field="executive" allowBlank="false" />
 										</b:FormGroup>
 									</b:FieldSet>
 								</b:Form>
@@ -74,6 +74,9 @@
 					</b:Column>
 					<b:Column ui:field="notification" size="MD_4" offset="MD_4" addStyleNames="{res.style.notificationContainer}" visible="false">
 						<b:Label ui:field="labelNotification" text="Player creation succes" type="SUCCESS" />
+					</b:Column>
+					<b:Column ui:field="notificationError" size="MD_4" offset="MD_4" addStyleNames="{res.style.notificationContainer}" visible="false">
+						<b:Label ui:field="labelNotificationError" text="Error" type="DANGER" />
 					</b:Column>
 				</b:Row>
 			</g:HTMLPanel>

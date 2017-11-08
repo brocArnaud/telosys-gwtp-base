@@ -11,11 +11,11 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewImpl;
-import com.telosys.gwtp.base.client.application.layout.header.HeaderPresenter.MyView;
+import com.telosys.gwtp.base.client.application.layout.header.HeaderPresenter.HeaderView;
 
-public class HeaderView extends ViewImpl implements MyView {
+public class HeaderViewImpl extends ViewImpl implements HeaderView {
 
-	interface Binder extends UiBinder<Widget, HeaderView> {
+	interface Binder extends UiBinder<Widget, HeaderViewImpl> {
 	}
 
 	private HeaderPresenter presenter;
@@ -30,7 +30,7 @@ public class HeaderView extends ViewImpl implements MyView {
 	NavbarCollapse collapse;
 
 	@Inject
-	HeaderView(Binder uiBinder) {
+	HeaderViewImpl(Binder uiBinder) {
 		initWidget(uiBinder.createAndBindUi(this));
 		bindSlot(HeaderPresenter.SLOT_CONTENT, container);
 	}
@@ -100,30 +100,6 @@ public class HeaderView extends ViewImpl implements MyView {
 		collapse.hide();
 		presenter.onPublisherClick();
 	}
-
-	@UiHandler(value = "review")
-	public void onReviewClick(ClickEvent event) {
-		collapse.hide();
-		presenter.onReviewClick();
-	}
-
-	@UiHandler(value = "shop")
-	public void onShopClick(ClickEvent event) {
-		collapse.hide();
-		presenter.onShopClick();
-	}
-
-	@UiHandler(value = "synopsis")
-	public void onSynopsisClick(ClickEvent event) {
-		collapse.hide();
-		presenter.onSynopsisClick();
-	}
-
-//	@UiHandler(value = "workgroup")
-//	public void onWorkgroupClick(ClickEvent event) {
-//		collapse.hide();
-//		presenter.onWorkgroupClick();
-//	}
 
 	@Override
 	public void showSpinner(boolean visible) {

@@ -9,20 +9,22 @@ import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.telosys.gwtp.base.client.application.ApplicationPresenter;
+import com.telosys.gwtp.base.client.application.content.error.ErrorPresenter.ErrorProxy;
+import com.telosys.gwtp.base.client.application.content.error.ErrorPresenter.ErrorView;
 import com.telosys.gwtp.base.client.place.NameTokens;
 import com.telosys.gwtp.base.client.util.common.BasePresenter;
 
-public class ErrorPresenter extends BasePresenter<ErrorPresenter.MyView, ErrorPresenter.MyProxy> {
-	public interface MyView extends View {
+public class ErrorPresenter extends BasePresenter<ErrorView, ErrorProxy> {
+	public interface ErrorView extends View {
 	}
 
 	@ProxyStandard
 	@NameToken(NameTokens.ERROR)
-	public interface MyProxy extends ProxyPlace<ErrorPresenter> {
+	public interface ErrorProxy extends ProxyPlace<ErrorPresenter> {
 	}
 
 	@Inject
-	ErrorPresenter(EventBus eventBus, MyView view, MyProxy proxy, PlaceManager placeManager, RestDispatch dispatcher) {
+	ErrorPresenter(EventBus eventBus, ErrorView view, ErrorProxy proxy, PlaceManager placeManager, RestDispatch dispatcher) {
 		super(eventBus, view, proxy, ApplicationPresenter.SLOT_MAIN, placeManager, dispatcher);
 	}
 }

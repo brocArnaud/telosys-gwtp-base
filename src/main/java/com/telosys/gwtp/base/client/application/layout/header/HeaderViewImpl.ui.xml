@@ -6,7 +6,7 @@
 		<b:Navbar position="FIXED_TOP">
 			<b:Container>
 				<b:Row>
-					<b:Column size="MD_10">
+					<b:Column size="MD_11">
 						<b:NavbarHeader>
 							<b:Image ui:field="logo" type="ROUNDED" resource="{res.logo}" addStyleNames="{res.style.clickable}" />
 							<b:NavbarCollapseButton dataTarget="#navbar-collapse" />
@@ -16,25 +16,14 @@
 							<b:NavbarNav>
 								<b:AnchorListItem ui:field="author">Author</b:AnchorListItem>
 								<b:AnchorListItem ui:field="badge">Badge</b:AnchorListItem>
-								<b:ListDropDown>
-									<b:AnchorButton ui:field="book" dataToggle="DROPDOWN">Book</b:AnchorButton>
-									<b:DropDownMenu>
-										<b:AnchorListItem ui:field="bookOrder">Book Order</b:AnchorListItem>
-										<b:AnchorListItem ui:field="bookOrderItem">Book Order Item</b:AnchorListItem>
-									</b:DropDownMenu>
-								</b:ListDropDown>
+								<b:AnchorListItem ui:field="book">Book</b:AnchorListItem>
+								<b:AnchorListItem ui:field="bookOrder">Book Order</b:AnchorListItem>
+								<b:AnchorListItem ui:field="bookOrderItem">Book Order Item</b:AnchorListItem>
 								<b:AnchorListItem ui:field="country">Country</b:AnchorListItem>
 								<b:AnchorListItem ui:field="customer">Customer</b:AnchorListItem>
-								<b:ListDropDown>
-									<b:AnchorButton ui:field="employee" dataToggle="DROPDOWN">Employee</b:AnchorButton>
-									<b:DropDownMenu>
-										<b:AnchorListItem ui:field="employeeGroup">Employee group</b:AnchorListItem>
-									</b:DropDownMenu>
-								</b:ListDropDown>
+								<b:AnchorListItem ui:field="employee">Employee</b:AnchorListItem>
+								<b:AnchorListItem ui:field="employeeGroup">Employee group</b:AnchorListItem>
 								<b:AnchorListItem ui:field="publisher">Publisher</b:AnchorListItem>
-								<b:AnchorListItem ui:field="review">Review</b:AnchorListItem>
-								<b:AnchorListItem ui:field="shop">Shop</b:AnchorListItem>
-								<b:AnchorListItem ui:field="synopsis">Synopsis</b:AnchorListItem>
 							</b:NavbarNav>
 						</b:NavbarCollapse>
 					</b:Column>
@@ -47,11 +36,6 @@
 									<div class="{res.style.bounce3}" />
 								</div>
 							</g:HTMLPanel>
-						</b:NavbarNav>
-					</b:Column>
-					<b:Column size="MD_1">
-						<b:NavbarNav pull="RIGHT" addStyleNames="{res.style.iconLogout}">
-							<b:Anchor icon="POWER_OFF" title="Logout" iconSize="TIMES2" addStyleNames="{res.style.iconHeader}" />
 						</b:NavbarNav>
 					</b:Column>
 				</b:Row>

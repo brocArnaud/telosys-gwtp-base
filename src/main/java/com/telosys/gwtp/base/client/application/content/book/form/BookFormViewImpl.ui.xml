@@ -8,7 +8,7 @@
 					<b:Column size="MD_4" offset="MD_4">
 						<b:Panel addStyleNames="{res.style.formPanel}">
 							<b:PanelHeader>
-								<b:Heading size="H3" text="Creating a new player" />
+								<b:Heading size="H3" text="Creating a new Book" />
 							</b:PanelHeader>
 							<b:PanelBody ui:field="body">
 								<b:Form>
@@ -19,14 +19,14 @@
 											<b:IntegerBox b:id="id" ui:field="id" />
 										</b:FormGroup>
 										<b:FormGroup>
-											<b:FormLabel for="publisherId" text="Publisher id" />
+											<b:FormLabel for="authorId" text="Author" />
 											<b:InlineHelpBlock iconType="EXCLAMATION_TRIANGLE" />
-											<b:IntegerBox b:id="publisherId" ui:field="publisherId" />
+											<b:ValueListBox b:id="authorId" ui:field="authorId" allowBlank="false" />
 										</b:FormGroup>
 										<b:FormGroup>
-											<b:FormLabel for="authorId" text="Author id" />
+											<b:FormLabel for="publisherId" text="Publisher" />
 											<b:InlineHelpBlock iconType="EXCLAMATION_TRIANGLE" />
-											<b:IntegerBox b:id="authorId" ui:field="authorId" />
+											<b:ValueListBox b:id="publisherId" ui:field="publisherId" allowBlank="false" />
 										</b:FormGroup>
 										<b:FormGroup>
 											<b:FormLabel for="isbn" text="ISBN" />
@@ -74,6 +74,9 @@
 					</b:Column>
 					<b:Column ui:field="notification" size="MD_4" offset="MD_4" addStyleNames="{res.style.notificationContainer}" visible="false">
 						<b:Label ui:field="labelNotification" text="Player creation succes" type="SUCCESS" />
+					</b:Column>
+					<b:Column ui:field="notificationError" size="MD_4" offset="MD_4" addStyleNames="{res.style.notificationContainer}" visible="false">
+						<b:Label ui:field="labelNotificationError" text="Error" type="DANGER" />
 					</b:Column>
 				</b:Row>
 			</g:HTMLPanel>

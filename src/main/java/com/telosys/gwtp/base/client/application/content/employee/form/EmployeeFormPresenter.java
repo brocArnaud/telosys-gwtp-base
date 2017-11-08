@@ -1,8 +1,11 @@
 package com.telosys.gwtp.base.client.application.content.employee.form;
 
+import java.util.List;
+
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.dispatch.rest.client.RestDispatch;
+import com.gwtplatform.dispatch.rest.delegates.client.ResourceDelegate;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
@@ -15,12 +18,19 @@ import com.telosys.gwtp.base.client.place.NameTokens;
 import com.telosys.gwtp.base.client.place.TokenParameters;
 import com.telosys.gwtp.base.client.util.common.form.presenter.AbstractFormPresenter;
 import com.telosys.gwtp.base.client.util.common.form.view.FormView;
+import com.telosys.gwtp.base.shared.api.resources.BadgeResource;
 import com.telosys.gwtp.base.shared.api.resources.EmployeeResource;
+import com.telosys.gwtp.base.shared.api.resources.ShopResource;
 import com.telosys.gwtp.base.shared.dto.EmployeeDto;
+import com.telosys.gwtp.base.shared.dto.common.ListItemDto;
 
 public class EmployeeFormPresenter extends AbstractFormPresenter<EmployeeFormProxy, EmployeeFormView, EmployeeDto, EmployeeResource> {
 
 	public interface EmployeeFormView extends FormView<EmployeeFormPresenter, EmployeeDto> {
+
+		void loadShop(List<ListItemDto> items);
+
+		void loadBadge(List<ListItemDto> items);
 	}
 
 	@ProxyStandard
@@ -29,9 +39,34 @@ public class EmployeeFormPresenter extends AbstractFormPresenter<EmployeeFormPro
 	}
 
 	@Inject
+	ResourceDelegate<ShopResource> shopService;
+	@Inject
+	ResourceDelegate<BadgeResource> badgeService;
+
+	@Inject
 	EmployeeFormPresenter(EventBus eventBus, EmployeeFormView view, EmployeeFormProxy proxy, PlaceManager placeManager, RestDispatch dispatcher) {
 		super(eventBus, view, proxy, ApplicationPresenter.SLOT_MAIN, placeManager, dispatcher);
 		getView().setPresenter(this);
+	}
+
+	@Override
+	protected void onBind() {
+		super.onBind();
+		LoadingEvent.fire(this, true);
+		shopService.withCallback(new CallBack<List<ListItemDto>>() {
+			@Override
+			public void onSuccess(List<ListItemDto> items) {
+				getView().loadShop(items);
+				LoadingEvent.fire(EmployeeFormPresenter.this, false);
+			}
+		}).listItems();
+		badgeService.withCallback(new CallBack<List<ListItemDto>>() {
+			@Override
+			public void onSuccess(List<ListItemDto> items) {
+				getView().loadBadge(items);
+				LoadingEvent.fire(EmployeeFormPresenter.this, false);
+			}
+		}).listItems();
 	}
 
 	@Override

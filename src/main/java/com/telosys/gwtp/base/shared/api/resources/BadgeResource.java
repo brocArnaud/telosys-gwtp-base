@@ -14,7 +14,6 @@ import javax.ws.rs.core.MediaType;
 import com.telosys.gwtp.base.shared.api.Paths;
 import com.telosys.gwtp.base.shared.api.resources.util.GenericResource;
 import com.telosys.gwtp.base.shared.dto.BadgeDto;
-import com.telosys.gwtp.base.shared.dto.CountryDto;
 import com.telosys.gwtp.base.shared.dto.common.ListItemDto;
 
 @Path(Paths.BADGE)

@@ -4,8 +4,10 @@
 		<b:Navbar position="FIXED_BOTTOM" addStyleNames="{res.style.footerBar}">
 			<b:Container>
 				<b:NavbarNav>
-					<b:AnchorListItem ui:field="player">Player</b:AnchorListItem>
-					<b:AnchorListItem ui:field="team">Team</b:AnchorListItem>
+					<b:AnchorListItem ui:field="review">Review</b:AnchorListItem>
+					<b:AnchorListItem ui:field="shop">Shop</b:AnchorListItem>
+					<b:AnchorListItem ui:field="synopsis">Synopsis</b:AnchorListItem>
+					<b:AnchorListItem ui:field="workgroup">Workgroup</b:AnchorListItem>
 				</b:NavbarNav>
 				<b:NavbarText pull="RIGHT">
 					<b.html:Span>

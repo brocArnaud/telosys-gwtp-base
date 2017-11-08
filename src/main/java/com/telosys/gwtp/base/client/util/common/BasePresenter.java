@@ -3,8 +3,9 @@ package com.telosys.gwtp.base.client.util.common;
 import java.util.logging.Logger;
 
 import com.google.gwt.event.shared.GwtEvent;
-import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.http.client.Response;
 import com.google.web.bindery.event.shared.EventBus;
+import com.gwtplatform.dispatch.rest.client.RestCallback;
 import com.gwtplatform.dispatch.rest.client.RestDispatch;
 import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
@@ -39,9 +40,9 @@ public abstract class BasePresenter<V extends View, P extends Proxy<?>> extends 
 		this.placeManager = placeManager;
 	}
 
-	protected void manageError(Throwable caught) {
+	protected void manageError(Throwable caught, int statutCode) {
 		LoadingEvent.fire(this, false);
-		logger.severe("An error occured : " + caught.getMessage());
+		logger.severe("An error occured : " + caught.getMessage() + " | Response status code :" + statutCode);
 		revealPlace(NameTokens.ERROR);
 	}
 
@@ -65,10 +66,18 @@ public abstract class BasePresenter<V extends View, P extends Proxy<?>> extends 
 		placeManager.revealPlace(new PlaceRequest.Builder().nameToken(token).with(param1, String.valueOf(value1)).with(param2, String.valueOf(value2)).build());
 	}
 
-	protected abstract class CallBack<T> implements AsyncCallback<T> {
+	protected abstract class CallBack<T> implements RestCallback<T> {
+
+		private int statusCode;
+
 		@Override
 		public void onFailure(Throwable caught) {
-			manageError(caught);
+			manageError(caught, statusCode);
+		}
+
+		@Override
+		public void setResponse(Response response) {
+			statusCode = response.getStatusCode();
 		}
 	}
 

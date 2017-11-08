@@ -13,7 +13,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import com.telosys.gwtp.base.shared.api.Paths;
-import com.telosys.gwtp.base.shared.api.resources.util.GenericResource;
 import com.telosys.gwtp.base.shared.dto.EmployeeGroupDto;
 import com.telosys.gwtp.base.shared.dto.common.ListItemDto;
 

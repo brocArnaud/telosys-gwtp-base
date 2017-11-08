@@ -74,13 +74,13 @@ import com.telosys.gwtp.base.client.application.content.employee.list.EmployeeLi
 import com.telosys.gwtp.base.client.application.content.employee.list.EmployeeListPresenter.EmployeeListView;
 import com.telosys.gwtp.base.client.application.content.employee.list.EmployeeListViewImpl;
 import com.telosys.gwtp.base.client.application.content.error.ErrorPresenter;
-import com.telosys.gwtp.base.client.application.content.error.ErrorView;
+import com.telosys.gwtp.base.client.application.content.error.ErrorPresenter.ErrorProxy;
+import com.telosys.gwtp.base.client.application.content.error.ErrorPresenter.ErrorView;
+import com.telosys.gwtp.base.client.application.content.error.ErrorViewImpl;
 import com.telosys.gwtp.base.client.application.content.home.HomePresenter;
-import com.telosys.gwtp.base.client.application.content.home.HomeView;
-import com.telosys.gwtp.base.client.application.content.player.form.PlayerFormPresenter;
-import com.telosys.gwtp.base.client.application.content.player.form.PlayerFormView;
-import com.telosys.gwtp.base.client.application.content.player.list.PlayerListPresenter;
-import com.telosys.gwtp.base.client.application.content.player.list.PlayerListView;
+import com.telosys.gwtp.base.client.application.content.home.HomePresenter.HomeProxy;
+import com.telosys.gwtp.base.client.application.content.home.HomePresenter.HomeView;
+import com.telosys.gwtp.base.client.application.content.home.HomeViewImpl;
 import com.telosys.gwtp.base.client.application.content.publisher.form.PublisherFormPresenter;
 import com.telosys.gwtp.base.client.application.content.publisher.form.PublisherFormPresenter.PublisherFormProxy;
 import com.telosys.gwtp.base.client.application.content.publisher.form.PublisherFormPresenter.PublisherFormView;
@@ -113,10 +113,6 @@ import com.telosys.gwtp.base.client.application.content.synopsis.list.SynopsisLi
 import com.telosys.gwtp.base.client.application.content.synopsis.list.SynopsisListPresenter.SynopsisListProxy;
 import com.telosys.gwtp.base.client.application.content.synopsis.list.SynopsisListPresenter.SynopsisListView;
 import com.telosys.gwtp.base.client.application.content.synopsis.list.SynopsisListViewImpl;
-import com.telosys.gwtp.base.client.application.content.team.form.TeamFormPresenter;
-import com.telosys.gwtp.base.client.application.content.team.form.TeamFormView;
-import com.telosys.gwtp.base.client.application.content.team.list.TeamListPresenter;
-import com.telosys.gwtp.base.client.application.content.team.list.TeamListView;
 import com.telosys.gwtp.base.client.application.content.workgroup.form.WorkgroupFormPresenter;
 import com.telosys.gwtp.base.client.application.content.workgroup.form.WorkgroupFormPresenter.WorkgroupFormProxy;
 import com.telosys.gwtp.base.client.application.content.workgroup.form.WorkgroupFormPresenter.WorkgroupFormView;
@@ -126,65 +122,60 @@ import com.telosys.gwtp.base.client.application.content.workgroup.list.Workgroup
 import com.telosys.gwtp.base.client.application.content.workgroup.list.WorkgroupListPresenter.WorkgroupListView;
 import com.telosys.gwtp.base.client.application.content.workgroup.list.WorkgroupListViewImpl;
 import com.telosys.gwtp.base.client.application.layout.footer.FooterPresenter;
-import com.telosys.gwtp.base.client.application.layout.footer.FooterView;
+import com.telosys.gwtp.base.client.application.layout.footer.FooterPresenter.FooterProxy;
+import com.telosys.gwtp.base.client.application.layout.footer.FooterPresenter.FooterView;
+import com.telosys.gwtp.base.client.application.layout.footer.FooterViewImpl;
 import com.telosys.gwtp.base.client.application.layout.header.HeaderPresenter;
-import com.telosys.gwtp.base.client.application.layout.header.HeaderView;
+import com.telosys.gwtp.base.client.application.layout.header.HeaderPresenter.HeaderProxy;
+import com.telosys.gwtp.base.client.application.layout.header.HeaderPresenter.HeaderView;
+import com.telosys.gwtp.base.client.application.layout.header.HeaderViewImpl;
 
 public class ApplicationModule extends AbstractPresenterModule {
 
 	@Override
 	protected void configure() {
 		/** Header part */
-		bindPresenter(HeaderPresenter.class, HeaderPresenter.MyView.class, HeaderView.class, HeaderPresenter.MyProxy.class);
+		bindPresenter(HeaderPresenter.class, HeaderView.class, HeaderViewImpl.class, HeaderProxy.class);
 		/** Footer part */
-		bindPresenter(FooterPresenter.class, FooterPresenter.MyView.class, FooterView.class, FooterPresenter.MyProxy.class);
+		bindPresenter(FooterPresenter.class, FooterView.class, FooterViewImpl.class, FooterProxy.class);
 		/** Home Page */
-		bindPresenter(HomePresenter.class, HomePresenter.MyView.class, HomeView.class, HomePresenter.MyProxy.class);
+		bindPresenter(HomePresenter.class, HomeView.class, HomeViewImpl.class, HomeProxy.class);
 		/** Error page */
-		bindPresenter(ErrorPresenter.class, ErrorPresenter.MyView.class, ErrorView.class, ErrorPresenter.MyProxy.class);
-
-		/** Player list page */
-		bindPresenter(PlayerListPresenter.class, PlayerListPresenter.MyView.class, PlayerListView.class, PlayerListPresenter.MyProxy.class);
-		/** Player form page */
-		bindPresenter(PlayerFormPresenter.class, PlayerFormPresenter.MyView.class, PlayerFormView.class, PlayerFormPresenter.MyProxy.class);
-		/** Team list page */
-		bindPresenter(TeamListPresenter.class, TeamListPresenter.MyView.class, TeamListView.class, TeamListPresenter.MyProxy.class);
-		/** Team form page */
-		bindPresenter(TeamFormPresenter.class, TeamFormPresenter.MyView.class, TeamFormView.class, TeamFormPresenter.MyProxy.class);
+		bindPresenter(ErrorPresenter.class, ErrorView.class, ErrorViewImpl.class, ErrorProxy.class);
 
 		bindPresenter(AuthorListPresenter.class, AuthorListView.class, AuthorListViewImpl.class, AuthorListProxy.class);
 		bindPresenter(AuthorFormPresenter.class, AuthorFormView.class, AuthorFormViewImpl.class, AuthorFormProxy.class);
-		
+
 		bindPresenter(BadgeListPresenter.class, BadgeListView.class, BadgeListViewImpl.class, BadgeListProxy.class);
 		bindPresenter(BadgeFormPresenter.class, BadgeFormView.class, BadgeFormViewImpl.class, BadgeFormProxy.class);
-		
+
 		bindPresenter(BookListPresenter.class, BookListView.class, BookListViewImpl.class, BookListProxy.class);
 		bindPresenter(BookFormPresenter.class, BookFormView.class, BookFormViewImpl.class, BookFormProxy.class);
-		
+
 		bindPresenter(BookOrderListPresenter.class, BookOrderListView.class, BookOrderListViewImpl.class, BookOrderListProxy.class);
 		bindPresenter(BookOrderFormPresenter.class, BookOrderFormView.class, BookOrderFormViewImpl.class, BookOrderFormProxy.class);
-		
+
 		bindPresenter(BookOrderItemListPresenter.class, BookOrderItemListView.class, BookOrderItemListViewImpl.class, BookOrderItemListProxy.class);
 		bindPresenter(BookOrderItemFormPresenter.class, BookOrderItemFormView.class, BookOrderItemFormViewImpl.class, BookOrderItemFormProxy.class);
-		
+
 		bindPresenter(CountryListPresenter.class, CountryListView.class, CountryListViewImpl.class, CountryListProxy.class);
 		bindPresenter(CountryFormPresenter.class, CountryFormView.class, CountryFormViewImpl.class, CountryFormProxy.class);
-		
+
 		bindPresenter(CustomerListPresenter.class, CustomerListView.class, CustomerListViewImpl.class, CustomerListProxy.class);
 		bindPresenter(CustomerFormPresenter.class, CustomerFormView.class, CustomerFormViewImpl.class, CustomerFormProxy.class);
-		
+
 		bindPresenter(EmployeeListPresenter.class, EmployeeListView.class, EmployeeListViewImpl.class, EmployeeListProxy.class);
 		bindPresenter(EmployeeFormPresenter.class, EmployeeFormView.class, EmployeeFormViewImpl.class, EmployeeFormProxy.class);
-		
+
 		bindPresenter(EmployeeGroupListPresenter.class, EmployeeGroupListView.class, EmployeeGroupListViewImpl.class, EmployeeGroupListProxy.class);
 		bindPresenter(EmployeeGroupFormPresenter.class, EmployeeGroupFormView.class, EmployeeGroupFormViewImpl.class, EmployeeGroupFormProxy.class);
-		
+
 		bindPresenter(PublisherListPresenter.class, PublisherListView.class, PublisherListViewImpl.class, PublisherListProxy.class);
 		bindPresenter(PublisherFormPresenter.class, PublisherFormView.class, PublisherFormViewImpl.class, PublisherFormProxy.class);
-		
+
 		bindPresenter(ReviewListPresenter.class, ReviewListView.class, ReviewListViewImpl.class, ReviewListProxy.class);
 		bindPresenter(ReviewFormPresenter.class, ReviewFormView.class, ReviewFormViewImpl.class, ReviewFormProxy.class);
-		
+
 		bindPresenter(ShopListPresenter.class, ShopListView.class, ShopListViewImpl.class, ShopListProxy.class);
 		bindPresenter(ShopFormPresenter.class, ShopFormView.class, ShopFormViewImpl.class, ShopFormProxy.class);
 

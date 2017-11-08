@@ -8,7 +8,7 @@
 					<b:Column size="MD_4" offset="MD_4">
 						<b:Panel addStyleNames="{res.style.formPanel}">
 							<b:PanelHeader>
-								<b:Heading size="H3" text="Creating a new player" />
+								<b:Heading size="H3" text="Creating a new employee" />
 							</b:PanelHeader>
 							<b:PanelBody ui:field="body">
 								<b:Form>
@@ -21,7 +21,7 @@
 										<b:FormGroup>
 											<b:FormLabel for="shopCode" text="Shop code" />
 											<b:InlineHelpBlock iconType="EXCLAMATION_TRIANGLE" />
-											<b:TextBox b:id="shopCode" ui:field="shopCode" />
+											<b:ValueListBox b:id="shopCode" ui:field="shopCode" allowBlank="false" />
 										</b:FormGroup>
 										<b:FormGroup>
 											<b:FormLabel for="firstName" text="First name" />
@@ -41,7 +41,7 @@
 										<b:FormGroup>
 											<b:FormLabel for="badgeNumber" text="Badge number" />
 											<b:InlineHelpBlock iconType="EXCLAMATION_TRIANGLE" />
-											<b:IntegerBox b:id="badgeNumber" ui:field="badgeNumber" />
+											<b:ValueListBox b:id="badgeNumber" ui:field="badgeNumber" allowBlank="false" />
 										</b:FormGroup>
 										<b:FormGroup>
 											<b:FormLabel for="email" text="Email" />
@@ -59,6 +59,9 @@
 					</b:Column>
 					<b:Column ui:field="notification" size="MD_4" offset="MD_4" addStyleNames="{res.style.notificationContainer}" visible="false">
 						<b:Label ui:field="labelNotification" text="Player creation succes" type="SUCCESS" />
+					</b:Column>
+					<b:Column ui:field="notificationError" size="MD_4" offset="MD_4" addStyleNames="{res.style.notificationContainer}" visible="false">
+						<b:Label ui:field="labelNotificationError" text="Error" type="DANGER" />
 					</b:Column>
 				</b:Row>
 			</g:HTMLPanel>

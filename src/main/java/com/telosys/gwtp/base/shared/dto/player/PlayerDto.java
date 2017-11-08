@@ -1,14 +1,17 @@
 package com.telosys.gwtp.base.shared.dto.player;
 
+import java.io.Serializable;
+
 import javax.validation.constraints.NotNull;
 
-import com.telosys.gwtp.base.shared.dto.common.IdDto;
 import com.telosys.gwtp.base.shared.dto.player.validation.ValidPlayer;
 
 @ValidPlayer
-public class PlayerDto extends IdDto {
+public class PlayerDto implements Serializable {
 
 	private static final long serialVersionUID = 7828224611035419587L;
+
+	private Long id;
 
 	@NotNull
 	private String name;
@@ -20,9 +23,17 @@ public class PlayerDto extends IdDto {
 	}
 
 	public PlayerDto(Long id, String name, String team) {
-		setId(id);
+		this.id = id;
 		this.name = name;
 		this.team = team;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getName() {

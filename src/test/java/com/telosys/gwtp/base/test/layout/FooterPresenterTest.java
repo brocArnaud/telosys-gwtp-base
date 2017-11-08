@@ -11,8 +11,8 @@ import org.junit.runner.RunWith;
 
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
+import com.telosys.gwtp.base.client.application.ApplicationPresenter.MyView;
 import com.telosys.gwtp.base.client.application.layout.footer.FooterPresenter;
-import com.telosys.gwtp.base.client.application.layout.header.HeaderPresenter.MyView;
 import com.telosys.gwtp.base.client.place.NameTokens;
 
 @RunWith(JukitoRunner.class)

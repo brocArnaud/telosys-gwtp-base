@@ -30,4 +30,9 @@ public class ListItemDto implements Serializable {
 	public void setLabel(String label) {
 		this.label = label;
 	}
+
+	@Override
+	public String toString() {
+		return "ListItemDto [value=" + value + ", label=" + label + "]";
+	}
 }

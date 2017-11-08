@@ -8,7 +8,7 @@
 					<b:Column size="MD_4" offset="MD_4">
 						<b:Panel addStyleNames="{res.style.formPanel}">
 							<b:PanelHeader>
-								<b:Heading size="H3" text="Creating a new player" />
+								<b:Heading size="H3" text="Creating a new country" />
 							</b:PanelHeader>
 							<b:PanelBody ui:field="body">
 								<b:Form>
@@ -34,6 +34,9 @@
 					</b:Column>
 					<b:Column ui:field="notification" size="MD_4" offset="MD_4" addStyleNames="{res.style.notificationContainer}" visible="false">
 						<b:Label ui:field="labelNotification" text="Player creation succes" type="SUCCESS" />
+					</b:Column>
+					<b:Column ui:field="notificationError" size="MD_4" offset="MD_4" addStyleNames="{res.style.notificationContainer}" visible="false">
+						<b:Label ui:field="labelNotificationError" text="Error" type="DANGER" />
 					</b:Column>
 				</b:Row>
 			</g:HTMLPanel>

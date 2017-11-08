@@ -6,9 +6,8 @@
 package com.telosys.gwtp.base.shared.dto;
 
 import java.io.Serializable;
-import javax.validation.constraints.*;
 
-import java.math.BigDecimal;
+import javax.validation.constraints.NotNull;
 
 /**
  * Java bean for entity "BOOK_ORDER_ITEM" <br>

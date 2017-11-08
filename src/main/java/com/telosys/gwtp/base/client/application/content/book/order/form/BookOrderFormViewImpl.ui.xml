@@ -9,7 +9,7 @@
 					<b:Column size="MD_4" offset="MD_4">
 						<b:Panel addStyleNames="{res.style.formPanel}">
 							<b:PanelHeader>
-								<b:Heading size="H3" text="Creating a new player" />
+								<b:Heading size="H3" text="Creating a new book order" />
 							</b:PanelHeader>
 							<b:PanelBody ui:field="body">
 								<b:Form>
@@ -20,19 +20,19 @@
 											<b:IntegerBox b:id="id" ui:field="id" />
 										</b:FormGroup>
 										<b:FormGroup>
-											<b:FormLabel for="shopCode" text="Shop code" />
+											<b:FormLabel for="shopCode" text="Shop" />
 											<b:InlineHelpBlock iconType="EXCLAMATION_TRIANGLE" />
-											<b:TextBox b:id="shopCode" ui:field="shopCode" />
+											<b:ValueListBox b:id="shopCode" ui:field="shopCode" allowBlank="false" />
 										</b:FormGroup>
 										<b:FormGroup>
-											<b:FormLabel for="customerCode" text="Customer code" />
+											<b:FormLabel for="customerCode" text="Customer" />
 											<b:InlineHelpBlock iconType="EXCLAMATION_TRIANGLE" />
-											<b:TextBox b:id="customerCode" ui:field="customerCode" />
+											<b:ValueListBox b:id="customerCode" ui:field="customerCode" allowBlank="false" />
 										</b:FormGroup>
 										<b:FormGroup>
-											<b:FormLabel for="employeeCode" text="Employee code" />
+											<b:FormLabel for="employeeCode" text="Employee" />
 											<b:InlineHelpBlock iconType="EXCLAMATION_TRIANGLE" />
-											<b:TextBox b:id="employeeCode" ui:field="employeeCode" />
+											<b:ValueListBox b:id="employeeCode" ui:field="employeeCode" allowBlank="false" />
 										</b:FormGroup>
 										<b:FormGroup>
 											<b:FormLabel for="date" text="Date" />
@@ -55,6 +55,9 @@
 					</b:Column>
 					<b:Column ui:field="notification" size="MD_4" offset="MD_4" addStyleNames="{res.style.notificationContainer}" visible="false">
 						<b:Label ui:field="labelNotification" text="Player creation succes" type="SUCCESS" />
+					</b:Column>
+					<b:Column ui:field="notificationError" size="MD_4" offset="MD_4" addStyleNames="{res.style.notificationContainer}" visible="false">
+						<b:Label ui:field="labelNotificationError" text="Error" type="DANGER" />
 					</b:Column>
 				</b:Row>
 			</g:HTMLPanel>

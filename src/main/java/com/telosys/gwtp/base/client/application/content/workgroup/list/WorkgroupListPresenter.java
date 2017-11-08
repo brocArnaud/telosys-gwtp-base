@@ -17,10 +17,10 @@ import com.telosys.gwtp.base.client.place.NameTokens;
 import com.telosys.gwtp.base.client.place.TokenParameters;
 import com.telosys.gwtp.base.client.util.common.list.presenter.AbstractListPresenter;
 import com.telosys.gwtp.base.client.util.common.list.view.ListView;
-import com.telosys.gwtp.base.shared.api.resources.AuthorResource;
+import com.telosys.gwtp.base.shared.api.resources.WorkgroupResource;
 import com.telosys.gwtp.base.shared.dto.WorkgroupDto;
 
-public class WorkgroupListPresenter extends AbstractListPresenter<WorkgroupListProxy, WorkgroupListView, WorkgroupDto, AuthorResource> {
+public class WorkgroupListPresenter extends AbstractListPresenter<WorkgroupListProxy, WorkgroupListView, WorkgroupDto, WorkgroupResource> {
 
 	public interface WorkgroupListView extends ListView<WorkgroupListPresenter, WorkgroupDto> {
 	}

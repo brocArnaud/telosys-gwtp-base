@@ -18,7 +18,7 @@ import com.telosys.gwtp.base.client.place.TokenParameters;
 import com.telosys.gwtp.base.client.util.common.list.presenter.AbstractListPresenter;
 import com.telosys.gwtp.base.client.util.common.list.view.ListView;
 import com.telosys.gwtp.base.shared.api.resources.BookResource;
-import com.telosys.gwtp.base.shared.dto.BookDto;
+import com.telosys.gwtp.base.shared.dto.book.BookDto;
 
 public class BookListPresenter extends AbstractListPresenter<BookListProxy, BookListView, BookDto, BookResource> {
 

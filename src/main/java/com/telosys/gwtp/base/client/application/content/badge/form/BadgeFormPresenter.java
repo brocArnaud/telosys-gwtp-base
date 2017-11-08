@@ -21,6 +21,7 @@ import com.telosys.gwtp.base.shared.dto.BadgeDto;
 public class BadgeFormPresenter extends AbstractFormPresenter<BadgeFormProxy, BadgeFormView, BadgeDto, BadgeResource> {
 
 	public interface BadgeFormView extends FormView<BadgeFormPresenter, BadgeDto> {
+		String getBadgeNumberValue();
 	}
 
 	@ProxyStandard
@@ -66,7 +67,7 @@ public class BadgeFormPresenter extends AbstractFormPresenter<BadgeFormProxy, Ba
 
 	@Override
 	public void loadAction() {
-		final String id = getCurrentPlaceRequestId();
+		final String id = getCurrentPlaceRequestId(TokenParameters.BADGE_NUMBER);
 		updateMode = !id.equals(TokenParameters.DEFAULT_ID);
 		if (updateMode) {
 			LoadingEvent.fire(this, true);
@@ -81,5 +82,16 @@ public class BadgeFormPresenter extends AbstractFormPresenter<BadgeFormProxy, Ba
 		} else {
 			getView().load(newInstance());
 		}
+	}
+
+	@Override
+	public void manageConflictError() {
+		logger.severe("A conflict error occured");
+		getView().showNotificationError(true, "Badge with Badge number value ( "+getView().getBadgeNumberValue()+" ) already exist !");
+	}
+
+	@Override
+	public void manageNotFoundError() {
+		getView().showNotificationError(true, "Badge with Badge number value ( "+getView().getBadgeNumberValue()+" ) dont exist !");
 	}
 }

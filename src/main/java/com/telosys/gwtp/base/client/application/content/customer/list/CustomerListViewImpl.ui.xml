@@ -5,7 +5,7 @@
 			<g:HTMLPanel>
 				<b:Row>
 					<b:Column size="MD_11" addStyleNames="{res.style.columnSmall}">
-						<b:Heading size="H1" text="Player list view" />
+						<b:Heading size="H1" text="Customer list view" />
 					</b:Column>
 					<b:Column size="MD_1" addStyleNames="{res.style.columnSmall}">
 						<b:Button ui:field="create" text="Create" type="PRIMARY" addStyleNames="{res.style.buttonCreate}" />
