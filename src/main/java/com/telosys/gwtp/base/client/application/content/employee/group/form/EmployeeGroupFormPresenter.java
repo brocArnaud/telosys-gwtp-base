@@ -35,11 +35,6 @@ public class EmployeeGroupFormPresenter extends AbstractFormPresenter<EmployeeGr
 	}
 
 	@Override
-	public EmployeeGroupDto newInstance() {
-		return new EmployeeGroupDto();
-	}
-
-	@Override
 	public String getListRouteToken() {
 		return NameTokens.EMPLOYEE_GROUP_LIST;
 	}
@@ -80,7 +75,7 @@ public class EmployeeGroupFormPresenter extends AbstractFormPresenter<EmployeeGr
 				}
 			}).get(employeeCode, Integer.valueOf(groupId));
 		} else {
-			getView().load(newInstance());
+			getView().load(new EmployeeGroupDto());
 		}
 	}
 }

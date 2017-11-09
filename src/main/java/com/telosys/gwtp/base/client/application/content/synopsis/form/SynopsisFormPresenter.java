@@ -35,11 +35,6 @@ public class SynopsisFormPresenter extends AbstractFormPresenter<SynopsisFormPro
 	}
 
 	@Override
-	public SynopsisDto newInstance() {
-		return new SynopsisDto();
-	}
-
-	@Override
 	public String getListRouteToken() {
 		return NameTokens.SYNOPSIS_LIST;
 	}
@@ -79,7 +74,7 @@ public class SynopsisFormPresenter extends AbstractFormPresenter<SynopsisFormPro
 				}
 			}).get(Integer.valueOf(id));
 		} else {
-			getView().load(newInstance());
+			getView().load(new SynopsisDto());
 		}
 	}
 }

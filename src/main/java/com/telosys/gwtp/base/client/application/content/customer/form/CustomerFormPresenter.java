@@ -57,11 +57,6 @@ public class CustomerFormPresenter extends AbstractFormPresenter<CustomerFormPro
 	}
 
 	@Override
-	public CustomerDto newInstance() {
-		return new CustomerDto();
-	}
-
-	@Override
 	public String getListRouteToken() {
 		return NameTokens.CUSTOMER_LIST;
 	}
@@ -101,7 +96,7 @@ public class CustomerFormPresenter extends AbstractFormPresenter<CustomerFormPro
 				}
 			}).get(id);
 		} else {
-			getView().load(newInstance());
+			getView().load(new CustomerDto());
 		}
 	}
 }

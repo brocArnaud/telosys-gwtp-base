@@ -35,11 +35,6 @@ public class CountryFormPresenter extends AbstractFormPresenter<CountryFormProxy
 	}
 
 	@Override
-	public CountryDto newInstance() {
-		return new CountryDto();
-	}
-
-	@Override
 	public String getListRouteToken() {
 		return NameTokens.COUNTRY_LIST;
 	}
@@ -79,7 +74,7 @@ public class CountryFormPresenter extends AbstractFormPresenter<CountryFormProxy
 				}
 			}).get(code);
 		} else {
-			getView().load(newInstance());
+			getView().load(new CountryDto());
 		}
 	}
 }

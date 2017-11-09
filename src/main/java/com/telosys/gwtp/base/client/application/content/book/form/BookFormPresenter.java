@@ -72,11 +72,6 @@ public class BookFormPresenter extends AbstractFormPresenter<BookFormProxy, Book
 	}
 
 	@Override
-	public BookDto newInstance() {
-		return new BookDto();
-	}
-
-	@Override
 	public String getListRouteToken() {
 		return NameTokens.BOOK_LIST;
 	}
@@ -116,7 +111,7 @@ public class BookFormPresenter extends AbstractFormPresenter<BookFormProxy, Book
 				}
 			}).get(Integer.valueOf(id));
 		} else {
-			getView().load(newInstance());
+			getView().load(new BookDto());
 		}
 	}
 }

@@ -94,6 +94,7 @@ public abstract class AbstractFormView<P extends FormPresenter<F>, F> extends Vi
 
 	@Override
 	public void load(F team) {
+		GWT.log("====> load go to edit");
 		this.driver.edit(team);
 	}
 

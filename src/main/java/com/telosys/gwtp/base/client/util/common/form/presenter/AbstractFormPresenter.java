@@ -36,9 +36,6 @@ public abstract class AbstractFormPresenter<P extends Proxy<?>, V extends FormVi
 	 */
 	public abstract String getListRouteToken();
 
-	/** Give a new empty F object. */
-	public abstract F newInstance();
-
 	/**
 	 * Override this method if special operation need to be done on data before
 	 * call server.

@@ -35,10 +35,6 @@ public class BadgeFormPresenter extends AbstractFormPresenter<BadgeFormProxy, Ba
 		getView().setPresenter(this);
 	}
 
-	@Override
-	public BadgeDto newInstance() {
-		return new BadgeDto();
-	}
 
 	@Override
 	public String getListRouteToken() {
@@ -80,7 +76,7 @@ public class BadgeFormPresenter extends AbstractFormPresenter<BadgeFormProxy, Ba
 				}
 			}).get(Integer.valueOf(id));
 		} else {
-			getView().load(newInstance());
+			getView().load(new BadgeDto());
 		}
 	}
 

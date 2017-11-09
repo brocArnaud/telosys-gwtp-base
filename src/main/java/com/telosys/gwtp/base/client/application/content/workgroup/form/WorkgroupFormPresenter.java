@@ -35,11 +35,6 @@ public class WorkgroupFormPresenter extends AbstractFormPresenter<WorkgroupFormP
 	}
 
 	@Override
-	public WorkgroupDto newInstance() {
-		return new WorkgroupDto();
-	}
-
-	@Override
 	public String getListRouteToken() {
 		return NameTokens.WORKGROUP_LIST;
 	}
@@ -79,7 +74,7 @@ public class WorkgroupFormPresenter extends AbstractFormPresenter<WorkgroupFormP
 				}
 			}).get(Integer.valueOf(id));
 		} else {
-			getView().load(newInstance());
+			getView().load(new WorkgroupDto());
 		}
 	}
 }

@@ -58,11 +58,6 @@ public class PublisherFormPresenter extends AbstractFormPresenter<PublisherFormP
 	}
 
 	@Override
-	public PublisherDto newInstance() {
-		return new PublisherDto();
-	}
-
-	@Override
 	public String getListRouteToken() {
 		return NameTokens.PUBLISHER_LIST;
 	}
@@ -102,7 +97,7 @@ public class PublisherFormPresenter extends AbstractFormPresenter<PublisherFormP
 				}
 			}).get(Integer.valueOf(code));
 		} else {
-			getView().load(newInstance());
+			getView().load(new PublisherDto());
 		}
 	}
 }

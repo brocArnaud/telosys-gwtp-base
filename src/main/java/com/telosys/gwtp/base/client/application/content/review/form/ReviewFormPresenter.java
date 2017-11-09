@@ -1,5 +1,6 @@
 package com.telosys.gwtp.base.client.application.content.review.form;
 
+import com.google.gwt.core.client.GWT;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.dispatch.rest.client.RestDispatch;
@@ -35,11 +36,6 @@ public class ReviewFormPresenter extends AbstractFormPresenter<ReviewFormProxy, 
 	}
 
 	@Override
-	public ReviewDto newInstance() {
-		return new ReviewDto();
-	}
-
-	@Override
 	public String getListRouteToken() {
 		return NameTokens.REVIEW_LIST;
 	}
@@ -68,19 +64,22 @@ public class ReviewFormPresenter extends AbstractFormPresenter<ReviewFormProxy, 
 	public void loadAction() {
 		final String customerCode = getCurrentPlaceRequestId(TokenParameters.CUSTOMER_CODE);
 		final String bookId = getCurrentPlaceRequestId(TokenParameters.BOOK_ID);
+		GWT.log("customerCode :" + customerCode);
+		GWT.log("bookId :" + bookId);
 		updateMode = !customerCode.equals(TokenParameters.DEFAULT_ID);
 		if (updateMode) {
 			LoadingEvent.fire(this, true);
 			service.withCallback(new CallBack<ReviewDto>() {
 				@Override
 				public void onSuccess(ReviewDto data) {
+					GWT.log("data :" + data);
 					getView().load(data);
 					getView().setUpdateMode(updateMode);
 					LoadingEvent.fire(ReviewFormPresenter.this, false);
 				}
 			}).get(customerCode, Integer.valueOf(bookId));
 		} else {
-			getView().load(newInstance());
+			getView().load(new ReviewDto());
 		}
 	}
 }

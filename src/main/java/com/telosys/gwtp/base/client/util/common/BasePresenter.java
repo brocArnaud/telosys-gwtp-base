@@ -2,6 +2,7 @@ package com.telosys.gwtp.base.client.util.common;
 
 import java.util.logging.Logger;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.http.client.Response;
 import com.google.web.bindery.event.shared.EventBus;
@@ -78,6 +79,8 @@ public abstract class BasePresenter<V extends View, P extends Proxy<?>> extends 
 		@Override
 		public void setResponse(Response response) {
 			statusCode = response.getStatusCode();
+			GWT.log("STATUS CODE : " + statusCode);
+			GWT.log("TEXT CODE : " + response.getText());
 		}
 	}
 

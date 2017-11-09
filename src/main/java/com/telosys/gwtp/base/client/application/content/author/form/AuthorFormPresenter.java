@@ -35,11 +35,6 @@ public class AuthorFormPresenter extends AbstractFormPresenter<AuthorFormProxy, 
 	}
 
 	@Override
-	public AuthorDto newInstance() {
-		return new AuthorDto();
-	}
-
-	@Override
 	public String getListRouteToken() {
 		return NameTokens.AUTHOR_LIST;
 	}
@@ -79,7 +74,7 @@ public class AuthorFormPresenter extends AbstractFormPresenter<AuthorFormProxy, 
 				}
 			}).get(Integer.valueOf(id));
 		} else {
-			getView().load(newInstance());
+			getView().load(new AuthorDto());
 		}
 	}
 }

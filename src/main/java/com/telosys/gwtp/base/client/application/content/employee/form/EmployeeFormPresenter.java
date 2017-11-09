@@ -70,11 +70,6 @@ public class EmployeeFormPresenter extends AbstractFormPresenter<EmployeeFormPro
 	}
 
 	@Override
-	public EmployeeDto newInstance() {
-		return new EmployeeDto();
-	}
-
-	@Override
 	public String getListRouteToken() {
 		return NameTokens.EMPLOYEE_LIST;
 	}
@@ -114,7 +109,7 @@ public class EmployeeFormPresenter extends AbstractFormPresenter<EmployeeFormPro
 				}
 			}).get(code);
 		} else {
-			getView().load(newInstance());
+			getView().load(new EmployeeDto());
 		}
 	}
 }

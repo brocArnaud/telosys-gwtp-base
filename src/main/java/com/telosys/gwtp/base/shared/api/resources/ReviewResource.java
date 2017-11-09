@@ -26,7 +26,7 @@ public interface ReviewResource {
 
 	@GET
 	@Path("{customerCode}/{bookId}")
-	void get(@PathParam("customerCode") String customerCode, @PathParam("bookId") Integer bookId);
+	ReviewDto get(@PathParam("customerCode") String customerCode, @PathParam("bookId") Integer bookId);
 
 	@POST
 	void create(ReviewDto review);

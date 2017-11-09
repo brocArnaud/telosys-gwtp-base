@@ -70,11 +70,6 @@ public class ShopFormPresenter extends AbstractFormPresenter<ShopFormProxy, Shop
 	}
 
 	@Override
-	public ShopDto newInstance() {
-		return new ShopDto();
-	}
-
-	@Override
 	public String getListRouteToken() {
 		return NameTokens.SHOP_LIST;
 	}
@@ -114,7 +109,7 @@ public class ShopFormPresenter extends AbstractFormPresenter<ShopFormProxy, Shop
 				}
 			}).get(id);
 		} else {
-			getView().load(newInstance());
+			getView().load(new ShopDto());
 		}
 	}
 }
