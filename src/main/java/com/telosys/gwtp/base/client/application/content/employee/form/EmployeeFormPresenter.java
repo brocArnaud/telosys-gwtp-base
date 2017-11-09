@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
-import com.gwtplatform.dispatch.rest.client.RestDispatch;
 import com.gwtplatform.dispatch.rest.delegates.client.ResourceDelegate;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
@@ -44,27 +43,24 @@ public class EmployeeFormPresenter extends AbstractFormPresenter<EmployeeFormPro
 	ResourceDelegate<BadgeResource> badgeService;
 
 	@Inject
-	EmployeeFormPresenter(EventBus eventBus, EmployeeFormView view, EmployeeFormProxy proxy, PlaceManager placeManager, RestDispatch dispatcher) {
-		super(eventBus, view, proxy, ApplicationPresenter.SLOT_MAIN, placeManager, dispatcher);
+	EmployeeFormPresenter(EventBus eventBus, EmployeeFormView view, EmployeeFormProxy proxy, PlaceManager placeManager) {
+		super(eventBus, view, proxy, ApplicationPresenter.SLOT_MAIN, placeManager);
 		getView().setPresenter(this);
 	}
 
 	@Override
-	protected void onBind() {
-		super.onBind();
-		LoadingEvent.fire(this, true);
+	public void onReveal() {
+		super.onReveal();
 		shopService.withCallback(new CallBack<List<ListItemDto>>() {
 			@Override
 			public void onSuccess(List<ListItemDto> items) {
 				getView().loadShop(items);
-				LoadingEvent.fire(EmployeeFormPresenter.this, false);
 			}
 		}).listItems();
 		badgeService.withCallback(new CallBack<List<ListItemDto>>() {
 			@Override
 			public void onSuccess(List<ListItemDto> items) {
 				getView().loadBadge(items);
-				LoadingEvent.fire(EmployeeFormPresenter.this, false);
 			}
 		}).listItems();
 	}

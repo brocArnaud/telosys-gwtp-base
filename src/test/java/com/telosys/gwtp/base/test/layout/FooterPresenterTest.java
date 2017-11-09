@@ -11,8 +11,8 @@ import org.junit.runner.RunWith;
 
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
-import com.telosys.gwtp.base.client.application.ApplicationPresenter.MyView;
 import com.telosys.gwtp.base.client.application.layout.footer.FooterPresenter;
+import com.telosys.gwtp.base.client.application.layout.footer.FooterPresenter.FooterView;
 import com.telosys.gwtp.base.client.place.NameTokens;
 
 @RunWith(JukitoRunner.class)
@@ -21,24 +21,45 @@ public class FooterPresenterTest {
 	@Inject
 	FooterPresenter footerPresenter;
 	@Inject
-	MyView view;
+	FooterView view;
 
 	@Test
-	public void onPlayerListClick(PlaceManager placeManager) {
+	public void onReviewListClick(PlaceManager placeManager) {
 		// Given
-		PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(NameTokens.PLAYER_LIST).build();
+		PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(NameTokens.REVIEW_LIST).build();
 		// When
-		footerPresenter.onPlayerClick();
+		footerPresenter.onReviewClick();
+		;
 		// Then
 		verify(placeManager).revealPlace(eq(placeRequest));
 	}
 
 	@Test
-	public void onTeamListClick(PlaceManager placeManager) {
+	public void onShopListClick(PlaceManager placeManager) {
 		// Given
-		PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(NameTokens.TEAM_LIST).build();
+		PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(NameTokens.SHOP_LIST).build();
 		// When
-		footerPresenter.onTeamClick();
+		footerPresenter.onShopClick();
+		// Then
+		verify(placeManager).revealPlace(eq(placeRequest));
+	}
+
+	@Test
+	public void onSynopsisListClick(PlaceManager placeManager) {
+		// Given
+		PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(NameTokens.SYNOPSIS_LIST).build();
+		// When
+		footerPresenter.onSynopsisClick();
+		// Then
+		verify(placeManager).revealPlace(eq(placeRequest));
+	}
+
+	@Test
+	public void onWorkGroupListClick(PlaceManager placeManager) {
+		// Given
+		PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(NameTokens.WORKGROUP_LIST).build();
+		// When
+		footerPresenter.onWorkgroupClick();
 		// Then
 		verify(placeManager).revealPlace(eq(placeRequest));
 	}

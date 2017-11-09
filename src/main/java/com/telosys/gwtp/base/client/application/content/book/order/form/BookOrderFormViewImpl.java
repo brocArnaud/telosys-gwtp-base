@@ -6,19 +6,15 @@ import java.util.stream.Collectors;
 import javax.inject.Inject;
 
 import org.gwtbootstrap3.client.ui.IntegerBox;
-import org.gwtbootstrap3.client.ui.TextBox;
 import org.gwtbootstrap3.client.ui.ValueListBox;
 import org.gwtbootstrap3.extras.datepicker.client.ui.DatePicker;
 
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.editor.client.Editor.Ignore;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Widget;
 import com.telosys.gwtp.base.client.application.content.book.order.form.BookOrderFormPresenter.BookOrderFormView;
 import com.telosys.gwtp.base.client.util.common.form.view.AbstractFormView;
 import com.telosys.gwtp.base.shared.dto.BookOrderDto;
-import com.telosys.gwtp.base.shared.dto.book.BookDto;
 import com.telosys.gwtp.base.shared.dto.common.ListItemDto;
 
 import de.knightsoftnet.validators.client.editor.BeanValidationEditorDriver;
@@ -53,6 +49,7 @@ public class BookOrderFormViewImpl extends AbstractFormView<BookOrderFormPresent
 		customerCode = initListItemBox();
 		employeeCode = initListItemBox();
 		initWidget(uiBinder.createAndBindUi(this));
+		initDatePicker(date);
 		this.driver.initialize(this);
 	}
 

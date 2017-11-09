@@ -35,6 +35,7 @@ public class WorkgroupFormViewImpl extends AbstractFormView<WorkgroupFormPresent
 	WorkgroupFormViewImpl(Binder uiBinder, final Driver driver) {
 		super(driver);
 		initWidget(uiBinder.createAndBindUi(this));
+		initDatePicker(creationDate);
 		this.driver.initialize(this);
 	}
 }

@@ -2,7 +2,6 @@ package com.telosys.gwtp.base.client.application.content.author.form;
 
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
-import com.gwtplatform.dispatch.rest.client.RestDispatch;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
@@ -29,8 +28,8 @@ public class AuthorFormPresenter extends AbstractFormPresenter<AuthorFormProxy, 
 	}
 
 	@Inject
-	AuthorFormPresenter(EventBus eventBus, AuthorFormView view, AuthorFormProxy proxy, PlaceManager placeManager, RestDispatch dispatcher) {
-		super(eventBus, view, proxy, ApplicationPresenter.SLOT_MAIN, placeManager, dispatcher);
+	AuthorFormPresenter(EventBus eventBus, AuthorFormView view, AuthorFormProxy proxy, PlaceManager placeManager) {
+		super(eventBus, view, proxy, ApplicationPresenter.SLOT_MAIN, placeManager);
 		getView().setPresenter(this);
 	}
 

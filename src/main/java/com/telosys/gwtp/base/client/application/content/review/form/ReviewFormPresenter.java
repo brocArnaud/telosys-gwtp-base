@@ -1,9 +1,7 @@
 package com.telosys.gwtp.base.client.application.content.review.form;
 
-import com.google.gwt.core.client.GWT;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
-import com.gwtplatform.dispatch.rest.client.RestDispatch;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
@@ -30,8 +28,8 @@ public class ReviewFormPresenter extends AbstractFormPresenter<ReviewFormProxy, 
 	}
 
 	@Inject
-	ReviewFormPresenter(EventBus eventBus, ReviewFormView view, ReviewFormProxy proxy, PlaceManager placeManager, RestDispatch dispatcher) {
-		super(eventBus, view, proxy, ApplicationPresenter.SLOT_MAIN, placeManager, dispatcher);
+	ReviewFormPresenter(EventBus eventBus, ReviewFormView view, ReviewFormProxy proxy, PlaceManager placeManager) {
+		super(eventBus, view, proxy, ApplicationPresenter.SLOT_MAIN, placeManager);
 		getView().setPresenter(this);
 	}
 
@@ -64,15 +62,12 @@ public class ReviewFormPresenter extends AbstractFormPresenter<ReviewFormProxy, 
 	public void loadAction() {
 		final String customerCode = getCurrentPlaceRequestId(TokenParameters.CUSTOMER_CODE);
 		final String bookId = getCurrentPlaceRequestId(TokenParameters.BOOK_ID);
-		GWT.log("customerCode :" + customerCode);
-		GWT.log("bookId :" + bookId);
 		updateMode = !customerCode.equals(TokenParameters.DEFAULT_ID);
 		if (updateMode) {
 			LoadingEvent.fire(this, true);
 			service.withCallback(new CallBack<ReviewDto>() {
 				@Override
 				public void onSuccess(ReviewDto data) {
-					GWT.log("data :" + data);
 					getView().load(data);
 					getView().setUpdateMode(updateMode);
 					LoadingEvent.fire(ReviewFormPresenter.this, false);

@@ -49,7 +49,7 @@ public class CustomerDto implements Serializable
     @Size( max = 20 )
     private String phone ;  // String 
 
-    private Integer reviewer ;  // Short 
+    private Boolean reviewer ;  // Short 
 
     /**
      * Default constructor
@@ -240,7 +240,7 @@ public class CustomerDto implements Serializable
      * This field is mapped on the database column "REVIEWER" ( type "SMALLINT", NotNull : false ) 
      * @param reviewer
      */
-    public void setReviewer( Integer reviewer ) {
+    public void setReviewer( Boolean reviewer ) {
         this.reviewer = reviewer;
     }
     /**
@@ -248,7 +248,7 @@ public class CustomerDto implements Serializable
      * This field is mapped on the database column "REVIEWER" ( type "SMALLINT", NotNull : false ) 
      * @return the field value
      */
-    public Integer getReviewer() {
+    public Boolean getReviewer() {
         return this.reviewer;
     }
 
@@ -257,7 +257,7 @@ public class CustomerDto implements Serializable
     //----------------------------------------------------------------------
     @Override
     public String toString() { 
-        StringBuffer sb = new StringBuffer(); 
+    	StringBuilder sb = new StringBuilder(); 
         sb.append(code);
         sb.append("|");
         sb.append(countryCode);

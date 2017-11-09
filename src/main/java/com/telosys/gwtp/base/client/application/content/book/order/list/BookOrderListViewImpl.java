@@ -42,7 +42,7 @@ public class BookOrderListViewImpl extends AbstractListView<BookOrderListPresent
 
 			@Override
 			public String getValue(final BookOrderDto object) {
-				return String.valueOf(object.getDate());
+				return object != null ? formatDate(object.getDate()) : "";
 			}
 		};
 		table.addColumn(col3, "Date");

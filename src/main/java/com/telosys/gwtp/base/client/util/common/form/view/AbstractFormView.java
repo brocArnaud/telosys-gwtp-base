@@ -1,6 +1,7 @@
 package com.telosys.gwtp.base.client.util.common.form.view;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
@@ -13,10 +14,13 @@ import org.gwtbootstrap3.client.ui.Column;
 import org.gwtbootstrap3.client.ui.Label;
 import org.gwtbootstrap3.client.ui.PanelBody;
 import org.gwtbootstrap3.client.ui.ValueListBox;
+import org.gwtbootstrap3.extras.datepicker.client.ui.DatePicker;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.Editor;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.i18n.client.LocaleInfo;
+import com.google.gwt.i18n.shared.DateTimeFormat;
+import com.google.gwt.i18n.shared.DateTimeFormat.PredefinedFormat;
 import com.google.gwt.text.shared.AbstractRenderer;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -72,9 +76,6 @@ public abstract class AbstractFormView<P extends FormPresenter<F>, F> extends Vi
 		data = beforeValidation(data);
 		Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
 		Set<ConstraintViolation<F>> violations = validator.validate(data, Default.class);
-		for (ConstraintViolation<F> constraintViolation : violations) {
-			GWT.log("constraintViolation :" + constraintViolation.getMessage() + " | " + constraintViolation.getPropertyPath());
-		}
 		if (!violations.isEmpty()) {
 			driver.setConstraintViolations(new ArrayList<ConstraintViolation<?>>(violations));
 		} else {
@@ -94,7 +95,6 @@ public abstract class AbstractFormView<P extends FormPresenter<F>, F> extends Vi
 
 	@Override
 	public void load(F team) {
-		GWT.log("====> load go to edit");
 		this.driver.edit(team);
 	}
 
@@ -129,5 +129,13 @@ public abstract class AbstractFormView<P extends FormPresenter<F>, F> extends Vi
 				return (item != null && item.getValue() != null) ? item.getValue() : "";
 			}
 		});
+	}
+
+	protected String formatDate(Date date) {
+		return DateTimeFormat.getFormat(PredefinedFormat.DATE_SHORT).format(date);
+	}
+
+	protected void initDatePicker(DatePicker datePicker) {
+		datePicker.setGWTFormat(LocaleInfo.getCurrentLocale().getDateTimeFormatInfo().dateFormatShort());
 	}
 }

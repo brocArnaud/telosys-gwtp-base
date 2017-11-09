@@ -2,7 +2,6 @@ package com.telosys.gwtp.base.client.application.layout.footer;
 
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
-import com.gwtplatform.dispatch.rest.client.RestDispatch;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.presenter.slots.NestedSlot;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
@@ -24,8 +23,8 @@ public class FooterPresenter extends BasePresenter<FooterView, FooterProxy> {
 	public static final NestedSlot SLOT_CONTENT = new NestedSlot();
 
 	@Inject
-	FooterPresenter(EventBus eventBus, FooterView view, FooterProxy proxy, PlaceManager placeManager, RestDispatch dispatcher) {
-		super(eventBus, view, proxy, SLOT_CONTENT, placeManager, dispatcher);
+	FooterPresenter(EventBus eventBus, FooterView view, FooterProxy proxy, PlaceManager placeManager) {
+		super(eventBus, view, proxy, SLOT_CONTENT, placeManager);
 		getView().setPresenter(this);
 	}
 

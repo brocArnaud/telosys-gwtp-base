@@ -37,7 +37,7 @@ public class EmployeeDto implements Serializable
     @Size( min = 1, max = 40 )
     private String lastName ;  // String 
 
-    private Integer manager ;  // Short 
+    private Boolean manager ;  // Short 
 
     private Integer badgeNumber ;  // Integer 
     @Size( max = 60 )
@@ -130,7 +130,7 @@ public class EmployeeDto implements Serializable
      * This field is mapped on the database column "MANAGER" ( type "SMALLINT", NotNull : false ) 
      * @param manager
      */
-    public void setManager( Integer manager ) {
+    public void setManager( Boolean manager ) {
         this.manager = manager;
     }
     /**
@@ -138,7 +138,7 @@ public class EmployeeDto implements Serializable
      * This field is mapped on the database column "MANAGER" ( type "SMALLINT", NotNull : false ) 
      * @return the field value
      */
-    public Integer getManager() {
+    public Boolean getManager() {
         return this.manager;
     }
 
@@ -181,7 +181,7 @@ public class EmployeeDto implements Serializable
     //----------------------------------------------------------------------
     @Override
     public String toString() { 
-        StringBuffer sb = new StringBuffer(); 
+    	StringBuilder sb = new StringBuilder(); 
         sb.append(code);
         sb.append("|");
         sb.append(shopCode);

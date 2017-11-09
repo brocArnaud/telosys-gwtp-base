@@ -42,7 +42,7 @@ public class WorkgroupListViewImpl extends AbstractListView<WorkgroupListPresent
 
 			@Override
 			public String getValue(final WorkgroupDto object) {
-				return String.valueOf(object.getCreationDate());
+				return object != null ? formatDate(object.getCreationDate()) : "";
 			}
 		};
 		table.addColumn(col3, "Creation Date");

@@ -46,6 +46,30 @@ public class BookListViewImpl extends AbstractListView<BookListPresenter, BookDt
 			}
 		};
 		table.addColumn(col3, "Isbn");
+		final TextColumn<BookDto> col4 = new TextColumn<BookDto>() {
+
+			@Override
+			public String getValue(final BookDto object) {
+				return String.valueOf(object.getTitle());
+			}
+		};
+		table.addColumn(col4, "Title");
+		final TextColumn<BookDto> col5 = new TextColumn<BookDto>() {
+
+			@Override
+			public String getValue(final BookDto object) {
+				return String.valueOf(object.getPublisherId());
+			}
+		};
+		table.addColumn(col5, "Publisher");
+		final TextColumn<BookDto> col6 = new TextColumn<BookDto>() {
+
+			@Override
+			public String getValue(final BookDto object) {
+				return String.valueOf(object.getAuthorId());
+			}
+		};
+		table.addColumn(col6, "Author");
 		// Actions column
 		addDeletionColumn();
 		addUpdateColumn();

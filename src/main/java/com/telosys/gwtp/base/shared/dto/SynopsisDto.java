@@ -83,7 +83,7 @@ public class SynopsisDto implements Serializable
     //----------------------------------------------------------------------
     @Override
     public String toString() { 
-        StringBuffer sb = new StringBuffer(); 
+    	StringBuilder sb = new StringBuilder(); 
         sb.append(bookId);
         // attribute 'synopsis' not usable (type = String Long Text)
         return sb.toString(); 

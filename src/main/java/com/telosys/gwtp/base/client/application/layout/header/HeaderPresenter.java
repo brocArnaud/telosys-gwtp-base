@@ -2,7 +2,6 @@ package com.telosys.gwtp.base.client.application.layout.header;
 
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
-import com.gwtplatform.dispatch.rest.client.RestDispatch;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.presenter.slots.NestedSlot;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
@@ -26,8 +25,8 @@ public class HeaderPresenter extends BasePresenter<HeaderView, HeaderProxy> impl
 	public static final NestedSlot SLOT_CONTENT = new NestedSlot();
 
 	@Inject
-	HeaderPresenter(EventBus eventBus, HeaderView view, HeaderProxy proxy, PlaceManager placeManager, RestDispatch dispatcher) {
-		super(eventBus, view, proxy, SLOT_CONTENT, placeManager, dispatcher);
+	HeaderPresenter(EventBus eventBus, HeaderView view, HeaderProxy proxy, PlaceManager placeManager) {
+		super(eventBus, view, proxy, SLOT_CONTENT, placeManager);
 		getView().setPresenter(this);
 	}
 

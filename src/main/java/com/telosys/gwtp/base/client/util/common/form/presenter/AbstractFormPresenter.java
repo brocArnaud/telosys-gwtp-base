@@ -5,7 +5,6 @@ import org.apache.http.HttpStatus;
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
-import com.gwtplatform.dispatch.rest.client.RestDispatch;
 import com.gwtplatform.dispatch.rest.delegates.client.ResourceDelegate;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.Proxy;
@@ -15,20 +14,19 @@ import com.telosys.gwtp.base.client.place.NameTokens;
 import com.telosys.gwtp.base.client.util.common.BasePresenter;
 import com.telosys.gwtp.base.client.util.common.form.view.FormView;
 
-public abstract class AbstractFormPresenter<P extends Proxy<?>, V extends FormView<? extends AbstractFormPresenter<P, V, F, R>, F>, F, R> extends BasePresenter<V, P>
-		implements FormPresenter<F> {
+public abstract class AbstractFormPresenter<//
+		P extends Proxy<?>, //
+		V extends FormView<? extends AbstractFormPresenter<P, V, F, R>, F>, //
+		F, //
+		R> //
+		extends BasePresenter<V, P> implements FormPresenter<F> {
 
 	@Inject
 	protected ResourceDelegate<R> service;
 	protected boolean updateMode = false;
 
-	public AbstractFormPresenter(final EventBus eventBus, final V view, final P proxy, final GwtEvent.Type<RevealContentHandler<?>> pslot, PlaceManager placeManager,
-			RestDispatch dispatcher) {
-		super(eventBus, view, proxy, pslot, placeManager, dispatcher);
-	}
-
-	public AbstractFormPresenter(EventBus eventBus, V view, P proxy, RevealType revealType, PlaceManager placeManager, RestDispatch dispatcher) {
-		super(eventBus, view, proxy, revealType, placeManager, dispatcher);
+	public AbstractFormPresenter(final EventBus eventBus, final V view, final P proxy, final GwtEvent.Type<RevealContentHandler<?>> pslot, PlaceManager placeManager) {
+		super(eventBus, view, proxy, pslot, placeManager);
 	}
 
 	/**
@@ -45,7 +43,7 @@ public abstract class AbstractFormPresenter<P extends Proxy<?>, V extends FormVi
 	}
 
 	@Override
-	protected void onReveal() {
+	public void onReveal() {
 		super.onReveal();
 		getView().showNotification(false);
 		load();
@@ -105,5 +103,13 @@ public abstract class AbstractFormPresenter<P extends Proxy<?>, V extends FormVi
 			logger.severe("An error occured dans form presenter : " + caught.getMessage());
 			revealPlace(NameTokens.ERROR);
 		}
+	}
+
+	public boolean isUpdateMode() {
+		return updateMode;
+	}
+
+	public void setUpdateMode(boolean updateMode) {
+		this.updateMode = updateMode;
 	}
 }

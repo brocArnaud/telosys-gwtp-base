@@ -34,7 +34,7 @@ public class ReviewListViewImpl extends AbstractListView<ReviewListPresenter, Re
 
 			@Override
 			public String getValue(final ReviewDto object) {
-				return String.valueOf(object.getCreation());
+				return object != null ? formatDate(object.getCreation()) : "";
 			}
 		};
 		table.addColumn(col2, "Creation Date");
@@ -42,7 +42,7 @@ public class ReviewListViewImpl extends AbstractListView<ReviewListPresenter, Re
 
 			@Override
 			public String getValue(final ReviewDto object) {
-				return String.valueOf(object.getLastUpdate());
+				return object != null ? formatDate(object.getLastUpdate()) : "";
 			}
 		};
 		table.addColumn(col3, "Last update");

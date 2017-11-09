@@ -9,13 +9,11 @@ import org.gwtbootstrap3.client.ui.IntegerBox;
 import org.gwtbootstrap3.client.ui.TextBox;
 import org.gwtbootstrap3.client.ui.ValueListBox;
 
-import com.google.gwt.editor.client.Editor.Ignore;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Widget;
 import com.telosys.gwtp.base.client.application.content.shop.form.ShopFormPresenter.ShopFormView;
 import com.telosys.gwtp.base.client.util.common.form.view.AbstractFormView;
-import com.telosys.gwtp.base.shared.dto.PublisherDto;
 import com.telosys.gwtp.base.shared.dto.ShopDto;
 import com.telosys.gwtp.base.shared.dto.common.ListItemDto;
 

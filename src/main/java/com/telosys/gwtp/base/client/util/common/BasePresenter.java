@@ -2,12 +2,10 @@ package com.telosys.gwtp.base.client.util.common;
 
 import java.util.logging.Logger;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.http.client.Response;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.dispatch.rest.client.RestCallback;
-import com.gwtplatform.dispatch.rest.client.RestDispatch;
 import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
@@ -22,22 +20,18 @@ public abstract class BasePresenter<V extends View, P extends Proxy<?>> extends 
 
 	protected static final Logger logger = Logger.getLogger(BasePresenter.class.getSimpleName());
 
-	protected RestDispatch dispatcher;
-
 	protected PlaceManager placeManager;
 
-	public BasePresenter(EventBus eventBus, V view, P proxy, RevealType revealType, PlaceManager placeManager, RestDispatch dispatcher) {
-		this(eventBus, view, proxy, revealType, null, placeManager, dispatcher);
+	public BasePresenter(EventBus eventBus, V view, P proxy, RevealType revealType, PlaceManager placeManager) {
+		this(eventBus, view, proxy, revealType, null, placeManager);
 	}
 
-	public BasePresenter(EventBus eventBus, V view, P proxy, GwtEvent.Type<RevealContentHandler<?>> slot, PlaceManager placeManager, RestDispatch dispatcher) {
-		this(eventBus, view, proxy, null, slot, placeManager, dispatcher);
+	public BasePresenter(EventBus eventBus, V view, P proxy, GwtEvent.Type<RevealContentHandler<?>> slot, PlaceManager placeManager) {
+		this(eventBus, view, proxy, null, slot, placeManager);
 	}
 
-	public BasePresenter(EventBus eventBus, V view, P proxy, RevealType revealType, GwtEvent.Type<RevealContentHandler<?>> slot, PlaceManager placeManager,
-			RestDispatch dispatcher) {
+	public BasePresenter(EventBus eventBus, V view, P proxy, RevealType revealType, GwtEvent.Type<RevealContentHandler<?>> slot, PlaceManager placeManager) {
 		super(eventBus, view, proxy, revealType, slot);
-		this.dispatcher = dispatcher;
 		this.placeManager = placeManager;
 	}
 
@@ -79,8 +73,6 @@ public abstract class BasePresenter<V extends View, P extends Proxy<?>> extends 
 		@Override
 		public void setResponse(Response response) {
 			statusCode = response.getStatusCode();
-			GWT.log("STATUS CODE : " + statusCode);
-			GWT.log("TEXT CODE : " + response.getText());
 		}
 	}
 

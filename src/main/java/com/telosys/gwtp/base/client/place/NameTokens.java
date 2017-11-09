@@ -11,9 +11,6 @@ public class NameTokens {
 	public static final String AUTHOR_LIST = "/author";
 	public static final String AUTHOR_FORM = "/author/{id}";
 
-	public static final String EMPLOYEE_GROUP_LIST = "/employeeGroup";
-	public static final String EMPLOYEE_GROUP_FORM = "/employeeGroup/{employeeCode}/{groupId}";
-
 	public static final String BADGE_LIST = "/badge";
 	public static final String BADGE_FORM = "/badge/{badgeNumber}";
 
@@ -34,6 +31,9 @@ public class NameTokens {
 
 	public static final String EMPLOYEE_LIST = "/employee";
 	public static final String EMPLOYEE_FORM = "/employee/{code}";
+
+	public static final String EMPLOYEE_GROUP_LIST = "/employeeGroup";
+	public static final String EMPLOYEE_GROUP_FORM = "/employeeGroup/{employeeCode}/{groupId}";
 
 	public static final String PUBLISHER_LIST = "/publisher";
 	public static final String PUBLISHER_FORM = "/publisher/{code}";

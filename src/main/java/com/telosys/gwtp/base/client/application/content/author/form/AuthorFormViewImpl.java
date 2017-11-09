@@ -15,18 +15,18 @@ import com.telosys.gwtp.base.shared.dto.AuthorDto;
 import de.knightsoftnet.validators.client.editor.BeanValidationEditorDriver;
 
 public class AuthorFormViewImpl extends AbstractFormView<AuthorFormPresenter, AuthorDto> implements AuthorFormView {
-	interface Binder extends UiBinder<Widget, AuthorFormViewImpl> {
+	public interface Binder extends UiBinder<Widget, AuthorFormViewImpl> {
 	}
 
 	interface Driver extends BeanValidationEditorDriver<AuthorDto, AuthorFormViewImpl> {
 	}
 
 	@UiField
-	protected TextBox firstName;
+	public TextBox firstName;
 	@UiField
-	protected TextBox lastName;
+	public TextBox lastName;
 	@UiField
-	protected IntegerBox id;
+	public IntegerBox id;
 
 	@Inject
 	AuthorFormViewImpl(Binder uiBinder, final Driver driver) {

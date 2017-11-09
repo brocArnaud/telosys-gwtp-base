@@ -66,7 +66,7 @@
 										<b:FormGroup>
 											<b:FormLabel for="reviewer" text="Reviewer" />
 											<b:InlineHelpBlock iconType="EXCLAMATION_TRIANGLE" />
-											<b:IntegerBox b:id="reviewer" ui:field="reviewer" />
+											<b:CheckBox b:id="reviewer" ui:field="reviewer" />
 										</b:FormGroup>
 									</b:FieldSet>
 								</b:Form>

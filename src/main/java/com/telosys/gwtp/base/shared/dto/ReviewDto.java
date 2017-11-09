@@ -159,7 +159,7 @@ public class ReviewDto implements Serializable
     //----------------------------------------------------------------------
     @Override
     public String toString() { 
-        StringBuffer sb = new StringBuffer(); 
+    	StringBuilder sb = new StringBuilder(); 
         sb.append(customerCode);
         sb.append("|");
         sb.append(bookId);

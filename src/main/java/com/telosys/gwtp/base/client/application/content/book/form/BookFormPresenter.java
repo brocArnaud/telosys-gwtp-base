@@ -2,10 +2,8 @@ package com.telosys.gwtp.base.client.application.content.book.form;
 
 import java.util.List;
 
-import com.google.gwt.core.client.GWT;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
-import com.gwtplatform.dispatch.rest.client.RestDispatch;
 import com.gwtplatform.dispatch.rest.delegates.client.ResourceDelegate;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
@@ -41,32 +39,28 @@ public class BookFormPresenter extends AbstractFormPresenter<BookFormProxy, Book
 
 	@Inject
 	ResourceDelegate<PublisherResource> publisherService;
-
 	@Inject
 	ResourceDelegate<AuthorResource> authorService;
 
 	@Inject
-	BookFormPresenter(EventBus eventBus, BookFormView view, BookFormProxy proxy, PlaceManager placeManager, RestDispatch dispatcher) {
-		super(eventBus, view, proxy, ApplicationPresenter.SLOT_MAIN, placeManager, dispatcher);
+	BookFormPresenter(EventBus eventBus, BookFormView view, BookFormProxy proxy, PlaceManager placeManager) {
+		super(eventBus, view, proxy, ApplicationPresenter.SLOT_MAIN, placeManager);
 		getView().setPresenter(this);
 	}
 
 	@Override
-	protected void onBind() {
-		super.onBind();
-		LoadingEvent.fire(this, true);
+	public void onReveal() {
+		super.onReveal();
 		publisherService.withCallback(new CallBack<List<ListItemDto>>() {
 			@Override
 			public void onSuccess(List<ListItemDto> items) {
 				getView().loadPublisher(items);
-				LoadingEvent.fire(BookFormPresenter.this, false);
 			}
 		}).listItems();
 		authorService.withCallback(new CallBack<List<ListItemDto>>() {
 			@Override
 			public void onSuccess(List<ListItemDto> items) {
 				getView().loadAuthor(items);
-				LoadingEvent.fire(BookFormPresenter.this, false);
 			}
 		}).listItems();
 	}

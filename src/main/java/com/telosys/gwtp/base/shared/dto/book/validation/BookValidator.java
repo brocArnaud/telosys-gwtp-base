@@ -4,8 +4,6 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 import com.telosys.gwtp.base.shared.dto.book.BookDto;
-import com.telosys.gwtp.base.shared.dto.player.PlayerDto;
-import com.telosys.gwtp.base.shared.dto.player.validation.ValidPlayer;
 
 public class BookValidator implements ConstraintValidator<ValidBook, BookDto> {
 

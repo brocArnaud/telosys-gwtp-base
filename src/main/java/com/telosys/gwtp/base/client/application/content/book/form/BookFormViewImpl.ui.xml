@@ -56,12 +56,12 @@
 										<b:FormGroup>
 											<b:FormLabel for="availability" text="Availability" />
 											<b:InlineHelpBlock iconType="EXCLAMATION_TRIANGLE" />
-											<b:IntegerBox b:id="availability" ui:field="availability" />
+											<b:CheckBox b:id="availability" ui:field="availability" />
 										</b:FormGroup>
 										<b:FormGroup>
 											<b:FormLabel for="bestSeller" text="BestSeller" />
 											<b:InlineHelpBlock iconType="EXCLAMATION_TRIANGLE" />
-											<b:IntegerBox b:id="bestSeller" ui:field="bestSeller" />
+											<b:CheckBox b:id="bestSeller" ui:field="bestSeller" />
 										</b:FormGroup>
 									</b:FieldSet>
 								</b:Form>

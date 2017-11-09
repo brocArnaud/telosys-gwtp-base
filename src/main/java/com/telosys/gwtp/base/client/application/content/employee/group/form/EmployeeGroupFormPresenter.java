@@ -2,7 +2,6 @@ package com.telosys.gwtp.base.client.application.content.employee.group.form;
 
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
-import com.gwtplatform.dispatch.rest.client.RestDispatch;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
@@ -29,8 +28,8 @@ public class EmployeeGroupFormPresenter extends AbstractFormPresenter<EmployeeGr
 	}
 
 	@Inject
-	EmployeeGroupFormPresenter(EventBus eventBus, EmployeeGroupFormView view, EmployeeGroupFormProxy proxy, PlaceManager placeManager, RestDispatch dispatcher) {
-		super(eventBus, view, proxy, ApplicationPresenter.SLOT_MAIN, placeManager, dispatcher);
+	EmployeeGroupFormPresenter(EventBus eventBus, EmployeeGroupFormView view, EmployeeGroupFormProxy proxy, PlaceManager placeManager) {
+		super(eventBus, view, proxy, ApplicationPresenter.SLOT_MAIN, placeManager);
 		getView().setPresenter(this);
 	}
 

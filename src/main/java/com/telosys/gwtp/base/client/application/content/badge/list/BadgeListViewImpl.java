@@ -42,7 +42,7 @@ public class BadgeListViewImpl extends AbstractListView<BadgeListPresenter, Badg
 
 			@Override
 			public String getValue(final BadgeDto object) {
-				return String.valueOf(object.getEndOfValidity());
+				return object != null ? formatDate(object.getEndOfValidity()) : "";
 			}
 		};
 		table.addColumn(col3, "End of validity");

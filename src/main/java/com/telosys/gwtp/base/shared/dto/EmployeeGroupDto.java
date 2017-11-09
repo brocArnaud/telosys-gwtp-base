@@ -86,7 +86,7 @@ public class EmployeeGroupDto implements Serializable {
 	// ----------------------------------------------------------------------
 	@Override
 	public String toString() {
-		StringBuffer sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 		sb.append(employeeCode);
 		sb.append("|");
 		sb.append(groupId);

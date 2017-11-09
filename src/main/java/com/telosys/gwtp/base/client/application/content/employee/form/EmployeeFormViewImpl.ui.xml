@@ -36,7 +36,7 @@
 										<b:FormGroup>
 											<b:FormLabel for="manager" text="Manager" />
 											<b:InlineHelpBlock iconType="EXCLAMATION_TRIANGLE" />
-											<b:IntegerBox b:id="manager" ui:field="manager" />
+											<b:CheckBox b:id="manager" ui:field="manager" />
 										</b:FormGroup>
 										<b:FormGroup>
 											<b:FormLabel for="badgeNumber" text="Badge number" />

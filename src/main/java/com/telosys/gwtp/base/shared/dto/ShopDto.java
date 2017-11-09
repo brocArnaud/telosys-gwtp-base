@@ -237,7 +237,7 @@ public class ShopDto implements Serializable
     //----------------------------------------------------------------------
     @Override
     public String toString() { 
-        StringBuffer sb = new StringBuffer(); 
+    	StringBuilder sb = new StringBuilder(); 
         sb.append(code);
         sb.append("|");
         sb.append(name);

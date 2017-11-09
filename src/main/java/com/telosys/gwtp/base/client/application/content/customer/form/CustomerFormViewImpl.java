@@ -5,17 +5,16 @@ import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 
+import org.gwtbootstrap3.client.ui.CheckBox;
 import org.gwtbootstrap3.client.ui.IntegerBox;
 import org.gwtbootstrap3.client.ui.TextBox;
 import org.gwtbootstrap3.client.ui.ValueListBox;
 
-import com.google.gwt.editor.client.Editor.Ignore;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Widget;
 import com.telosys.gwtp.base.client.application.content.customer.form.CustomerFormPresenter.CustomerFormView;
 import com.telosys.gwtp.base.client.util.common.form.view.AbstractFormView;
-import com.telosys.gwtp.base.shared.dto.BookOrderDto;
 import com.telosys.gwtp.base.shared.dto.CustomerDto;
 import com.telosys.gwtp.base.shared.dto.common.ListItemDto;
 
@@ -50,7 +49,7 @@ public class CustomerFormViewImpl extends AbstractFormView<CustomerFormPresenter
 	@UiField
 	protected TextBox phone;
 	@UiField
-	protected IntegerBox reviewer;
+	protected CheckBox reviewer;
 
 	@Inject
 	CustomerFormViewImpl(Binder uiBinder, final Driver driver) {

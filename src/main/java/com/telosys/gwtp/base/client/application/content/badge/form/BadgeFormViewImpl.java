@@ -32,6 +32,7 @@ public class BadgeFormViewImpl extends AbstractFormView<BadgeFormPresenter, Badg
 	BadgeFormViewImpl(Binder uiBinder, final Driver driver) {
 		super(driver);
 		initWidget(uiBinder.createAndBindUi(this));
+		initDatePicker(endOfValidity);
 		this.driver.initialize(this);
 	}
 
@@ -39,4 +40,5 @@ public class BadgeFormViewImpl extends AbstractFormView<BadgeFormPresenter, Badg
 	public String getBadgeNumberValue() {
 		return badgeNumber.getText();
 	}
+
 }

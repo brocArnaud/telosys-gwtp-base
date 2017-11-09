@@ -2,7 +2,6 @@ package com.telosys.gwtp.base.client.application.content.home;
 
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
-import com.gwtplatform.dispatch.rest.client.RestDispatch;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
@@ -24,7 +23,7 @@ public class HomePresenter extends BasePresenter<HomeView, HomeProxy> {
 	}
 
 	@Inject
-	HomePresenter(EventBus eventBus, HomeView view, HomeProxy proxy, PlaceManager placeManager, RestDispatch dispatcher) {
-		super(eventBus, view, proxy, ApplicationPresenter.SLOT_MAIN, placeManager, dispatcher);
+	HomePresenter(EventBus eventBus, HomeView view, HomeProxy proxy, PlaceManager placeManager) {
+		super(eventBus, view, proxy, ApplicationPresenter.SLOT_MAIN, placeManager);
 	}
 }

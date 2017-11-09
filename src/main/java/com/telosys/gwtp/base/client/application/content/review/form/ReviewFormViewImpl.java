@@ -39,6 +39,8 @@ public class ReviewFormViewImpl extends AbstractFormView<ReviewFormPresenter, Re
 	ReviewFormViewImpl(Binder uiBinder, final Driver driver) {
 		super(driver);
 		initWidget(uiBinder.createAndBindUi(this));
+		initDatePicker(creation);
+		initDatePicker(lastUpdate);
 		this.driver.initialize(this);
 	}
 }

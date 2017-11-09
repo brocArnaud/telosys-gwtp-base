@@ -5,17 +5,15 @@ import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 
+import org.gwtbootstrap3.client.ui.CheckBox;
 import org.gwtbootstrap3.client.ui.DoubleBox;
 import org.gwtbootstrap3.client.ui.IntegerBox;
 import org.gwtbootstrap3.client.ui.TextBox;
 import org.gwtbootstrap3.client.ui.ValueListBox;
 
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.text.shared.AbstractRenderer;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Widget;
-import com.google.gwt.view.client.ProvidesKey;
 import com.telosys.gwtp.base.client.application.content.book.form.BookFormPresenter.BookFormView;
 import com.telosys.gwtp.base.client.util.common.form.view.AbstractFormView;
 import com.telosys.gwtp.base.shared.dto.book.BookDto;
@@ -57,10 +55,10 @@ public class BookFormViewImpl extends AbstractFormView<BookFormPresenter, BookDt
 	protected IntegerBox discount;
 
 	@UiField
-	protected IntegerBox availability;
+	protected CheckBox availability;
 
 	@UiField
-	protected IntegerBox bestSeller;
+	protected CheckBox bestSeller;
 
 	@Inject
 	BookFormViewImpl(Binder uiBinder, final Driver driver) {

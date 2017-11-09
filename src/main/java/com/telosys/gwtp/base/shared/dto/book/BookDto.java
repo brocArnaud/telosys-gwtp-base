@@ -43,9 +43,9 @@ public class BookDto implements Serializable {
 
 	private Integer discount; // Integer
 
-	private Integer availability; // Short
+	private Boolean availability; // Short
 
-	private Integer bestSeller; // Short
+	private Boolean bestSeller; // Short
 
 	/**
 	 * Default constructor
@@ -227,7 +227,7 @@ public class BookDto implements Serializable {
 	 * 
 	 * @param availability
 	 */
-	public void setAvailability(Integer availability) {
+	public void setAvailability(Boolean availability) {
 		this.availability = availability;
 	}
 
@@ -237,7 +237,7 @@ public class BookDto implements Serializable {
 	 * 
 	 * @return the field value
 	 */
-	public Integer getAvailability() {
+	public Boolean getAvailability() {
 		return this.availability;
 	}
 
@@ -247,7 +247,7 @@ public class BookDto implements Serializable {
 	 * 
 	 * @param bestSeller
 	 */
-	public void setBestSeller(Integer bestSeller) {
+	public void setBestSeller(Boolean bestSeller) {
 		this.bestSeller = bestSeller;
 	}
 
@@ -257,7 +257,7 @@ public class BookDto implements Serializable {
 	 * 
 	 * @return the field value
 	 */
-	public Integer getBestSeller() {
+	public Boolean getBestSeller() {
 		return this.bestSeller;
 	}
 
@@ -266,7 +266,7 @@ public class BookDto implements Serializable {
 	// ----------------------------------------------------------------------
 	@Override
 	public String toString() {
-		StringBuffer sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 		sb.append(id);
 		sb.append("|");
 		sb.append(publisherId);
