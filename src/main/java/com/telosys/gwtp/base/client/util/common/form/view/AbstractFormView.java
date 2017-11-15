@@ -1,13 +1,8 @@
 package com.telosys.gwtp.base.client.util.common.form.view;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.Set;
 
 import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.groups.Default;
 
 import org.gwtbootstrap3.client.ui.Button;
 import org.gwtbootstrap3.client.ui.Column;
@@ -74,18 +69,17 @@ public abstract class AbstractFormView<P extends FormPresenter<F>, F> extends Vi
 	public void onCreateClick(ClickEvent event) {
 		F data = driver.flush();
 		data = beforeValidation(data);
-		Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
-		Set<ConstraintViolation<F>> violations = validator.validate(data, Default.class);
-		if (!violations.isEmpty()) {
-			driver.setConstraintViolations(new ArrayList<ConstraintViolation<?>>(violations));
-		} else {
-			presenter.save(data);
-		}
+		presenter.save(data);
 	}
 
 	@UiHandler("reset")
 	public void onResetClick(ClickEvent event) {
 		presenter.reset();
+	}
+
+	@Override
+	public void setConstraintsViolations(Iterable<ConstraintViolation<?>> violations) {
+		driver.setConstraintViolations(violations);
 	}
 
 	@Override

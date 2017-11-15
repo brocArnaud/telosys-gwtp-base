@@ -22,11 +22,11 @@ public class AuthorFormViewImpl extends AbstractFormView<AuthorFormPresenter, Au
 	}
 
 	@UiField
+	public IntegerBox id;
+	@UiField
 	public TextBox firstName;
 	@UiField
 	public TextBox lastName;
-	@UiField
-	public IntegerBox id;
 
 	@Inject
 	AuthorFormViewImpl(Binder uiBinder, final Driver driver) {

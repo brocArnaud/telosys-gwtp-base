@@ -2,10 +2,12 @@ package com.telosys.gwtp.base.client.application.content.author.list;
 
 import javax.inject.Inject;
 
+import com.google.gwt.core.shared.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.user.client.ui.Widget;
 import com.telosys.gwtp.base.client.application.content.author.list.AuthorListPresenter.AuthorListView;
+import com.telosys.gwtp.base.client.resources.i18n.Messages;
 import com.telosys.gwtp.base.client.util.common.list.view.AbstractListView;
 import com.telosys.gwtp.base.shared.dto.AuthorDto;
 
@@ -30,7 +32,7 @@ public class AuthorListViewImpl extends AbstractListView<AuthorListPresenter, Au
 				return String.valueOf(object.getId());
 			}
 		};
-		table.addColumn(col1, "Id");
+		table.addColumn(col1, messages.id());
 		final TextColumn<AuthorDto> col2 = new TextColumn<AuthorDto>() {
 
 			@Override
@@ -38,7 +40,7 @@ public class AuthorListViewImpl extends AbstractListView<AuthorListPresenter, Au
 				return String.valueOf(object.getFirstName());
 			}
 		};
-		table.addColumn(col2, "Firstname");
+		table.addColumn(col2, messages.firstName());
 		final TextColumn<AuthorDto> col3 = new TextColumn<AuthorDto>() {
 
 			@Override
@@ -46,7 +48,7 @@ public class AuthorListViewImpl extends AbstractListView<AuthorListPresenter, Au
 				return String.valueOf(object.getLastName());
 			}
 		};
-		table.addColumn(col3, "Lastname");
+		table.addColumn(col3, messages.lastName());
 		// Actions column
 		addDeletionColumn();
 		addUpdateColumn();

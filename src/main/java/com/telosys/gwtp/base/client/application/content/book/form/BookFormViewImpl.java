@@ -70,15 +70,6 @@ public class BookFormViewImpl extends AbstractFormView<BookFormPresenter, BookDt
 	}
 
 	@Override
-	protected BookDto beforeValidation(BookDto data) {
-		final String authorValue = authorId.getValue().getValue();
-		final String publisherValue = publisherId.getValue().getValue();
-		data.setAuthorId(Integer.valueOf(authorValue));
-		data.setPublisherId(Integer.valueOf(publisherValue));
-		return data;
-	}
-
-	@Override
 	public void loadPublisher(List<ListItemDto> items) {
 		publisherId.setValue(items.get(0));
 		publisherId.setAcceptableValues(items.stream().collect(Collectors.toList()));

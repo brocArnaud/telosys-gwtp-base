@@ -1,5 +1,13 @@
 package com.telosys.gwtp.base.client.util.common.form.presenter;
 
+import java.util.ArrayList;
+import java.util.Set;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.groups.Default;
+
 import org.apache.http.HttpStatus;
 
 import com.google.gwt.event.shared.GwtEvent;
@@ -60,7 +68,13 @@ public abstract class AbstractFormPresenter<//
 
 	@Override
 	public void save(F data) {
-		saveAction(data);
+		Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
+		Set<ConstraintViolation<F>> violations = validator.validate(data, Default.class);
+		if (!violations.isEmpty()) {
+			getView().setConstraintsViolations(new ArrayList<ConstraintViolation<?>>(violations));
+		} else {
+			saveAction(data);
+		}
 	}
 
 	protected void success() {

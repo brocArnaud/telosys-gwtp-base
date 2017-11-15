@@ -246,7 +246,7 @@
 			</exclusions>
 		</dependency>
 
-		<!-- Validatin api -->
+		<!-- Validation api -->
 		<dependency>
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>

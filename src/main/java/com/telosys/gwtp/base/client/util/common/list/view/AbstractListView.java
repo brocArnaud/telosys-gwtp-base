@@ -8,6 +8,7 @@ import org.gwtbootstrap3.client.ui.constants.IconType;
 import org.gwtbootstrap3.client.ui.gwt.ButtonCell;
 import org.gwtbootstrap3.client.ui.gwt.CellTable;
 
+import com.google.gwt.core.shared.GWT;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.i18n.shared.DateTimeFormat;
@@ -18,9 +19,12 @@ import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.view.client.ListDataProvider;
 import com.gwtplatform.mvp.client.ViewImpl;
+import com.telosys.gwtp.base.client.resources.i18n.Messages;
 import com.telosys.gwtp.base.client.util.common.list.presenter.ListPresenter;
 
 public abstract class AbstractListView<P extends ListPresenter<F>, F> extends ViewImpl implements ListView<P, F> {
+
+	protected Messages messages = GWT.create(Messages.class);
 
 	protected P presenter;
 
@@ -55,13 +59,13 @@ public abstract class AbstractListView<P extends ListPresenter<F>, F> extends Vi
 
 	protected void addDeletionColumn() {
 		final Column<F, String> deletion = getDeletionColumn();
-		table.addColumn(deletion, "Delete");
+		table.addColumn(deletion, messages.delete());
 		table.setColumnWidth(deletion, 30, Unit.PX);
 	}
 
 	protected void addUpdateColumn() {
 		final Column<F, String> update = getUpdateColumn();
-		table.addColumn(update, "Update");
+		table.addColumn(update, messages.update());
 		table.setColumnWidth(update, 30, Unit.PX);
 	}
 

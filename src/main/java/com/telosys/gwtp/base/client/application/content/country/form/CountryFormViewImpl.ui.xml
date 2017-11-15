@@ -1,4 +1,4 @@
-<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder' xmlns:g='urn:import:com.google.gwt.user.client.ui' xmlns:b="urn:import:org.gwtbootstrap3.client.ui">
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder' 	ui:baseMessagesInterface="com.telosys.gwtp.base.client.resources.i18n.Messages" xmlns:g='urn:import:com.google.gwt.user.client.ui' xmlns:b="urn:import:org.gwtbootstrap3.client.ui">
 
 	<ui:with field="res" type="com.telosys.gwtp.base.client.resources.AppResources" />
 	<g:HTMLPanel>
@@ -8,7 +8,9 @@
 					<b:Column size="MD_4" offset="MD_4">
 						<b:Panel addStyleNames="{res.style.formPanel}">
 							<b:PanelHeader>
-								<b:Heading size="H3" text="Creating a new country" />
+								<b:Heading size="H3" text="Creating a new country" >
+									<ui:attribute name='text' key="country.form.title" />
+								</b:Heading>
 							</b:PanelHeader>
 							<b:PanelBody ui:field="body">
 								<b:Form>

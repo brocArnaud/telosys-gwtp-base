@@ -1,6 +1,8 @@
-<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder' xmlns:g='urn:import:com.google.gwt.user.client.ui' xmlns:b="urn:import:org.gwtbootstrap3.client.ui">
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder' xmlns:g='urn:import:com.google.gwt.user.client.ui' xmlns:b="urn:import:org.gwtbootstrap3.client.ui"
+	ui:baseMessagesInterface="com.telosys.gwtp.base.client.resources.i18n.Messages">
 
 	<ui:with field="res" type="com.telosys.gwtp.base.client.resources.AppResources" />
+
 	<g:HTMLPanel>
 		<b:Container>
 			<g:HTMLPanel>
@@ -8,23 +10,31 @@
 					<b:Column size="MD_4" offset="MD_4">
 						<b:Panel addStyleNames="{res.style.formPanel}">
 							<b:PanelHeader>
-								<b:Heading size="H3" text="Creating a new author" />
+								<b:Heading size="H3" text="Creating a new author">
+									<ui:attribute name='text' key="author.form.title" />
+								</b:Heading>
 							</b:PanelHeader>
 							<b:PanelBody ui:field="body">
 								<b:Form>
 									<b:FieldSet>
 										<b:FormGroup>
-											<b:FormLabel for="id" text="Id" />
+											<b:FormLabel for="id" text="Id">
+												<ui:attribute name='text' key="commons.id" />
+											</b:FormLabel>
 											<b:InlineHelpBlock iconType="EXCLAMATION_TRIANGLE" />
 											<b:IntegerBox b:id="id" ui:field="id" />
 										</b:FormGroup>
 										<b:FormGroup>
-											<b:FormLabel for="firstName" text="First name" />
+											<b:FormLabel for="firstName" text="First name">
+												<ui:attribute name='text' key="commons.firstName" />
+											</b:FormLabel>
 											<b:InlineHelpBlock iconType="EXCLAMATION_TRIANGLE" />
 											<b:TextBox b:id="firstName" ui:field="firstName" />
 										</b:FormGroup>
 										<b:FormGroup>
-											<b:FormLabel for="lastName" text="Last name" />
+											<b:FormLabel for="lastName" text="Last name">
+												<ui:attribute name='text' key="commons.lastName" />
+											</b:FormLabel>
 											<b:InlineHelpBlock iconType="EXCLAMATION_TRIANGLE" />
 											<b:TextBox b:id="lastName" ui:field="lastName" />
 										</b:FormGroup>
@@ -32,13 +42,19 @@
 								</b:Form>
 							</b:PanelBody>
 							<b:PanelFooter addStyleNames="{res.style.formPanelFooter}">
-								<b:Button type="DANGER" ui:field="reset" text="Reset" />
-								<b:Button type="PRIMARY" ui:field="create" text="Create" />
+								<b:Button type="DANGER" ui:field="reset" text="Reset">
+									<ui:attribute name='text' key="form.reset" />
+								</b:Button>
+								<b:Button type="PRIMARY" ui:field="create" text="Create">
+									<ui:attribute name='text' key="form.create" />
+								</b:Button>
 							</b:PanelFooter>
 						</b:Panel>
 					</b:Column>
 					<b:Column ui:field="notification" size="MD_4" offset="MD_4" addStyleNames="{res.style.notificationContainer}" visible="false">
-						<b:Label ui:field="labelNotification" text="Player creation succes" type="SUCCESS" />
+						<b:Label ui:field="labelNotification" text="Author creation success" type="SUCCESS">
+							<ui:attribute name='text' key="author.form.success" />
+						</b:Label>
 					</b:Column>
 					<b:Column ui:field="notificationError" size="MD_4" offset="MD_4" addStyleNames="{res.style.notificationContainer}" visible="false">
 						<b:Label ui:field="labelNotificationError" text="Error" type="DANGER" />
