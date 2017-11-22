@@ -30,7 +30,7 @@ public class BadgeDto implements Serializable {
 	@NotNull
 	private Integer authorizationLevel; // Short
 
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = Paths.SIMPLE_DATE_PATTERN)
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	private Date endOfValidity; // Date
 
 	/**

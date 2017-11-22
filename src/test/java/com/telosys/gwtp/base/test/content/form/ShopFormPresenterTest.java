@@ -77,6 +77,7 @@ public class ShopFormPresenterTest extends BasePresenterTest {
 		PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(NameTokens.SHOP_LIST).build();
 		ShopDto shop = new ShopDto();
 		shop.setCode("1");
+		shop.setCountryCode("FR");
 		givenDelegate(shopService).useResource(ShopResource.class).and().succeed().withResult((Void) null).when().create(shop);
 		// When
 		shopFormPresenter.save(shop);
@@ -90,6 +91,7 @@ public class ShopFormPresenterTest extends BasePresenterTest {
 		PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(NameTokens.SHOP_LIST).build();
 		ShopDto shop = new ShopDto();
 		shop.setCode("1");
+		shop.setCountryCode("FR");
 		givenDelegate(shopService).useResource(ShopResource.class).and().succeed().withResult((Void) null).when().update(shop, shop.getCode());
 		// When
 		shopFormPresenter.setUpdateMode(true);

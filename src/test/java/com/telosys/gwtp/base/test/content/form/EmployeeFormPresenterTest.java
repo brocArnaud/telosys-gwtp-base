@@ -76,6 +76,8 @@ public class EmployeeFormPresenterTest extends BasePresenterTest {
 		PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(NameTokens.EMPLOYEE_LIST).build();
 		EmployeeDto employee = new EmployeeDto();
 		employee.setCode("1");
+		employee.setShopCode("SH1");
+		employee.setLastName("lastname");
 		givenDelegate(employeeService).useResource(EmployeeResource.class).and().succeed().withResult((Void) null).when().create(employee);
 		// When
 		employeeFormPresenter.save(employee);
@@ -89,6 +91,8 @@ public class EmployeeFormPresenterTest extends BasePresenterTest {
 		PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(NameTokens.EMPLOYEE_LIST).build();
 		EmployeeDto employee = new EmployeeDto();
 		employee.setCode("1");
+		employee.setShopCode("SH1");
+		employee.setLastName("lastname");
 		givenDelegate(employeeService).useResource(EmployeeResource.class).and().succeed().withResult((Void) null).when().update(employee, employee.getCode());
 		// When
 		employeeFormPresenter.setUpdateMode(true);

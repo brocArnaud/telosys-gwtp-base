@@ -71,6 +71,7 @@ public class PublisherFormPresenterTest extends BasePresenterTest {
 		PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(NameTokens.PUBLISHER_LIST).build();
 		PublisherDto publisher = new PublisherDto();
 		publisher.setCode(1);
+		publisher.setCountryCode("FR");
 		givenDelegate(publisherService).useResource(PublisherResource.class).and().succeed().withResult((Void) null).when().create(publisher);
 		// When
 		publisherFormPresenter.save(publisher);
@@ -84,6 +85,7 @@ public class PublisherFormPresenterTest extends BasePresenterTest {
 		PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(NameTokens.PUBLISHER_LIST).build();
 		PublisherDto publisher = new PublisherDto();
 		publisher.setCode(1);
+		publisher.setCountryCode("FR");
 		givenDelegate(publisherService).useResource(PublisherResource.class).and().succeed().withResult((Void) null).when().update(publisher, publisher.getCode());
 		// When
 		publisherFormPresenter.setUpdateMode(true);

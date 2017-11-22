@@ -5,6 +5,8 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.verify;
 
+import java.util.Date;
+
 import javax.inject.Inject;
 
 import org.jukito.JukitoRunner;
@@ -66,6 +68,9 @@ public class WorkgroupFormPresenterTest extends BasePresenterTest {
 		PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(NameTokens.WORKGROUP_LIST).build();
 		WorkgroupDto workgroup = new WorkgroupDto();
 		workgroup.setId(1);
+		workgroup.setName("name");
+		workgroup.setCreationDate(new Date());
+		workgroup.setDescription("description");
 		givenDelegate(workgroupService).useResource(WorkgroupResource.class).and().succeed().withResult((Void) null).when().create(workgroup);
 		// When
 		workgroupFormPresenter.save(workgroup);
@@ -79,6 +84,9 @@ public class WorkgroupFormPresenterTest extends BasePresenterTest {
 		PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(NameTokens.WORKGROUP_LIST).build();
 		WorkgroupDto workgroup = new WorkgroupDto();
 		workgroup.setId(1);
+		workgroup.setName("name");
+		workgroup.setCreationDate(new Date());
+		workgroup.setDescription("description");
 		givenDelegate(workgroupService).useResource(WorkgroupResource.class).and().succeed().withResult((Void) null).when().update(workgroup, workgroup.getId());
 		// When
 		workgroupFormPresenter.setUpdateMode(true);

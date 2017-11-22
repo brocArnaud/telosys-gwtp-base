@@ -78,6 +78,8 @@ public class BookFormPresenterTest extends BasePresenterTest {
 		BookDto book = new BookDto();
 		book.setId(1);
 		book.setAuthorId(1);
+		book.setPublisherId(1);
+		book.setIsbn("ERTEEY");
 		givenDelegate(bookService).useResource(BookResource.class).and().succeed().withResult((Void) null).when().create(book);
 		// When
 		bookFormPresenter.save(book);
@@ -92,6 +94,8 @@ public class BookFormPresenterTest extends BasePresenterTest {
 		BookDto book = new BookDto();
 		book.setId(1);
 		book.setAuthorId(1);
+		book.setPublisherId(1);
+		book.setIsbn("ERTEEY");
 		givenDelegate(bookService).useResource(BookResource.class).and().succeed().withResult((Void) null).when().update(book, book.getId());
 		// When
 		bookFormPresenter.setUpdateMode(true);

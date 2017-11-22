@@ -71,6 +71,8 @@ public class CustomerFormPresenterTest extends BasePresenterTest {
 		PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(NameTokens.CUSTOMER_LIST).build();
 		CustomerDto customer = new CustomerDto();
 		customer.setCode("1");
+		customer.setCountryCode("FR");
+		customer.setLogin("Login");
 		givenDelegate(customerService).useResource(CustomerResource.class).and().succeed().withResult((Void) null).when().create(customer);
 		// When
 		customerFormPresenter.save(customer);
@@ -84,6 +86,8 @@ public class CustomerFormPresenterTest extends BasePresenterTest {
 		PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(NameTokens.CUSTOMER_LIST).build();
 		CustomerDto customer = new CustomerDto();
 		customer.setCode("1");
+		customer.setCountryCode("FR");
+		customer.setLogin("Login");
 		givenDelegate(customerService).useResource(CustomerResource.class).and().succeed().withResult((Void) null).when().update(customer, customer.getCode());
 		// When
 		customerFormPresenter.setUpdateMode(true);

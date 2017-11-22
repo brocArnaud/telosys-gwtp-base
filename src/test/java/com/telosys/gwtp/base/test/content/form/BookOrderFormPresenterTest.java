@@ -83,6 +83,9 @@ public class BookOrderFormPresenterTest extends BasePresenterTest {
 		PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(NameTokens.BOOK_ORDER_LIST).build();
 		BookOrderDto bookOrder = new BookOrderDto();
 		bookOrder.setId(1);
+		bookOrder.setCustomerCode("CU1");
+		bookOrder.setEmployeeCode("EM1");
+		bookOrder.setShopCode("SH1");
 		givenDelegate(bookOrderService).useResource(BookOrderResource.class).and().succeed().withResult((Void) null).when().create(bookOrder);
 		// When
 		bookOrderFormPresenter.save(bookOrder);
@@ -96,6 +99,9 @@ public class BookOrderFormPresenterTest extends BasePresenterTest {
 		PlaceRequest placeRequest = new PlaceRequest.Builder().nameToken(NameTokens.BOOK_ORDER_LIST).build();
 		BookOrderDto bookOrder = new BookOrderDto();
 		bookOrder.setId(1);
+		bookOrder.setCustomerCode("CU1");
+		bookOrder.setEmployeeCode("EM1");
+		bookOrder.setShopCode("SH1");
 		givenDelegate(bookOrderService).useResource(BookOrderResource.class).and().succeed().withResult((Void) null).when().update(bookOrder, bookOrder.getId());
 		// When
 		bookOrderFormPresenter.setUpdateMode(true);

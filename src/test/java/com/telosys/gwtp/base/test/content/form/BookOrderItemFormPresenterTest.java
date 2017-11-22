@@ -69,6 +69,8 @@ public class BookOrderItemFormPresenterTest extends BasePresenterTest {
 		BookOrderItemDto bookOrderItem = new BookOrderItemDto();
 		bookOrderItem.setBookOrderId(1);
 		bookOrderItem.setBookId(1);
+		bookOrderItem.setPrice(2.0);
+		bookOrderItem.setQuantity(1);
 		givenDelegate(bookOrderItemService).useResource(BookOrderItemResource.class).and().succeed().withResult((Void) null).when().create(bookOrderItem);
 		// When
 		bookOrderItemFormPresenter.save(bookOrderItem);
@@ -83,6 +85,8 @@ public class BookOrderItemFormPresenterTest extends BasePresenterTest {
 		BookOrderItemDto bookOrderItem = new BookOrderItemDto();
 		bookOrderItem.setBookOrderId(1);
 		bookOrderItem.setBookId(1);
+		bookOrderItem.setPrice(2.0);
+		bookOrderItem.setQuantity(1);
 		givenDelegate(bookOrderItemService).useResource(BookOrderItemResource.class).and().succeed().withResult((Void) null).when().update(bookOrderItem,
 				bookOrderItem.getBookOrderId(), bookOrderItem.getBookId());
 		// When
